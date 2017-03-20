@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     tournaments = dict()
 
-    #for page_num in range(1, 2):
+    #for page_num in range(1, 10):
     for page_num in range(1, int(1514 / 5) + 1 + 1):
         r = requests.get(base_url + str(page_num))
         soup = BeautifulSoup(r.text, "html.parser")
