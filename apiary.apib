@@ -1,0 +1,48 @@
+FORMAT: 1A
+HOST: http://smashdb.me/
+
+# Smash Database API
+
+Smash Database is a simple API allowing users to view information about Super Smash Brothers Melee tournaments, participants, and characters.
+
+## Tournaments Collection [/tournaments]
+
+### List All Tournaments [GET]
+
++ Response 200 (application/json)
+
+        {
+           "tournaments": [
+                   "Body City 3",
+                   "SKTAR 4",
+                   "BAM 15"
+           ]
+        }
+
+## Participants Collection [/participants]
+
+### List All Participants [GET]
+
++ Response 200 (application/json)
+
+        {
+           "participants": [
+                   "Mang0",
+                   "SFAT",
+                   "Westballz"
+           ]
+        }
+
+## Characters Collection [/characters]
+
+### List All Characters [GET]
+
++ Response 200 (application/json)
+
+        {
+           "characterss": [
+                   "Marth",
+                   "Luigi",
+                   "Samus"
+           ]
+        }
