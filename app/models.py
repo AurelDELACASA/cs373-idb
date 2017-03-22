@@ -1,6 +1,5 @@
 # import statements for sqlalchemy
 
-
 class Tournament(self):
     tournament_name = ""
     date = ""
@@ -34,7 +33,7 @@ class Character(self):
     character_name = ""
     universe = ""
     weight = ""
-    moves = ""
+    moves = None
     debut = ""
 
     def __init__(character_name, universe, weight, moves, debut):
