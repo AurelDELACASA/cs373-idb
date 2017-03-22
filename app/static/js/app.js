@@ -5,24 +5,24 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		$routeProvider
 	//Go to splash page
 	.when('/', {
-		templateUrl: '/htmls/splash.html',
+		templateUrl: '../static/htmls/splash.html',
 		controller: 'mainController'
 	})
 	//Go to players page
 	.when('/players', {
-		templateUrl: '/htmls/players.html',
+		templateUrl: '../static/htmls/players.html',
 	})
 	//Go to tournaments page
 	.when('/tournaments', {
-		templateUrl: '/htmls/tournaments.html',
+		templateUrl: '../static/htmls/tournaments.html',
 	})
 	//Go to highlights page
 	.when('/characters', {
-		templateUrl: '/htmls/characters.html',
+		templateUrl: '../static/htmls/characters.html',
 	})
 	//Go to about page
 	.when('/about', {
-		templateUrl: '/htmls/about.html',
+		templateUrl: '../static/htmls/about.html',
 	})
 	.otherwise({redirectTo: '/'});
 
@@ -34,7 +34,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 			requireBase: false
 		});
 	}
-}]);		
+}]);
 
 mainApp.controller('mainController', ['$scope', '$route', function($scope, $route) {
 }]);
