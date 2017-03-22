@@ -40,3 +40,6 @@ venv/
 ENV/
 *.swp
 requirements.txt
+app/bin
+app/share
+app/include
