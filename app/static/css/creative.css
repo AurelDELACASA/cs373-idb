@@ -99,7 +99,7 @@ aside {
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
   color: #F05F40 !important;
-  background-color: #FFFFFF;
+  background-color: #737373;
 }
 .navbar-default .nav > li.active > a:hover,
 .navbar-default .nav > li.active > a:focus:hover {
@@ -107,7 +107,8 @@ aside {
 }
 @media (min-width: 768px) {
   .navbar-default {
-    background-color: #FFFFFF;
+    opacity:0.5;
+    background-color: #737373;
     border-color: rgba(255, 255, 255, 0.3);
   }
   .navbar-default .navbar-header .navbar-brand {
