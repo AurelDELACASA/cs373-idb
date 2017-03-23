@@ -27,6 +27,7 @@ a {
 }
 a:hover,
 a:focus {
+  opacity:.9;
   color: #eb3812;
 }
 h1,
