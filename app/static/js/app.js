@@ -128,7 +128,7 @@ mainApp.controller('aboutCtrl',
       description: 'Maurya description goes here',
       responsibilities: 'Full Stack',
       tests: 0,
-      issues: 0,
+      issues: 15,
       commits: 0
     },
     {
