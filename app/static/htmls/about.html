@@ -37,11 +37,23 @@
         <h2 class="text-center main-title">Project ISDb</h2>
       </div>
     </div>
+
+
+<div id="{{tournament.name}}" ng-repeat="tournament in tournaments track by $index">
+   
+    <div>
+        <span>{{tournament.date}}</span>
+        <span>{{tournament.location}}</span>
+    </div>
+    
+</div>
+
     <div class="row">
       <div class="col-md-5 col-xs-7 col-sm-7 col-center" ng-repeat="member in members">
         <div class="row">
         </div>
+      </div>
     </div>
-   </div>
  </body>
+
  </html>

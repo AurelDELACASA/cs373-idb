@@ -48,3 +48,12 @@ mainApp.controller('tournamentsCtrl',
 	  	});
 
 });
+
+mainApp.controller('aboutCtrl',
+    function ($scope, $http) {
+        $http.get('http://localhost:5000/api/tournaments')
+            .then(function(response) {
+                $scope.tournaments = response.data["tournaments"];
+        });
+
+});
