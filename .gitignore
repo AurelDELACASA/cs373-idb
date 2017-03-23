@@ -43,3 +43,4 @@ requirements.txt
 app/bin
 app/share
 app/include
+*~

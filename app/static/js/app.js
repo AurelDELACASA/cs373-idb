@@ -1,5 +1,39 @@
 var mainApp = angular.module('mainApp', ['ngRoute']);
 
+var memberCache = [
+{
+  name: 'Caelan Evans', 
+  login: 'caelanevans',
+  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
+  responsibilities: 'Full Stack', 
+  instagram_url: 'https://www.instagram.com/packagedwolf/',
+  linkedin_url: 'https://linkedin.com/in/alanmaut',
+  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
+  tests: 6
+},
+{
+  name: 'Rohit Ven', 
+  login: 'RohitVen',
+  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
+  responsibilities: 'Full Stack', 
+  instagram_url: 'https://www.instagram.com/packagedwolf/',
+  linkedin_url: 'https://linkedin.com/in/alanmaut',
+  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
+  tests: 6
+},
+{
+  name: 'Ben Lee', 
+  login: 'lee-benjamin',
+  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
+  responsibilities: 'Full Stack', 
+  instagram_url: 'https://www.instagram.com/packagedwolf/',
+  linkedin_url: 'https://linkedin.com/in/alanmaut',
+  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
+  tests: 6
+}
+];
+
+
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 		$routeProvider
@@ -45,15 +79,29 @@ mainApp.controller('tournamentsCtrl',
 	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
+                $scope.members = memberCache;  
 	  	});
 
 });
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/tournaments')
-            .then(function(response) {
-                $scope.tournaments = response.data["tournaments"];
+        GHdata = {};
+        $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
+            .then(function(data) {
+
+            for(var i = 0; i < data.length; i++) {
+                author = data[i]['author']
+                GHdata[author.login] = {};
+                GHdata[author.login].avatar_url    = author.avatar_url;
+                GHdata[author.login].url           = author.html_url;
+                GHdata[author.login].contributions = data[i].total;
+                GHdata[author.login].issues        = 0;
+                stats.commits   += data[i].total;
+            }
+            $scope.members = memberCache;  
+            $scope.github = GHdata;
+            console.log(memberCache);
         });
 
 });
