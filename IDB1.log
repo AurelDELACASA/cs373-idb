@@ -1,3 +1,91 @@
+commit 5240149992caff0d70036171cb69b9467bd9878b
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Mar 23 14:58:57 2017 -0500
+
+    edited travis.yml to build on master
+
+commit 0b8ebd0a073d51bbf3e7e44ba0804186e58599b1
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Mar 23 14:55:57 2017 -0500
+
+    expanded tests and edited makefile to run test
+
+commit 20e542d9fc41ad8be0d755972d55886d5bd92860
+Merge: d128735 81f7904
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:39:35 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit d1287355f51e87ef729889f80324d54f37616e42
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:39:09 2017 -0500
+
+    Return totals for About page
+
+commit e77e58649626f15f00f8ab40c1f5498de8039d46
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:32:07 2017 -0500
+
+    Added documentation for models.py
+
+commit 81f7904e8f690db9e5d184d7d1e62eefd396cbea
+Merge: 3b2f42d 4017c84
+Author: MauryaAvirneni <maurya.avirneni@utexas.edu>
+Date:   Thu Mar 23 14:29:37 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 3b2f42d568d1e67316ac89cd062b113ad5d3285d
+Author: MauryaAvirneni <maurya.avirneni@utexas.edu>
+Date:   Thu Mar 23 14:29:30 2017 -0500
+
+    made splash page prettier
+
+commit faad5e5e7f06cc8b8c5300d32637e2a0f5043712
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:22:22 2017 -0500
+
+    Added documentation for app.py
+
+commit 4017c84667973d0556df499a40dc4109d045c7a2
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:17:41 2017 -0500
+
+    Added branch text
+
+commit e09096c573e9e118e5ae3e0b6fdda5effe3c3b92
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 14:16:35 2017 -0500
+
+    Updated README
+
+commit 0e9c598a7d415e12307237a74bb212f045301382
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 14:07:59 2017 -0500
+
+    Adding text overlay on the splash bg image
+
+commit e4d2d8b185389c22dbf4ef5d3f75820c2aeb6cd2
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 12:50:48 2017 -0500
+
+    Changing the hoverable images on the splash page to have correct texts
+
+commit 187217ba824ca897184eb2315852117f93d8bf38
+Merge: cdeccd2 e70c11e
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 12:34:34 2017 -0500
+
+    Fixing merge conflict
+
+commit cdeccd2a9063ebf5679a8d0fe1d56586360ac88b
+Merge: 27a94de bc2614f
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 12:34:11 2017 -0500
+
+    Fixing merge conflict[
+
 commit e70c11ef25a575efaca11d2fa8e3eb16e6c74275
 Author: lee-benjamin <leebenjamin@utexas.edu>
 Date:   Thu Mar 23 12:27:43 2017 -0500
@@ -16,6 +104,12 @@ Author: MauryaAvirneni <maurya.avirneni@utexas.edu>
 Date:   Thu Mar 23 12:22:55 2017 -0500
 
     Updated UML Diagram and added pdf
+
+commit 27a94dea8d3333c6d4036a7db120882f06814fa8
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 12:22:51 2017 -0500
+
+    Changing the size of the main splash image so the home page no longer has scroll
 
 commit 6f10fc7b286471df3e68d3beaadb5c1edd61536c
 Merge: 53846b6 47d11d3
