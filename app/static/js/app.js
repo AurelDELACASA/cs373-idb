@@ -39,7 +39,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	}
 }]);
 
-
+/*
 mainApp.controller('tournamentsCtrl', ['$scope',
     function ($scope) {
 
@@ -63,3 +63,4 @@ mainApp.controller('tournamentsCtrl', ['$scope',
 
 
 }]);
+*/
