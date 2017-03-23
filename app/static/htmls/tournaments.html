@@ -58,11 +58,13 @@
         <td>Name</td>
         <td>Date</td>
         <td>Location</td>
+        <td>Entrants</td>
       </tr>
       <tr ng-repeat="tournament in tournaments track by $index">
         <td>{{tournament.tournament_name}}</td>
         <td>{{tournament.date}}</td>
         <td>{{tournament.location}}</td>
+        <td>{{tournament.num_entrants}}</td>
         <td><a href="tournament/{{tournament.tournament_name}}">More Info</a></td>
       </tr>
     </table>
