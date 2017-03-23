@@ -160,18 +160,22 @@ mainApp.controller('aboutCtrl',
     }
     ];
 
-    var total_commits = 0;
+    $scope.totals = {
+        total_commits: 0,
+        total_issues: 1,
+        total_unittests: 2
+    };
         $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
             .then(function(response) {
                 response = response.data
             for(var i = 0; i < response.length; ++i) {
-                total_commits += response[i].total;
                 username = response[i]['author']['login']
                 for(var j = 0; j < members.length; ++j) {
                     console.log(members[j].username + " " + username)
                     if(members[j].username === username) {
                         members[j].commits = response[i].total
                         members[j].avatar_url = response[i]['author']['avatar_url']
+                        $scope.totals.total_commits += response[i].total
                     }
                 }
             }
