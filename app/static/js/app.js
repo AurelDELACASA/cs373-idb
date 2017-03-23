@@ -57,7 +57,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 
 mainApp.controller('tournamentsCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournaments')
+	  	$http.get('http://localhost/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
 	  	});
@@ -66,7 +66,7 @@ mainApp.controller('tournamentsCtrl',
 
 mainApp.controller('tournamentCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournament/name1')
+	  	$http.get('http://localhost/api/tournament/name1')
 		  	.then(function(response) {
 		  		$scope.tournament = response.data["tournament"];
 	  	});
@@ -75,7 +75,7 @@ mainApp.controller('tournamentCtrl',
 
 mainApp.controller('participantsCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participants')
+        $http.get('http://localhost/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
         });
@@ -84,7 +84,7 @@ mainApp.controller('participantsCtrl',
 
 mainApp.controller('participantCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participant/name1')
+        $http.get('http://localhost/api/participant/name1')
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -93,7 +93,7 @@ mainApp.controller('participantCtrl',
 
 mainApp.controller('charactersCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/characters')
+        $http.get('http://localhost/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
         });
@@ -102,7 +102,7 @@ mainApp.controller('charactersCtrl',
 
 mainApp.controller('characterCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/character/name1')
+        $http.get('http://localhost/api/character/name1')
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
