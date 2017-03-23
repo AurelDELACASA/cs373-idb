@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('shindig').controller('tournamentsCtrl', ['$scope',
+angular.module('mainApp').controller('tournamentsCtrl', ['$scope',
     function ($scope) {
 
   var dict1 = {
@@ -20,6 +18,24 @@ angular.module('shindig').controller('tournamentsCtrl', ['$scope',
   };
 
   $scope.tournaments = [dict1, dict2];
+
+
+}]);
+
+angular.module('mainApp').controller('participantsCtrl', ['$scope',
+    function ($scope) {
+
+  
+}]);
+
+angular.module('mainApp').controller('aboutCtrl', ['$scope',
+    function ($scope) {
+
+  
+}]);
+
+angular.module('mainApp').controller('charactersCtrl', ['$scope',
+    function ($scope) {
 
   
 }]);

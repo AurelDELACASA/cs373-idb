@@ -6,7 +6,6 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	//Go to splash page
 	.when('/', {
 		templateUrl: '../static/htmls/splash.html',
-		controller: 'mainController'
 	})
 	//Go to players page
 	.when('/participants', {
@@ -40,8 +39,9 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	}
 }]);
 
+
 mainApp.controller('tournamentsCtrl', ['$scope',
-		function ($scope) {
+    function ($scope) {
 
   var dict1 = {
     name: "Tourney1",
@@ -59,6 +59,7 @@ mainApp.controller('tournamentsCtrl', ['$scope',
     imageURL: "/path2"
   };
 
-	$scope.tournaments = [dict1, dict2];
+  $scope.tournaments = [dict1, dict2];
+
 
 }]);
