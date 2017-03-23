@@ -53,13 +53,16 @@
     <br>
     <br>
 
-    <table align="center">
+    <table class="sortable" align="center">
+        <thead>
       <tr>
-        <td>Gamer Tag</td>
-        <td>Real Name</td>
-        <td>Main</td>
-        <td>Location</td>
+          <th><span>Gamer Tag</span></th>
+          <th><span>Real Name</span></th>
+          <th><span>Main</span></th>
+          <th><span>Location</span></th>
       </tr>
+        </thead>
+        <tbody>
       <tr ng-repeat="participant in participants track by $index">
         <td>{{participant.gamer_tag}}</td>
         <td>{{participant.real_name}}</td>
@@ -67,6 +70,7 @@
         <td>{{participant.location}}</td>
         <td><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
       </tr>
+        </tbody>
     </table>
 
      <!-- jQuery -->
