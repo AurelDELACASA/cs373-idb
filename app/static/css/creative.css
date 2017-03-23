@@ -49,7 +49,7 @@ p {
    left: 6%; 
    width: 100%;   
    color: white; 
-   font: bold 60px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
+   font: bold 55px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
    letter-spacing: -1px;  
    padding: 10px; 
 }
@@ -59,9 +59,10 @@ p {
    left: 6%; 
    width: 100%;   
    color: white; 
-   font: 35px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
+   font: 30px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
    letter-spacing: -1px;  
-   padding: 10px; 
+   padding: 1%; 
+   padding-top: 2%;
 }
 .bg-primary {
   background-color: #F05F40;
