@@ -50,17 +50,24 @@
     <br>
     <br>
     <br>
-    <h2><center>Characters</center></h2>
+    <h2><center>Character Info</center></h2>
     <br>
     <br>
 
     <table align="center">
       <tr>
         <td>Name</td>
+        <td>Universe</td>
+        <td>Weight</td>
+        <td>Moves</td>
+        <td>Year</td>
       </tr>
-      <tr ng-repeat="character in characters track by $index">
+      <tr>
         <td>{{character.character_name}}</td>
-        <td><a href="character/{{character.character_name}}">More Info</a></td>
+        <td>{{character.universe}}</td>
+        <td>{{character.weight}}</td>
+        <td>{{character.moves}}</td>
+        <td>{{character.debut}}</td>
       </tr>
     </table>
 

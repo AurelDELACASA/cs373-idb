@@ -66,6 +66,11 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		templateUrl: '../static/htmls/characters.html',
 		controller: 'charactersCtrl'
 	})
+	//Go to character page
+	.when('/character/:characterName', {
+		templateUrl: '../static/htmls/character.html',
+		controller: 'characterCtrl'
+	})
 	//Go to about page
 	.when('/about', {
 		templateUrl: '../static/htmls/about.html',
@@ -128,6 +133,16 @@ mainApp.controller('charactersCtrl',
         });
 
 });
+
+mainApp.controller('characterCtrl',
+    function ($scope, $http) {
+        $http.get('http://localhost:5000/api/character/name1')
+            .then(function(response) {
+                $scope.character = response.data["character"];
+        });
+
+});
+
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
