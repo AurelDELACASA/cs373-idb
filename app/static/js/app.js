@@ -116,46 +116,46 @@ mainApp.controller('aboutCtrl',
     {
       name: 'Ben Lee',
       username: 'lee-benjamin',
-      description: 'Ben description goes here',
+      description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
       responsibilities: 'Full Stack',
-      tests: 3,
-      issues: 0,
+      tests: 9,
+      issues: 1,
       commits: 0
     },
     {
       name: 'Maurya Avineni',
       username: 'MauryaAvirneni',
-      description: 'Maurya description goes here',
+      description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
       responsibilities: 'Full Stack',
       tests: 0,
-      issues: 15,
+      issues: 17,
       commits: 0
     },
     {
       name: 'Rohit Ven',
       username: 'RohitVen',
-      description: 'Rohit description goes here',
+      description: "Hi, its your boy Rohit. I'm a UTCS student and I love my longboard and longhair. Hook'em!",
       responsibilities: 'Full Stack',
       tests: 0,
-      issues: 0,
+      issues: 1,
       commits: 0
     },
     {
       name: 'Dallas Kelle',
       username: 'DKelle',
-      description: 'Dallas description goes here',
+      description: "My name is Dallas, and I’m a senior at the University of Texas. My true loves include Computer Science, dogs, and most of all, Melee. I hope this website has helped satisfy your burning desire for Smash stats.",
       responsibilities: 'Full Stack',
       tests: 0,
-      issues: 4,
+      issues: 6,
       commits: 0
     },
     {
       name: 'Caelan Evans',
       username: 'caelanevans',
-      description: 'Caelan description goes here',
+      description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.,
       responsibilities: 'Full Stack',
       tests: 6,
-      issues: 0,
+      issues: 9,
       commits: 0
     }
     ];
