@@ -29,6 +29,20 @@
 
   </head>
 
+  <style>
+      table, tr, td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+  </style>
+
   <body id="page-top">
 
     <br>
@@ -36,18 +50,27 @@
     <br>
     <br>
     <h2><center>Tournaments</center></h2>
+    <br>
+    <br>
 
-    <div id="{{tournament.name}}" ng-repeat="tournament in tournaments track by $index">
-       
-        <div>
-            <span>{{tournament.date}}</span>
-            <span>{{tournament.location}}</span>
-        </div>
-        
-    </div>
+    <table align="center">
+      <tr>
+        <td>Name</td>
+        <td>Date</td>
+        <td>Location</td>
+        <td>Entrants</td>
+        <td>Image Path</td>
+      </tr>
+      <tr ng-repeat="tournament in tournaments track by $index">
+        <td>{{tournament.date}}</td>
+        <td>{{tournament.location}}</td>
+        <td>{{tournament.location}}</td>
+        <td>{{tournament.location}}</td>
+        <td>{{tournament.location}}</td>
+      </tr>
+    </table>
 
     <!-- Scripts -->
-    <script src="../js/tournaments.controller.js"></script>
 
     <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
