@@ -56,9 +56,15 @@
     <table align="center">
       <tr>
         <td>Gamer Tag</td>
+        <td>Real Name</td>
+        <td>Main</td>
+        <td>Location</td>
       </tr>
       <tr ng-repeat="participant in participants track by $index">
         <td>{{participant.gamer_tag}}</td>
+        <td>{{participant.real_name}}</td>
+        <td>{{participant.main}}</td>
+        <td>{{participant.location}}</td>
         <td><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
       </tr>
     </table>
