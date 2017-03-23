@@ -27,6 +27,12 @@ check:
     fi;                                           \
     echo "success";
 
+clean-venv:
+	rm -rf app/lib app/bin app/share app/include
+
+start-server:
+	bash start_server.sh
+
 # html:
 # 	python3 -m pydoc -w app/models.py
 #
