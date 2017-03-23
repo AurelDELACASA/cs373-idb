@@ -40,7 +40,7 @@ def return_participant(name):
 
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
-    c1 = Character("Mario", "super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
+    c1 = Character("Mario", "Super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
     c2 = Character("Link", "The Legend of Zelda", 104, ["Hook Shot", "Boomerang", "Bombs"], 1986)
     c3 = Character("Samus", "Metroid", 110, ["Energy Ball", "Missiles", "Screw Attack"], 1986)
     result_set = [c1, c2, c3]
