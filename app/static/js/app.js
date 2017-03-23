@@ -56,7 +56,12 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		templateUrl: '../static/htmls/tournaments.html',
 		controller: 'tournamentsCtrl'
 	})
-	//Go to highlights page
+    //Go to tournament page
+   	.when('/tournament/:tournamentName', {
+		templateUrl: '../static/htmls/tournament.html',
+		controller: 'tournamentCtrl'
+	})
+	//Go to characters page
 	.when('/characters', {
 		templateUrl: '../static/htmls/characters.html',
 		controller: 'charactersCtrl'
@@ -84,7 +89,15 @@ mainApp.controller('tournamentsCtrl',
 	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
-                $scope.members = memberCache;
+	  	});
+
+});
+
+mainApp.controller('tournamentCtrl',
+    function ($scope, $http) {
+	  	$http.get('http://localhost:5000/api/tournament/name1')
+		  	.then(function(response) {
+		  		$scope.tournament = response.data["tournament"];
 	  	});
 
 });
