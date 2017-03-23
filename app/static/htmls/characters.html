@@ -30,9 +30,46 @@
 
   </head>
 
+  <style>
+      table, tr, td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+  </style>
+
   <body id="page-top">
 
-    <h2>characters page</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><center>Characters</center></h2>
+    <br>
+    <br>
+
+    <table align="center">
+      <tr>
+        <td>Name</td>
+        <td>Universe</td>
+        <td>Weight</td>
+        <td>Moves</td>
+        <td>Year</td>
+      </tr>
+      <tr ng-repeat="character in characters track by $index">
+        <td>{{character.name}}</td>
+        <td>{{character.universe}}</td>
+        <td>{{character.weight}}</td>
+        <td>{{character.moves}}</td>
+        <td>{{character.year}}</td>
+      </tr>
+    </table>
 
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
