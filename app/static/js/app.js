@@ -9,8 +9,8 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'mainController'
 	})
 	//Go to players page
-	.when('/players', {
-		templateUrl: '../static/htmls/players.html',
+	.when('/participants', {
+		templateUrl: '../static/htmls/participants.html',
 	})
 	//Go to tournaments page
 	.when('/tournaments', {
