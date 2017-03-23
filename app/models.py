@@ -1,27 +1,28 @@
 # import statements for sqlalchemy
 
-class Tournament(self):
+class Tournament():
     tournament_name = ""
     date = ""
     location = ""
     num_entrants = 0
     imageURL = ""
 
-    def __init__(tournament_name, date, location, num_entrants, imageURL):
+    def __init__(self, tournament_name, date, location, num_entrants, imageURL):
         self.tournament_name = tournament_name
         self.date = date
         self.location = location
         self.num_entrants = num_entrants
+        self.imageURL = imageURL
 
 
-class Participant(self):
+class Participant():
     gamer_tag = ""
     profile_picture = ""
     real_name = ""
     main = None
     location = ""
 
-    def __init__(gamer_tag, profile, main, location):
+    def __init__(self, gamer_tag, profile_picture, real_name, main, location):
         self.gamer_tag = gamer_tag
         self.profile_picture = profile_picture
         self.real_name = real_name
@@ -29,14 +30,14 @@ class Participant(self):
         self.location = location
 
 
-class Character(self):
+class Character():
     character_name = ""
     universe = ""
     weight = ""
     moves = None
     debut = ""
 
-    def __init__(character_name, universe, weight, moves, debut):
+    def __init__(self, character_name, universe, weight, moves, debut):
         self.character_name = character_name
         self.universe = universe
         self.weight = weight

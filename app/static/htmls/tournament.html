@@ -49,7 +49,7 @@
     <br>
     <br>
     <br>
-    <h2><center>Tournaments</center></h2>
+    <h2><center>Tournament Info</center></h2>
     <br>
     <br>
 
@@ -59,13 +59,14 @@
         <td>Date</td>
         <td>Location</td>
         <td>Entrants</td>
+        <td>Image Path</td>
       </tr>
-      <tr ng-repeat="tournament in tournaments track by $index">
+      <tr>
         <td>{{tournament.tournament_name}}</td>
         <td>{{tournament.date}}</td>
         <td>{{tournament.location}}</td>
         <td>{{tournament.num_entrants}}</td>
-        <td><a href="tournament/{{tournament.tournament_name}}">More Info</a></td>
+        <td align="center"><img src="{{tournament.imageURL}}" width="100px:"></td>
       </tr>
     </table>
 

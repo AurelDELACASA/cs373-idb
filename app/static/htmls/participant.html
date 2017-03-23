@@ -49,29 +49,28 @@
     <br>
     <br>
     <br>
-    <h2><center>Tournaments</center></h2>
+    <h2><center>Participant Info</center></h2>
     <br>
     <br>
 
-    <table align="center">
+	<table align="center">
       <tr>
-        <td>Name</td>
-        <td>Date</td>
+        <td>Gamer Tag</td>
+        <td>Profile Picture</td>
+        <td>Real Name</td>
+        <td>Main</td>
         <td>Location</td>
-        <td>Entrants</td>
       </tr>
-      <tr ng-repeat="tournament in tournaments track by $index">
-        <td>{{tournament.tournament_name}}</td>
-        <td>{{tournament.date}}</td>
-        <td>{{tournament.location}}</td>
-        <td>{{tournament.num_entrants}}</td>
-        <td><a href="tournament/{{tournament.tournament_name}}">More Info</a></td>
+      <tr>
+        <td>{{participant.gamer_tag}}</td>
+        <td align="center"><img src="{{participant.profile_picture}}" width="100px"></td>
+        <td>{{participant.real_name}}</td>
+        <td>{{participant.main}}</td>
+        <td>{{participant.location}}</td>
       </tr>
     </table>
 
-    <!-- Scripts -->
-
-    <!-- jQuery -->
+     <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

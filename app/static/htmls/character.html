@@ -9,6 +9,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
 
+
       <!-- Custom Fonts -->
       <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -49,29 +50,29 @@
     <br>
     <br>
     <br>
-    <h2><center>Tournaments</center></h2>
+    <h2><center>Character Info</center></h2>
     <br>
     <br>
 
     <table align="center">
       <tr>
         <td>Name</td>
-        <td>Date</td>
-        <td>Location</td>
-        <td>Entrants</td>
+        <td>Universe</td>
+        <td>Weight</td>
+        <td>Moves</td>
+        <td>Year</td>
       </tr>
-      <tr ng-repeat="tournament in tournaments track by $index">
-        <td>{{tournament.tournament_name}}</td>
-        <td>{{tournament.date}}</td>
-        <td>{{tournament.location}}</td>
-        <td>{{tournament.num_entrants}}</td>
-        <td><a href="tournament/{{tournament.tournament_name}}">More Info</a></td>
+      <tr>
+        <td>{{character.character_name}}</td>
+        <td>{{character.universe}}</td>
+        <td>{{character.weight}}</td>
+        <td>{{character.moves}}</td>
+        <td>{{character.debut}}</td>
+        <td align="center"><img src="/static/images/mariomeleeclear.png" width="100px"></td>
       </tr>
     </table>
 
-    <!-- Scripts -->
-
-    <!-- jQuery -->
+     <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

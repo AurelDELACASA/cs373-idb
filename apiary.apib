@@ -5,44 +5,162 @@ HOST: http://smashdb.me/
 
 Smash Database is a simple API allowing users to view information about Super Smash Brothers Melee tournaments, participants, and characters.
 
-## Tournaments Collection [/tournaments]
+## Tournaments Collection [/api/tournaments]
 
 ### List All Tournaments [GET]
 
 + Response 200 (application/json)
 
+    {
+      "tournaments": [
         {
-           "tournaments": [
-                   "Body City 3",
-                   "SKTAR 4",
-                   "BAM 15"
-           ]
+          "date": "01/02/03",
+          "imageURL": "/some/tpath1",
+          "location": "California",
+          "num_entrants": 195,
+          "tournament_name": "name1"
+        },
+        {
+          "date": "04/05/06",
+          "imageURL": "/some/tpath2",
+          "location": "Texas",
+          "num_entrants": 30,
+          "tournament_name": "name2"
+        },
+        {
+          "date": "07/08/09",
+          "imageURL": "/some/tpath3",
+          "location": "New York",
+          "num_entrants": 195,
+          "tournament_name": "name3"
         }
+      ]
+    }
 
-## Participants Collection [/participants]
+## Tournament Information Collection [/api/tournaments/{tournament_name}]
+
+### Get information for specific tournament [GET]
+
++ Response 200 (application/json)
+
+    {
+      "tournament": {
+        "date": "01/02/03",
+        "imageURL": "/some/tpath1",
+        "location": "California",
+        "num_entrants": 195,
+        "tournament_name": "name1"
+      }
+    }
+
+## Participants Collection [/api/participants]
 
 ### List All Participants [GET]
 
 + Response 200 (application/json)
 
+    {
+      "participants": [
         {
-           "participants": [
-                   "Mang0",
-                   "SFAT",
-                   "Westballz"
-           ]
+          "gamer_tag": "Mang0",
+          "location": "Canada",
+          "main": "Mario",
+          "profile_picture": "/some/ppath1",
+          "real_name": "Joseph"
+        },
+        {
+          "gamer_tag": "Friberg",
+          "location": "Ohio",
+          "main": "Samus",
+          "profile_picture": "/some/ppath2",
+          "real_name": "Dave"
+        },
+        {
+          "gamer_tag": "summit1g",
+          "location": "Florida",
+          "main": "Link",
+          "profile_picture": "/some/ppath3",
+          "real_name": "Steve"
         }
+      ]
+    }
 
-## Characters Collection [/characters]
+## Participant Information Collection [/api/participant/{gamer_tag}]
+
+### Get information for specific participant [GET]
+
++ Response 200 (application/json)
+
+{
+  "participant": {
+    "gamer_tag": "Mang0",
+    "location": "Canada",
+    "main": "Mario",
+    "profile_picture": "/some/ppath1",
+    "real_name": "Joseph"
+  }
+}
+
+## Characters Collection [/api/characters]
 
 ### List All Characters [GET]
 
 + Response 200 (application/json)
 
+    {
+      "characters": [
         {
-           "characters": [
-                   "Marth",
-                   "Luigi",
-                   "Samus"
-           ]
+          "character_name": "Mario",
+          "debut": 1999,
+          "moves": [
+            "Dunk",
+            "Back Throw",
+            "Cape"
+          ],
+          "universe": "super Mario Borthers",
+          "weight": 100
+        },
+        {
+          "character_name": "Link",
+          "debut": 1986,
+          "moves": [
+            "Hook Shot",
+            "Boomerang",
+            "Bombs"
+          ],
+          "universe": "The Legend of Zelda",
+          "weight": 104
+        },
+        {
+          "character_name": "Samus",
+          "debut": 1986,
+          "moves": [
+            "Energy Ball",
+            "Missiles",
+            "Screw Attack"
+          ],
+          "universe": "Metroid",
+          "weight": 110
         }
+      ]
+    }
+
+## Character Information Collection [/api/character/{character_name}]
+
+### Get information for specific character [GET]
+
++ Response 200 (application/json)
+
+{
+  "character": {
+    "character_name": "Mario",
+    "debut": 1999,
+    "moves": [
+      "Dunk",
+      "Back Throw",
+      "Cape"
+    ],
+    "universe": "Super Mario Borthers",
+    "weight": 100
+  }
+}

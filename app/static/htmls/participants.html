@@ -29,9 +29,45 @@
 
   </head>
 
+  <style>
+      table, tr, td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+  </style>
+
   <body id="page-top">
 
-    <h2>participants page</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><center>Participants</center></h2>
+    <br>
+    <br>
+
+    <table align="center">
+      <tr>
+        <td>Gamer Tag</td>
+        <td>Real Name</td>
+        <td>Main</td>
+        <td>Location</td>
+      </tr>
+      <tr ng-repeat="participant in participants track by $index">
+        <td>{{participant.gamer_tag}}</td>
+        <td>{{participant.real_name}}</td>
+        <td>{{participant.main}}</td>
+        <td>{{participant.location}}</td>
+        <td><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
+      </tr>
+    </table>
 
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
@@ -43,9 +79,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="../js/creative.min.js"></script>
 
   </body>
 
