@@ -29,11 +29,27 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" ng-controller="tournamentsCtrl">
 
-    <h2>tournaments page</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><center>Tournaments</center></h2>
 
-     <!-- jQuery -->
+    <div id="{{tournament.name}}" ng-repeat="tournament in tournaments track by $index">
+       
+        <div>
+            <span>{{tournament.date}}</span>
+            <span>{{tournament.location}}</span>
+        </div>
+        
+    </div>
+
+    <!-- Scripts -->
+    <script type="../static/js/tournaments.controller.js"></script>
+
+    <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

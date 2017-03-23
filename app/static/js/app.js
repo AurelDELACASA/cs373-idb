@@ -11,18 +11,22 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	//Go to players page
 	.when('/participants', {
 		templateUrl: '../static/htmls/participants.html',
+		controller: 'participantsCtrl'
 	})
 	//Go to tournaments page
 	.when('/tournaments', {
 		templateUrl: '../static/htmls/tournaments.html',
+		controller: 'tournamentsCtrl'
 	})
 	//Go to highlights page
 	.when('/characters', {
 		templateUrl: '../static/htmls/characters.html',
+		controller: 'charactersCtrl'
 	})
 	//Go to about page
 	.when('/about', {
 		templateUrl: '../static/htmls/about.html',
+		controller: 'aboutCtrl'
 	})
 	.otherwise({redirectTo: '/'});
 
@@ -36,13 +40,25 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	}
 }]);
 
-mainApp.controller('mainController', ['$scope', '$route', function($scope, $route) {
+mainApp.controller('tournamentsCtrl', ['$scope',
+		function ($scope) {
+
+  var dict1 = {
+    name: "Tourney1",
+    date: "6/5/09",
+    location: "UT Austin",
+    num_entrants: "1",
+    imageURL: "/path1"
+  };
+
+  var dict2 = {
+    name: "Tourney2",
+    date: "6/5/10",
+    location: "UT Austin",
+    num_entrants: "0",
+    imageURL: "/path2"
+  };
+
+	$scope.tournaments = [dict1, dict2];
+
 }]);
-
-mainApp.controller('aboutController', function($scope) {
-    $scope.message = 'Look! I am an about page.';
-});
-
-mainApp.controller('contactController', function($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
-});
