@@ -8,10 +8,6 @@ sudo: false
 notifications:
     slack: swe-smash:bG87XftLJCkeWJXPGt5oSNYc
 
-branches:
-    only:
-    - dev
-      
 install:
     - pip install --upgrade pip
     - pip --version
