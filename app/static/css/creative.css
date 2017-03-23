@@ -43,6 +43,26 @@ p {
   line-height: 1.5;
   margin-bottom: 20px;
 }
+.splash-text{
+   position: absolute; 
+   top: 35%; 
+   left: 6%; 
+   width: 100%;   
+   color: white; 
+   font: bold 60px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
+   letter-spacing: -1px;  
+   padding: 10px; 
+}
+.splash-text-sm{
+   position: absolute; 
+   top: 43%; 
+   left: 6%; 
+   width: 100%;   
+   color: white; 
+   font: 35px 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
+   letter-spacing: -1px;  
+   padding: 10px; 
+}
 .bg-primary {
   background-color: #F05F40;
 }
@@ -268,7 +288,7 @@ header .header-content .header-content-inner p {
   color: white;
   opacity: 0;
   display: block;
-  background: rgba(240, 95, 64, 0.9);
+  background: rgba(240, 95, 64, 0.75);
   position: absolute;
   bottom: 0;
   text-align: center;
