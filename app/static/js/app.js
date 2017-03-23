@@ -2,30 +2,30 @@ var mainApp = angular.module('mainApp', ['ngRoute']);
 
 var memberCache = [
 {
-  name: 'Caelan Evans', 
+  name: 'Caelan Evans',
   login: 'caelanevans',
   description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack', 
+  responsibilities: 'Full Stack',
   instagram_url: 'https://www.instagram.com/packagedwolf/',
   linkedin_url: 'https://linkedin.com/in/alanmaut',
   pintrest_url: 'https://www.pinterest.com/alanwolfie/',
   tests: 6
 },
 {
-  name: 'Rohit Ven', 
+  name: 'Rohit Ven',
   login: 'RohitVen',
   description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack', 
+  responsibilities: 'Full Stack',
   instagram_url: 'https://www.instagram.com/packagedwolf/',
   linkedin_url: 'https://linkedin.com/in/alanmaut',
   pintrest_url: 'https://www.pinterest.com/alanwolfie/',
   tests: 6
 },
 {
-  name: 'Ben Lee', 
+  name: 'Ben Lee',
   login: 'lee-benjamin',
   description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack', 
+  responsibilities: 'Full Stack',
   instagram_url: 'https://www.instagram.com/packagedwolf/',
   linkedin_url: 'https://linkedin.com/in/alanmaut',
   pintrest_url: 'https://www.pinterest.com/alanwolfie/',
@@ -41,10 +41,15 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	.when('/', {
 		templateUrl: '../static/htmls/splash.html',
 	})
-	//Go to players page
+	//Go to participants page
 	.when('/participants', {
 		templateUrl: '../static/htmls/participants.html',
 		controller: 'participantsCtrl'
+	})
+    //Go to particpant page
+	.when('/participant/:participantName', {
+		templateUrl: '../static/htmls/participant.html',
+		controller: 'participantCtrl'
 	})
 	//Go to tournaments page
 	.when('/tournaments', {
@@ -79,7 +84,7 @@ mainApp.controller('tournamentsCtrl',
 	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
-                $scope.members = memberCache;  
+                $scope.members = memberCache;
 	  	});
 
 });
@@ -89,6 +94,15 @@ mainApp.controller('participantsCtrl',
         $http.get('http://localhost:5000/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
+        });
+
+});
+
+mainApp.controller('participantCtrl',
+    function ($scope, $http) {
+        $http.get('http://localhost:5000/api/participant/name1')
+            .then(function(response) {
+                $scope.participant = response.data["participant"];
         });
 
 });
@@ -117,7 +131,7 @@ mainApp.controller('aboutCtrl',
                 GHdata[author.login].issues        = 0;
                 stats.commits   += data[i].total;
             }
-            $scope.members = memberCache;  
+            $scope.members = memberCache;
             $scope.github = GHdata;
             console.log(memberCache);
         });
