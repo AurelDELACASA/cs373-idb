@@ -11,47 +11,50 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 + Response 200 (application/json)
 
-    {
-      "tournaments": [
         {
-          "date": "01/02/03",
-          "imageURL": "/some/tpath1",
-          "location": "California",
-          "num_entrants": 195,
-          "tournament_name": "name1"
-        },
-        {
-          "date": "04/05/06",
-          "imageURL": "/some/tpath2",
-          "location": "Texas",
-          "num_entrants": 30,
-          "tournament_name": "name2"
-        },
-        {
-          "date": "07/08/09",
-          "imageURL": "/some/tpath3",
-          "location": "New York",
-          "num_entrants": 195,
-          "tournament_name": "name3"
+            "tournaments": [
+                {
+                    "date": "01/02/03",
+                    "imageURL": "/some/tpath1",
+                    "location": "California",
+                    "num_entrants": 195,
+                    "tournament_name": "name1"
+                },
+                {
+                    "date": "04/05/06",
+                    "imageURL": "/some/tpath2",
+                    "location": "Texas",
+                    "num_entrants": 30,
+                    "tournament_name": "name2"
+                },
+                {
+                    "date": "07/08/09",
+                    "imageURL": "/some/tpath3",
+                    "location": "New York",
+                    "num_entrants": 195,
+                    "tournament_name": "name3"
+                }
+            ]
         }
-      ]
-    }
 
-## Tournament Information Collection [/api/tournaments/{tournament_name}]
+## Tournament Information Collection [/api/tournament/{tournament_name}]
 
 ### Get information for specific tournament [GET]
 
++ Parameters 
+    + tournament_name (required, string)
+
 + Response 200 (application/json)
 
-    {
-      "tournament": {
-        "date": "01/02/03",
-        "imageURL": "/some/tpath1",
-        "location": "California",
-        "num_entrants": 195,
-        "tournament_name": "name1"
-      }
-    }
+        {
+              "tournament": {
+                "date": "01/02/03",
+                "imageURL": "/some/tpath1",
+                "location": "California",
+                "num_entrants": 195,
+                "tournament_name": "name1"
+              }
+        }
 
 ## Participants Collection [/api/participants]
 
@@ -59,47 +62,50 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 + Response 200 (application/json)
 
-    {
-      "participants": [
         {
-          "gamer_tag": "Mang0",
-          "location": "Canada",
-          "main": "Mario",
-          "profile_picture": "/some/ppath1",
-          "real_name": "Joseph"
-        },
-        {
-          "gamer_tag": "Friberg",
-          "location": "Ohio",
-          "main": "Samus",
-          "profile_picture": "/some/ppath2",
-          "real_name": "Dave"
-        },
-        {
-          "gamer_tag": "summit1g",
-          "location": "Florida",
-          "main": "Link",
-          "profile_picture": "/some/ppath3",
-          "real_name": "Steve"
+            "participants": [
+                {
+                  "gamer_tag": "Mang0",
+                  "location": "Canada",
+                  "main": "Mario",
+                  "profile_picture": "/some/ppath1",
+                  "real_name": "Joseph"
+                },
+                {
+                  "gamer_tag": "Friberg",
+                  "location": "Ohio",
+                  "main": "Samus",
+                  "profile_picture": "/some/ppath2",
+                  "real_name": "Dave"
+                },
+                {
+                  "gamer_tag": "summit1g",
+                  "location": "Florida",
+                  "main": "Link",
+                  "profile_picture": "/some/ppath3",
+                  "real_name": "Steve"
+                }
+            ]
         }
-      ]
-    }
 
 ## Participant Information Collection [/api/participant/{gamer_tag}]
 
 ### Get information for specific participant [GET]
 
++ Parameters 
+    + gamer_tag (required, string)
+
 + Response 200 (application/json)
 
-{
-  "participant": {
-    "gamer_tag": "Mang0",
-    "location": "Canada",
-    "main": "Mario",
-    "profile_picture": "/some/ppath1",
-    "real_name": "Joseph"
-  }
-}
+        {
+            "participant": {
+            "gamer_tag": "Mang0",
+            "location": "Canada",
+            "main": "Mario",
+            "profile_picture": "/some/ppath1",
+            "real_name": "Joseph"
+            }
+        }
 
 ## Characters Collection [/api/characters]
 
@@ -107,60 +113,63 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 + Response 200 (application/json)
 
-    {
-      "characters": [
         {
-          "character_name": "Mario",
-          "debut": 1999,
-          "moves": [
-            "Dunk",
-            "Back Throw",
-            "Cape"
-          ],
-          "universe": "super Mario Borthers",
-          "weight": 100
-        },
-        {
-          "character_name": "Link",
-          "debut": 1986,
-          "moves": [
-            "Hook Shot",
-            "Boomerang",
-            "Bombs"
-          ],
-          "universe": "The Legend of Zelda",
-          "weight": 104
-        },
-        {
-          "character_name": "Samus",
-          "debut": 1986,
-          "moves": [
-            "Energy Ball",
-            "Missiles",
-            "Screw Attack"
-          ],
-          "universe": "Metroid",
-          "weight": 110
+            "characters": [
+                {
+                    "character_name": "Mario",
+                    "debut": 1999,
+                    "moves": [
+                        "Dunk",
+                        "Back Throw",
+                        "Cape"
+                    ],
+                    "universe": "Super Mario Brothers",
+                    "weight": 100
+                },
+                {
+                    "character_name": "Link",
+                    "debut": 1986,
+                    "moves": [
+                        "Hook Shot",
+                        "Boomerang",
+                        "Bombs"
+                    ],
+                    "universe": "The Legend of Zelda",
+                    "weight": 104
+                },
+                {
+                    "character_name": "Samus",
+                    "debut": 1986,
+                    "moves": [
+                        "Energy Ball",
+                        "Missiles",
+                        "Screw Attack"
+                    ],
+                    "universe": "Metroid",
+                    "weight": 110
+                }
+            ]
         }
-      ]
-    }
 
 ## Character Information Collection [/api/character/{character_name}]
 
 ### Get information for specific character [GET]
 
++ Parameters
+    + character_name (required, string)
+
 + Response 200 (application/json)
 
-{
-  "character": {
-    "character_name": "Mario",
-    "debut": 1999,
-    "moves": [
-      "Dunk",
-      "Back Throw",
-      "Cape"
-    ],
-    "universe": "Super Mario Borthers",
-    "weight": 100
-  }
-}
+        {
+            "character": {
+                "character_name": "Mario",
+                "debut": 1999,
+                "moves": [
+                    "Dunk",
+                    "Back Throw",
+                    "Cape"
+                ],
+                "universe": "Super Mario Brothers",
+                "weight": 100
+            }
+        }
