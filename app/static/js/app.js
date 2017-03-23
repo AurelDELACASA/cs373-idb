@@ -152,7 +152,7 @@ mainApp.controller('aboutCtrl',
     {
       name: 'Caelan Evans',
       username: 'caelanevans',
-      description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.,
+      description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Full Stack',
       tests: 6,
       issues: 9,
