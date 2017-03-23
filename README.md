@@ -2,9 +2,9 @@ SmashDB
 
 ### Build Status
 
-[![Master Build Status](https://travis-ci.org/lee-benjamin/cs373-idb.svg?branch=master)](https://travis-ci.org/lee-benjamin/cs373-idb)
+Master branch: [![Master Build Status](https://travis-ci.org/lee-benjamin/cs373-idb.svg?branch=master)](https://travis-ci.org/lee-benjamin/cs373-idb)
 
-[![dev Build Status](https://travis-ci.org/lee-benjamin/cs373-idb.svg?branch=dev)](https://travis-ci.org/lee-benjamin/cs373-idb)
+dev branch: [![dev Build Status](https://travis-ci.org/lee-benjamin/cs373-idb.svg?branch=dev)](https://travis-ci.org/lee-benjamin/cs373-idb)
 
 ### Dependencies
 
