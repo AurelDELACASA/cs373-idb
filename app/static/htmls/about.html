@@ -65,7 +65,7 @@
         <td>Description</td>
       </tr>
       <tr ng-repeat="member in member_stats track by $index">
-        <td>{{member.avatar}}</td>
+          <td><img src='{{member.avatar_url}}'></td>
         <td>{{member.name}}</td>
         <td>{{member.username}}</td>
         <td>{{member.commits}}</td>
