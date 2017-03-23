@@ -57,7 +57,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 
 mainApp.controller('tournamentsCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost/api/tournaments')
+	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
 	  	});
@@ -66,7 +66,7 @@ mainApp.controller('tournamentsCtrl',
 
 mainApp.controller('tournamentCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost/api/tournament/name1')
+	  	$http.get('http://localhost:5000/api/tournament/name1')
 		  	.then(function(response) {
 		  		$scope.tournament = response.data["tournament"];
 	  	});
@@ -75,7 +75,7 @@ mainApp.controller('tournamentCtrl',
 
 mainApp.controller('participantsCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost/api/participants')
+        $http.get('http://localhost:5000/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
         });
@@ -84,7 +84,7 @@ mainApp.controller('participantsCtrl',
 
 mainApp.controller('participantCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost/api/participant/name1')
+        $http.get('http://localhost:5000/api/participant/name1')
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -93,7 +93,7 @@ mainApp.controller('participantCtrl',
 
 mainApp.controller('charactersCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost/api/characters')
+        $http.get('http://localhost:5000/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
         });
@@ -102,7 +102,7 @@ mainApp.controller('charactersCtrl',
 
 mainApp.controller('characterCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost/api/character/name1')
+        $http.get('http://localhost:5000/api/character/name1')
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
@@ -117,7 +117,7 @@ mainApp.controller('aboutCtrl',
       name: 'Ben Lee',
       username: 'lee-benjamin',
       description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
-      responsibilities: 'Full Stack',
+      responsibilities: 'API Documentation, Tests, AngularJS, Knick Knacks',
       tests: 9,
       issues: 1,
       commits: 0
@@ -126,7 +126,7 @@ mainApp.controller('aboutCtrl',
       name: 'Maurya Avineni',
       username: 'MauryaAvirneni',
       description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
-      responsibilities: 'Full Stack',
+      responsibilities: 'AngularJS, Bootstrap, AWS',
       tests: 0,
       issues: 17,
       commits: 0
@@ -135,7 +135,7 @@ mainApp.controller('aboutCtrl',
       name: 'Rohit Ven',
       username: 'RohitVen',
       description: "Hi, its your boy Rohit. I'm a UTCS student and I love my longboard and longhair. Hook'em!",
-      responsibilities: 'Full Stack',
+      responsibilities: 'Bootstrap, Media',
       tests: 0,
       issues: 1,
       commits: 0
@@ -144,7 +144,7 @@ mainApp.controller('aboutCtrl',
       name: 'Dallas Kelle',
       username: 'DKelle',
       description: "My name is Dallas, and I’m a senior at the University of Texas. My true loves include Computer Science, dogs, and most of all, Melee. I hope this website has helped satisfy your burning desire for Smash stats.",
-      responsibilities: 'Full Stack',
+      responsibilities: 'Bootstrap, AngularJS, Media, AWS',
       tests: 0,
       issues: 6,
       commits: 0
@@ -153,7 +153,7 @@ mainApp.controller('aboutCtrl',
       name: 'Caelan Evans',
       username: 'caelanevans',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
-      responsibilities: 'Full Stack',
+      responsibilities: 'Models, Flask, AngularJS, AWS',
       tests: 6,
       issues: 9,
       commits: 0
@@ -162,8 +162,8 @@ mainApp.controller('aboutCtrl',
 
     $scope.totals = {
         total_commits: 0,
-        total_issues: 1,
-        total_unittests: 2
+        total_issues: 34,
+        total_unittests: 15
     };
         $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
             .then(function(response) {
