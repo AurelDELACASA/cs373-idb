@@ -1,39 +1,5 @@
 var mainApp = angular.module('mainApp', ['ngRoute']);
 
-var memberCache = [
-{
-  name: 'Caelan Evans',
-  login: 'caelanevans',
-  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack',
-  instagram_url: 'https://www.instagram.com/packagedwolf/',
-  linkedin_url: 'https://linkedin.com/in/alanmaut',
-  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
-  tests: 6
-},
-{
-  name: 'Rohit Ven',
-  login: 'RohitVen',
-  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack',
-  instagram_url: 'https://www.instagram.com/packagedwolf/',
-  linkedin_url: 'https://linkedin.com/in/alanmaut',
-  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
-  tests: 6
-},
-{
-  name: 'Ben Lee',
-  login: 'lee-benjamin',
-  description: 'My name is Alan. I make data pretty and accessible for their respective audiences. When I\'m not developing, I am drawing and doing photography.',
-  responsibilities: 'Full Stack',
-  instagram_url: 'https://www.instagram.com/packagedwolf/',
-  linkedin_url: 'https://linkedin.com/in/alanmaut',
-  pintrest_url: 'https://www.pinterest.com/alanwolfie/',
-  tests: 6
-}
-];
-
-
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 		$routeProvider
@@ -146,22 +112,70 @@ mainApp.controller('characterCtrl',
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
-        GHdata = {};
-        $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
-            .then(function(data) {
+    var members = [
+    {
+      name: 'Ben Lee',
+      username: 'lee-benjamin',
+      description: 'Ben description goes here',
+      responsibilities: 'Full Stack',
+      tests: 3,
+      issues: 0,
+      commits: 0
+    },
+    {
+      name: 'Maurya Avimeni',
+      username: 'MauryaAvimeni',
+      description: 'Maurya description goes here',
+      responsibilities: 'Full Stack',
+      tests: 0,
+      issues: 0,
+      commits: 0
+    },
+    {
+      name: 'Rohit Ven',
+      username: 'RohitVen',
+      description: 'Rohit description goes here',
+      responsibilities: 'Full Stack',
+      tests: 0,
+      issues: 0,
+      commits: 0
+    },
+    {
+      name: 'Dallas Kelle',
+      username: 'DKelle',
+      description: 'Dallas description goes here',
+      responsibilities: 'Full Stack',
+      tests: 0,
+      issues: 0,
+      commits: 0
+    },
+    {
+      name: 'Caelan Evans',
+      username: 'caelanevans',
+      description: 'Caelan description goes here',
+      responsibilities: 'Full Stack',
+      tests: 6,
+      issues: 0,
+      commits: 0
+    }
+    ];
 
-            for(var i = 0; i < data.length; i++) {
-                author = data[i]['author']
-                GHdata[author.login] = {};
-                GHdata[author.login].avatar_url    = author.avatar_url;
-                GHdata[author.login].url           = author.html_url;
-                GHdata[author.login].contributions = data[i].total;
-                GHdata[author.login].issues        = 0;
-                stats.commits   += data[i].total;
+    var total_commits = 0;
+        $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
+            .then(function(response) {
+                response = response.data
+            for(var i = 0; i < response.length; ++i) {
+                total_commits += response[i].total;
+                username = response[i]['author']['login']
+                for(var j = 0; j < members.length; ++j) {
+                    console.log(members[j].username + " " + username)
+                    if(members[j].username === username) {
+                        members[j].commits = response[i].total
+                        members[j].avatar_url = response[i]['author']['avatar_url']
+                    }
+                }
             }
-            $scope.members = memberCache;
-            $scope.github = GHdata;
-            console.log(memberCache);
+            $scope.member_stats = members
         });
 
 });
