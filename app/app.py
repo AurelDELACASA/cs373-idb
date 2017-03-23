@@ -19,6 +19,11 @@ def return_tournaments():
     tournaments = [tournament.__dict__ for tournament in result_set]
     return jsonify(tournaments = tournaments)
 
+@app.route('/api/tournament/<name>', methods=['GET'])
+def return_tournament(name):
+    t1 = Tournament("name1", "01/02/03", "California", 195, "/some/tpath1")
+    return jsonify(tournament = t1.__dict__)
+
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
     p1 = Participant("Mang0", "/some/ppath1", "Joseph", "Mario", "Canada")
@@ -28,14 +33,25 @@ def return_participants():
     participants = [participant.__dict__ for participant in result_set]
     return jsonify(participants = participants)
 
+@app.route('/api/participant/<name>', methods=['GET'])
+def return_participant(name):
+    p1 = Participant("Mang0", "/some/ppath1", "Joseph", "Mario", "Canada")
+    return jsonify(participant = p1.__dict__)
+
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
-    p1 = Character("Mario", "super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
-    p2 = Character("Link", "The Legend of Zelda", 104, ["Hook Shot", "Boomerang", "Bombs"], 1986)
-    p3 = Character("Samus", "Metroid", 110, ["Energy Ball", "Missiles", "Screw Attack"], 1986)
-    result_set = [p1, p2, p3]
+    c1 = Character("Mario", "super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
+    c2 = Character("Link", "The Legend of Zelda", 104, ["Hook Shot", "Boomerang", "Bombs"], 1986)
+    c3 = Character("Samus", "Metroid", 110, ["Energy Ball", "Missiles", "Screw Attack"], 1986)
+    result_set = [c1, c2, c3]
     characters = [character.__dict__ for character in result_set]
     return jsonify(characters = characters)
+
+@app.route('/api/character/<name>', methods=['GET'])
+def return_character(name):
+    c1 = Character("Mario", "super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
+    return jsonify(character = c1.__dict__)
+
 
 if __name__ == "__main__":
     # app.run(debug=True, host='0.0.0.0', port=80)
