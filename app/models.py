@@ -1,6 +1,10 @@
 # import statements for sqlalchemy
 
 class Tournament():
+    """
+    Class definition for Tournament
+    Contains a name, date, location, number of entrants, and path to an image
+    """
     tournament_name = ""
     date = ""
     location = ""
@@ -16,6 +20,10 @@ class Tournament():
 
 
 class Participant():
+    """
+    Class definition for Participant
+    Contains a gamer tag, path to a profile picture, real name, main character, and location
+    """
     gamer_tag = ""
     profile_picture = ""
     real_name = ""
@@ -31,6 +39,10 @@ class Participant():
 
 
 class Character():
+    """
+    Class definition for Character
+    Contains a character name, universe, weight, list of moves, and debut year
+    """
     character_name = ""
     universe = ""
     weight = ""
