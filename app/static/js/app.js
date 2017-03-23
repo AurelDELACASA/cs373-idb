@@ -5,7 +5,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		$routeProvider
 	//Go to splash page
 	.when('/', {
-		templateUrl: '../static/htmls/temp.html',
+		templateUrl: '../static/htmls/splash.html',
 		controller: 'mainController'
 	})
 	//Go to players page
