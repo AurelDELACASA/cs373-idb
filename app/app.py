@@ -1,5 +1,6 @@
 from flask import Flask, render_template, make_response, jsonify
 from models import Tournament, Participant, Character
+import os
 
 app = Flask(__name__)
 
@@ -7,7 +8,7 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def splash(path):
-    return make_response(open(os.path.join(os.path.dirname(__path__), "templates/index.html")).read())
+    return make_response(open(os.path.join(os.path.dirname(__file__), "templates/index.html")).read())
 
 @app.route('/api/tournaments', methods=['GET'])
 def return_tournaments():
