@@ -30,18 +30,53 @@
 
 </head>
 
+<style>
+#custom-container {
+    width:100%;
+    text-align:center;
+    margin-top: 3%;
+}
+
+#custom-left {
+    float:left;
+    width:25%;
+    margin-left:10%;
+    border-style: solid;
+    border-width: 3%;
+    border-color: black;
+}
+
+#custom-center {
+    display: inline-block;
+    margin:0 auto;
+    width:25%;
+    border-style: solid;
+    border-width: 3%;
+    border-color: black;
+}
+
+#custom-right {
+    float:right;
+    width:25%;
+    margin-right:10%;
+    border-style: solid;
+    border-width: 3%;
+    border-color: black;
+}
+</style>
+
 <body id="page-top">
 
     <section class="no-padding" >
       <img src="../static/images/splash.png" class="img-responsive">
       <!--<img src="../static/images/splash.png" class="img-responsive">-->
     </section>
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
+    <section id="portfolio" class="no-padding">
+        <div id="custom-container">
             <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../static/images/armada_s2j.jpg" class="portfolio-box">
-                        <img src="../static/images/armada_s2j.jpg" class="img-responsive" alt="">
+                <div id="custom-left">
+                    <a href="/participants" class="portfolio-box">
+                        <img src="../static/images/armada_s2j_small.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -51,9 +86,9 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../static/images/bracket.jpg" class="portfolio-box">
-                        <img src="../static/images/bracket.jpg" class="img-responsive" alt="">
+                <div id="custom-center">
+                    <a href="/tournaments" class="portfolio-box">
+                        <img src="../static/images/bracket_small.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -63,9 +98,9 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../static/images/portfolio/fullsize/5.jpg" class="portfolio-box">
-                        <img src="../static/images/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
+                <div id="custom-right">
+                    <a href="/characters" class="portfolio-box">
+                        <img src="../static/images/portfolio/thumbnails/5_small.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
