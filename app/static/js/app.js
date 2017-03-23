@@ -49,6 +49,24 @@ mainApp.controller('tournamentsCtrl',
 
 });
 
+mainApp.controller('participantsCtrl',
+    function ($scope, $http) {
+        $http.get('http://localhost:5000/api/participants')
+            .then(function(response) {
+                $scope.participants = response.data["participants"];
+        });
+
+});
+
+mainApp.controller('charactersCtrl',
+    function ($scope, $http) {
+        $http.get('http://localhost:5000/api/characters')
+            .then(function(response) {
+                $scope.characters = response.data["characters"];
+        });
+
+});
+
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
         $http.get('http://localhost:5000/api/tournaments')

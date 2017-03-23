@@ -29,9 +29,46 @@
 
   </head>
 
+  <style>
+      table, tr, td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+  </style>
+
   <body id="page-top">
 
-    <h2>participants page</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><center>Participant</center></h2>
+    <br>
+    <br>
+
+    <table align="center">
+      <tr>
+        <td>Gamer Tag</td>
+        <td>Image Path</td>
+        <td>Real Name</td>
+        <td>Character</td>
+        <td>Location</td>
+      </tr>
+      <tr ng-repeat="participant in participants track by $index">
+        <td>{{participant.name}}</td>
+        <td>{{participant.name}}</td>
+        <td>{{participant.name}}</td>
+        <td>{{participant.character}}</td>
+        <td>{{participant.location}}</td>
+      </tr>
+    </table>
 
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
