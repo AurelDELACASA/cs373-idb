@@ -123,8 +123,8 @@ mainApp.controller('aboutCtrl',
       commits: 0
     },
     {
-      name: 'Maurya Avimeni',
-      username: 'MauryaAvimeni',
+      name: 'Maurya Avineni',
+      username: 'MauryaAvirneni',
       description: 'Maurya description goes here',
       responsibilities: 'Full Stack',
       tests: 0,
@@ -146,7 +146,7 @@ mainApp.controller('aboutCtrl',
       description: 'Dallas description goes here',
       responsibilities: 'Full Stack',
       tests: 0,
-      issues: 0,
+      issues: 4,
       commits: 0
     },
     {

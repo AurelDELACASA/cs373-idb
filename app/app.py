@@ -12,7 +12,7 @@ def splash(path):
 
 @app.route('/api/tournaments', methods=['GET'])
 def return_tournaments():
-    t1 = Tournament("name1", "01/02/03", "California", 195, "/some/tpath1")
+    t1 = Tournament("name1", "01/02/03", "California", 195, "/static/images/bracketIcon.png")
     t2 = Tournament("name2", "04/05/06", "Texas", 30, "/some/tpath2")
     t3 = Tournament("name3", "07/08/09", "New York", 195, "/some/tpath3")
     result_set = [t1, t2, t3]
@@ -21,12 +21,12 @@ def return_tournaments():
 
 @app.route('/api/tournament/<name>', methods=['GET'])
 def return_tournament(name):
-    t1 = Tournament("name1", "01/02/03", "California", 195, "/some/tpath1")
+    t1 = Tournament("name1", "01/02/03", "California", 195, "/static/images/bracketIcon.png")
     return jsonify(tournament = t1.__dict__)
 
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
-    p1 = Participant("Mang0", "/some/ppath1", "Joseph", "Mario", "Canada")
+    p1 = Participant("Mang0", "/static/images/mango.png", "Joseph", "Mario", "Canada")
     p2 = Participant("Friberg", "/some/ppath2", "Dave", "Samus", "Ohio")
     p3 = Participant("summit1g", "/some/ppath3", "Steve", "Link", "Florida")
     result_set = [p1, p2, p3]
@@ -35,7 +35,7 @@ def return_participants():
 
 @app.route('/api/participant/<name>', methods=['GET'])
 def return_participant(name):
-    p1 = Participant("Mang0", "/some/ppath1", "Joseph", "Mario", "Canada")
+    p1 = Participant("Mang0", "/static/images/mango.png", "Joseph", "Mario", "Canada")
     return jsonify(participant = p1.__dict__)
 
 @app.route('/api/characters', methods=['GET'])
