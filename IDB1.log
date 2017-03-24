@@ -1,3 +1,96 @@
+commit e407797efb41bd4faf7b83e592889f1100dee816
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:03:14 2017 -0500
+
+    Updated models
+
+commit 8f91535bf7d1dde1e9da9632370671f9c7cbd4b3
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:02:36 2017 -0500
+
+    Updated About page
+
+commit e566e46fa280fa8807d94082b86c9155e87728ef
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 18:49:43 2017 -0500
+
+    Updated About page
+
+commit 7ca2e0c9d58e8db75a7201c6c035002508b34c34
+Author: Benjamin Lee <benlee@cs.utexas.edu>
+Date:   Thu Mar 23 18:42:28 2017 -0500
+
+    i broke everything, this is me fixing it
+
+commit 9be84276366535084bd3ba515dcc47ce3f1ab59e
+Author: Benjamin Lee <benlee@cs.utexas.edu>
+Date:   Thu Mar 23 18:33:10 2017 -0500
+
+    added blurbs for about page
+
+commit 39eae9ac62fd019b65312012efdaa6ce70f4e2cc
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 18:29:31 2017 -0500
+
+    Added sorting ability to tables
+
+commit 7d8602d979099c95d4293eb3e767662f4b60d299
+Merge: ca41dce 69d701e
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 16:33:59 2017 -0500
+
+    Fixing merge conflicts
+
+commit ca41dce00b8104c7af5b05023080edb560213048
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 16:33:26 2017 -0500
+
+    Changed the size of the carousel images, and the 3 clickable images at the bottom
+
+commit 69d701ee0b0bef3b8ccb0780983eecbf0aee4110
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 16:21:00 2017 -0500
+
+    Updated About page
+
+commit 72e0fb5555ea18ea2ea5c2f48c96b8c75c76e214
+Merge: 3010be7 2db5885
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 16:03:36 2017 -0500
+
+    fixing conflicts
+
+commit 3010be72775fb94b49e4b600ad02cec60453a6ad
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 16:01:12 2017 -0500
+
+    Adding a carousel
+
+commit 2db5885aa5a41d5cd1f7f47ef5648e84ff4de581
+Author: MauryaAvirneni <maurya.avirneni@utexas.edu>
+Date:   Thu Mar 23 15:45:29 2017 -0500
+
+    splash updates
+
+commit 702c48dbecf8965959cf11f1f9dbf5bae96f2bc2
+Merge: 699a40b e9ebc71
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Mar 23 15:15:09 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 699a40b473f41bc12d5ddb432272f5cd77b51b68
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Mar 23 15:15:07 2017 -0500
+
+    edited makefile to run coverage
+
+commit e9ebc719276ae68bcaba84252a239b5d322c83f6
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 15:13:21 2017 -0500
+
+    Fixed typo
+
 commit 5240149992caff0d70036171cb69b9467bd9878b
 Author: lee-benjamin <leebenjamin@utexas.edu>
 Date:   Thu Mar 23 14:58:57 2017 -0500
