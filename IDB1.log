@@ -1,3 +1,15 @@
+commit eb8bcab5bae06e0688e5fd932ffe2094fc966a20
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:29:09 2017 -0500
+
+    Removed two. dots.
+
+commit b538a0062b743bfb9a98e4ef868a5d857f876a43
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:03:53 2017 -0500
+
+    Added log
+
 commit e407797efb41bd4faf7b83e592889f1100dee816
 Author: Caelan Evans <evans.caelan@gmail.com>
 Date:   Thu Mar 23 19:03:14 2017 -0500
