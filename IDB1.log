@@ -1,3 +1,33 @@
+commit e407797efb41bd4faf7b83e592889f1100dee816
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:03:14 2017 -0500
+
+    Updated models
+
+commit 8f91535bf7d1dde1e9da9632370671f9c7cbd4b3
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:02:36 2017 -0500
+
+    Updated About page
+
+commit e566e46fa280fa8807d94082b86c9155e87728ef
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 18:49:43 2017 -0500
+
+    Updated About page
+
+commit 7ca2e0c9d58e8db75a7201c6c035002508b34c34
+Author: Benjamin Lee <benlee@cs.utexas.edu>
+Date:   Thu Mar 23 18:42:28 2017 -0500
+
+    i broke everything, this is me fixing it
+
+commit 9be84276366535084bd3ba515dcc47ce3f1ab59e
+Author: Benjamin Lee <benlee@cs.utexas.edu>
+Date:   Thu Mar 23 18:33:10 2017 -0500
+
+    added blurbs for about page
+
 commit 39eae9ac62fd019b65312012efdaa6ce70f4e2cc
 Author: Caelan Evans <evans.caelan@gmail.com>
 Date:   Thu Mar 23 18:29:31 2017 -0500
