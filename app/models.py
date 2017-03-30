@@ -56,3 +56,18 @@ class Character():
         self.moves = moves
         self.debut = debut
         self.image_path
+
+class Entry():
+    """
+    Class definition for an Entry
+    This class represents a participant's entry into a tournament
+    This is represented as a many to many relationship
+    which requires an association table with a foriegn key
+    into tournament, and a foriegn key into participant
+    """
+    tournament = None
+    participant = None
+
+    def __init__(self, tournament, participant):
+        self.tournament = tournament
+        self.participant = participant
