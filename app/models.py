@@ -5,18 +5,18 @@ class Tournament():
     Class definition for Tournament
     Contains a name, date, location, number of entrants, and path to an image
     """
-    tournament_name = ""
+    name = ""
     date = ""
     location = ""
     num_entrants = 0
-    imageURL = ""
+    image_path = ""
 
-    def __init__(self, tournament_name, date, location, num_entrants, imageURL):
-        self.tournament_name = tournament_name
+    def __init__(self, name, date, location, num_entrants, image_path):
+        self.name = name
         self.date = date
         self.location = location
         self.num_entrants = num_entrants
-        self.imageURL = imageURL
+        self.image_path = image_path
 
 
 class Participant():
@@ -24,18 +24,18 @@ class Participant():
     Class definition for Participant
     Contains a gamer tag, path to a profile picture, real name, main character, and location
     """
-    gamer_tag = ""
-    profile_picture = ""
-    real_name = ""
+    name = ""
+    tag = ""
     main = None
     location = ""
+    image_path = ""
 
-    def __init__(self, gamer_tag, profile_picture, real_name, main, location):
-        self.gamer_tag = gamer_tag
-        self.profile_picture = profile_picture
-        self.real_name = real_name
+    def __init__(self, name, tag, main, location, image_path):
+        self.name = name
+        self.tag = tag
         self.main = main
         self.location = location
+        self.image_path = image_path
 
 
 class Character():
@@ -43,15 +43,16 @@ class Character():
     Class definition for Character
     Contains a character name, universe, weight, list of moves, and debut year
     """
-    character_name = ""
+    name = ""
     universe = ""
     weight = ""
     moves = None
     debut = ""
 
-    def __init__(self, character_name, universe, weight, moves, debut):
-        self.character_name = character_name
+    def __init__(self, name, universe, weight, moves, debut, image_path):
+        self.name = name
         self.universe = universe
         self.weight = weight
         self.moves = moves
         self.debut = debut
+        self.image_path
