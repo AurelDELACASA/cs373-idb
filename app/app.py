@@ -2,9 +2,11 @@ from flask import Flask, render_template, make_response, jsonify
 from models import Tournament, Participant, Character
 import os
 
-TOURNAMENT_PATH_PREFIX = "/images/tournaments/"
-PARTICIPANT_PATH_PREFIX = "/images/participants/"
-CHARACTER_PATH_PREFIX = "/images/characters/"
+IMAGE_ROOT_PATH = "/static/images/"
+
+TOURNAMENT_PATH_PREFIX = "tournaments/"
+PARTICIPANT_PATH_PREFIX = "participants/"
+CHARACTER_PATH_PREFIX = "characters/"
 
 app = Flask(__name__)
 
