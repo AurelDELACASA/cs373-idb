@@ -1,5 +1,5 @@
 from sqlalchemy import Table, Column
-from sqlalchemy import Integer, ForeignKey
+from sqlalchemy import Integer, ForeignKey, String
 from sqlalchemy import create_engine
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,30 +32,6 @@ class Tournament(Base):
 #        self.image_path = image_path
 
 
-class Participant():
-    """
-    Class definition for Participant
-    Contains a gamer tag, path to a profile picture, real name, main character, and location
-    """
-
-    __tablename__ = "participants"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(255), nullable=False)
-    tag = Column(String(255), nullable=False)
-    main_id = Column(Integer, ForeignKey('characters.id'))
-    main = relationship(Character)
-    location = Column(String(255), nullable=False)
-    image_path = Column(String(255), nullable=False)
-
-#    def __init__(self, name, tag, main, location, image_path):
-#        self.name = name
-#        self.tag = tag
-#        self.main = main
-#        self.location = location
-#        self.image_path = image_path
-
-
 class Character():
     """
     Class definition for Character
@@ -78,6 +54,30 @@ class Character():
 #        self.moves = moves
 #        self.debut = debut
 #        self.image_path
+
+
+class Participant():
+    """
+    Class definition for Participant
+    Contains a gamer tag, path to a profile picture, real name, main character, and location
+    """
+
+    __tablename__ = "participants"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    tag = Column(String(255), nullable=False)
+    main_id = Column(Integer, ForeignKey('characters.id'))
+    main = relationship(Character)
+    location = Column(String(255), nullable=False)
+    image_path = Column(String(255), nullable=False)
+
+#    def __init__(self, name, tag, main, location, image_path):
+#        self.name = name
+#        self.tag = tag
+#        self.main = main
+#        self.location = location
+#        self.image_path = image_path
 
 class Entry():
     """
