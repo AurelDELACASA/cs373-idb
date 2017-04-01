@@ -72,6 +72,7 @@ class Participant():
     location = Column(String(255), nullable=False)
     image_path = Column(String(255), nullable=False)
 
+
 #    def __init__(self, name, tag, main, location, image_path):
 #        self.name = name
 #        self.tag = tag
