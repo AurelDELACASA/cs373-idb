@@ -44,3 +44,5 @@ app/bin
 app/share
 app/include
 *~
+
+app/config.py

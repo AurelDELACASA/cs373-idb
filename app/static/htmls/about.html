@@ -18,30 +18,9 @@
       <link href="../static/magnific-popup/magnific-popup.css" rel="stylesheet">
 
       <!-- Theme CSS -->
-      <link href="../css/creative.min.css" rel="stylesheet">
-
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
+      <link href="static/css/table2.css" rel="stylesheet">
 
   </head>
-
-  <style>
-      table, tr, td {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      table tr:nth-child(odd) {
-        background-color: #f1f1f1;
-      }
-      table tr:nth-child(even) {
-        background-color: #ffffff;
-      }
-  </style>
 
   <body id="page-top">
 
@@ -53,7 +32,7 @@
     <br>
     <br>
 
-  <table align="center">
+  <table class="table table-striped table-bordered table-hover table-mc-light-blue"align="center">
       <tr>
         <td>Total Commits</td>
         <td>Total Issues</td>
@@ -69,7 +48,7 @@
     <br />
     <br />
     <h2><center>Member Stats</center></h2>
-  <table align="center">
+  <table class="table table-bordered table-striped table-hover table-mc-light-blue"align="center">
       <tr>
         <td>Avatar</td>
         <td>Name</td>
@@ -81,7 +60,7 @@
         <td>Description</td>
       </tr>
       <tr ng-repeat="member in member_stats track by $index" align="center">
-          <td><img src='{{member.avatar_url}}' width="50%"></td>
+          <td><img src='{{member.avatar_url}}' width="100%"></td>
         <td>{{member.name}}</td>
         <td>{{member.username}}</td>
         <td>{{member.commits}}</td>

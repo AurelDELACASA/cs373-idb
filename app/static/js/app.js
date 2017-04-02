@@ -132,9 +132,9 @@ mainApp.controller('aboutCtrl',
       commits: 0
     },
     {
-      name: 'Rohit Ven',
+      name: 'Rohit Venugopal',
       username: 'RohitVen',
-      description: "Hi, its your boy Rohit. I'm a UTCS student and I love my longboard and longhair. Hook'em!",
+      description: "Hey, my name is Rohit and I'm a junior here at UT. I love solving Rubik's cubes, longboarding, dancing and computer science! I love Smash and main Ganondorf in Project M. Feel free to ask me for a game!",
       responsibilities: 'Bootstrap, Media',
       tests: 0,
       issues: 1,

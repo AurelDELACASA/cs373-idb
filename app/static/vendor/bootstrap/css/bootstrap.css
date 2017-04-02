@@ -4501,7 +4501,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  padding-right: 15px;
+  padding-right: 3%;
 }
 .navbar-default .navbar-brand {
   color: #777;
