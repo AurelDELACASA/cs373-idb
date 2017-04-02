@@ -1,5 +1,7 @@
 from flask import Flask, render_template, make_response, jsonify
+from flask_sqlalchemy import SQLAlchemy
 from models import Tournament, Participant, Character
+from config import get_URI
 import os
 
 IMAGE_ROOT_PATH = "/static/images/"
@@ -9,6 +11,8 @@ PARTICIPANT_PATH_PREFIX = "participants/"
 CHARACTER_PATH_PREFIX = "characters/"
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = get_URI()
+db = SQLAlchemy(app)
 
 # http://flask.pocoo.org/snippets/57/
 @app.route('/', defaults={'path': ''})
@@ -79,7 +83,5 @@ def return_character(name):
     c1 = Character("Mario", "Super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
     return jsonify(character = c1.__dict__)
 
-
 if __name__ == "__main__":
-    # app.run(debug=True, host='0.0.0.0', port=80)
     app.run()
