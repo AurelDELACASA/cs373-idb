@@ -165,6 +165,14 @@ mainApp.controller('aboutCtrl',
         total_issues: 34,
         total_unittests: 15
     };
+
+    $scope.runTests = function () {
+        $http.get('/api/runTests').then(function(data) {
+            $scope.tests = data.data 
+        });
+    }
+
+           
         $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
             .then(function(response) {
                 response = response.data

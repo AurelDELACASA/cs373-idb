@@ -1,4 +1,5 @@
 from flask import Flask, render_template, make_response, jsonify
+import subprocess
 from models import Tournament, Participant, Character
 import os
 
@@ -79,7 +80,24 @@ def return_character(name):
     c1 = Character("Mario", "Super Mario Borthers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
     return jsonify(character = c1.__dict__)
 
+@app.route('/api/runTests', methods=['GET'])
+def run_tests():
+    """
+    API route for running unit tests 
+    """
+    script_dir = os.path.dirname(__file__)
+    rel_path = "tests.py"
+    try:
+        process = subprocess.check_output(["python", os.path.join(script_dir, rel_path)],
+            stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        process = e.output
+
+    return process.decode("utf-8") 
+
+
 
 if __name__ == "__main__":
-    # app.run(debug=True, host='0.0.0.0', port=80)
-    app.run()
+    app.run(debug=True, host='0.0.0.0')
+    #app.run()
+

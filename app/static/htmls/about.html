@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script> alert('hi:');</script>
 
   <head>
 
@@ -92,6 +93,14 @@
     <center><a href="https://github.com/lee-benjamin/cs373-idb">GitHub Repo</a></center><br />
     <center><a href="https://github.com/lee-benjamin/cs373-idb/wiki">GitHub Wiki</a></center><br />
     <center><a href="https://github.com/lee-benjamin/cs373-idb/issues">GitHub Issue Tracker</a></center><br />
+
+    <h2><center>Run Unit Tests</center></h2>
+
+    <center><button ng-click="runTests()">Run</button></center>
+    <div>
+        <p ng-show="!tests"> Running unit tests...</p>
+        <p> {{tests}}</p>
+    </div>
 
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
