@@ -1,5 +1,7 @@
 from flask import Flask, render_template, make_response, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 from models import Tournament, Participant, Character
 from config import get_URI
 import os
@@ -11,8 +13,9 @@ PARTICIPANT_PATH_PREFIX = "participants/"
 CHARACTER_PATH_PREFIX = "characters/"
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = get_URI()
-db = SQLAlchemy(app)
+print("Using URI: " + get_URI())
+engine = create_engine(get_URI())
+Session = sessionmaker(bind = engine)
 
 # http://flask.pocoo.org/snippets/57/
 @app.route('/', defaults={'path': ''})
@@ -84,4 +87,9 @@ def return_character(name):
     return jsonify(character = c1.__dict__)
 
 if __name__ == "__main__":
+    print("Creating session...")
+    session = Session()
+    print("Making query...")
+    result = session.query(Character).all()[0].__dict__
+    print(result)
     app.run()
