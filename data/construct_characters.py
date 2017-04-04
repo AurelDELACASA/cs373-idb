@@ -1,4 +1,5 @@
 import pickle
+import random
 
 if __name__ == "__main__":
     movetypes = list(dict(pickle.load(open("movetypes.pickle", "rb"))).items())[0][1]
@@ -16,7 +17,10 @@ if __name__ == "__main__":
         movelist = ", ".join(set([x for x in movenames[key] if x != ' ']))
         filename = key.lower()[:len(key) - 1].replace(".", "") + ".png"
 
-        characters.append(tuple([str(name), str(universe), str(tier), str(movelist), str(filename)]))
+        weight = random.randint(100, 200)
+        debut = random.randint(1990, 2000)
+
+        characters.append(tuple([str(name), str(universe), str(tier), str(movelist), str(filename), str(weight), str(debut)]))
 
     print(characters)
     pickle.dump(characters, open("characters.pickle", "wb"))
