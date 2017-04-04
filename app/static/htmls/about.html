@@ -96,10 +96,16 @@
 
     <h2><center>Run Unit Tests</center></h2>
 
-    <center><button ng-click="runTests()">Run</button></center>
-    <div>
-        <p ng-show="!tests"> Running unit tests...</p>
-        <p> {{tests}}</p>
+    <center><button ng-click="runTests()" data-toggle="modal" data-target="#test_modal">Run</button></center>
+    <div id="test_modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p ng-show="!tests"> Running unit tests...</p>
+            <p> {{tests}}</p>
+          </div>
+        </div>
+      </div>
     </div>
 
      <!-- jQuery -->
