@@ -9,10 +9,12 @@ import string
 if __name__ == "__main__":
     base_url = "https://www.ssbwiki.com"
 
-    names = ["Mario_","Luigi_","Yoshi_","Donkey_Kong_","Link_","Samus_","Kirby_","Fox_","Pikachu_","Captain_Falcon_","Ness_",
-    "Peach_","Bowser_","Dr._Mario_","Zelda_","Sheik_","Ganondorf_","Young_Link_","Falco_","Mewtwo_","Pichu_","Ice_Climbers_","Marth_",
-    "Roy_","Mr._Game_%26_Watch_"]
-    # names = ["Mario_"]
+    names = ["Mario_","Luigi_","Yoshi_","Donkey_Kong_","Link_",
+    "Samus_","Kirby_","Fox_","Pikachu_","Captain_Falcon_","Ness_",
+    "Peach_","Bowser_","Dr._Mario_","Zelda_","Sheik_","Ganondorf_",
+    "Young_Link_","Falco_","Mewtwo_","Pichu_","Ice_Climbers_",
+    "Marth_","Roy_","Mr._Game_%26_Watch_"]
+
 
     parser=HTMLParser.HTMLParser()
 
@@ -20,7 +22,9 @@ if __name__ == "__main__":
     movenames = dict()
     universes = dict()
     tiers = dict()
-    char_index = 0
+    weights = dict()
+    debuts = dict()
+    master = [0] * 25
     for character in names:
         tuples = [0] * 30
         move_types = [0] * 60
@@ -30,6 +34,20 @@ if __name__ == "__main__":
         # Grabbing Move types
         r = requests.get(base_url + "/" + character + "(SSBM)")
         soup = BeautifulSoup(r.text, "html.parser")
+
+
+        #Character name standardization
+        if("_" in character):
+            character = character.replace("_", " ")
+            character = character[:len(character)-1]
+        if("." in character):
+            character = character.replace(".", "")
+        if("%26" in character):
+            character = character.replace("%26", "&")
+        # print(character)
+
+
+
         table = soup.find('table', {"class" : "wikitable"})
         index = 0
         for th in table('tr')[2:]:
@@ -50,14 +68,11 @@ if __name__ == "__main__":
         for tr in table('tr'):
             td_list = tr.find_all('td')
             if len(td_list) > 0:
-                # print(td_list[0])
                 t2 = td_list[0]
                 text = t2.find(text=True)
                 if text == None or text == parser.unescape("&#160;") or text == "":
                     text = " "
-                # print(text)
                 if text[0].isalpha() or text == " ":
-                    # print(text)
                     move_names[index] = text
                     index += 1
         move_names = [x for x in move_names if x != 0]
@@ -74,9 +89,9 @@ if __name__ == "__main__":
             for t3 in td_list:
                 text = t3.find(text=True)
                 if ("(" in text):
-                    text = text[:1]
-                    tier = text
+                    tier = text[:1]
                     tiers[character] = tier
+        # print(tiers[character])
 
         
 
@@ -87,25 +102,89 @@ if __name__ == "__main__":
             if td != None:
                 text = td.find(text=True)
                 universes[character] = text
+        # print(universes[character])
 
         print("FINISHED SCRAPING")
         print(character)
         print("\n")
 
 
-    # #Grabbing Weights
-    # r = requests.get(base_url + "/Weight")
-    # soup = BeautifulSoup(r.text, "html.parser")
-    # table = soup.find('caption', text="NTSC")
-    # text = table.text
-    # print(text)
+    #Grabbing Weights
+    r = requests.get(base_url + "/Weight")
+    soup = BeautifulSoup(r.text, "html.parser")
+    tables = soup.find_all('caption')
+    text = tables[3]
+    table = text.find_parent()
+    for tr in table('tr'):
+        td_list = tr.find_all('td')
+        if len(td_list) > 0:
+            t4 = td_list[1]
+            t5 = td_list[2]
+            character = t4.find(text=True)
+            if("." in character):
+                character = character.replace(".", "")
+            weight = t5.find(text=True)
+            weights[character] = weight
+    # print(weights[chracter])
 
-    # print(table)
-    # for tr in table('tr'):
-    #     td_list = tr.find_all('td')
-    #     if len(td_list) > 0:
-    #         t4 = td_list[1]
-    #         print(t4)
+
+    print("FINISHED SCRAPING WEIGHTS")
+
+
+    #Grabbing Debuts
+    for character in names:
+        tuples = [0] * 30
+        move_types = [0] * 60
+        move_names = [0] * 60
+        index = 0
+
+        #Character name standardization
+        if("_" in character):
+            character = character.replace("_", " ")
+            character = character[:len(character)-1]
+        if("." in character):
+            character = character.replace(".", "")
+        if("%26" in character):
+            character = character.replace("%26", "&")
+        # print(character)
+
+        # Grabbing Move types
+        r = requests.get(base_url + "/" + character)
+        soup = BeautifulSoup(r.text, "html.parser")
+        table = soup.find('table', {"class" : "infobox bordered"})
+        for tr in table('tr'):
+            td_list = tr.find_all('td')
+            if len(td_list) > 1:
+                t6 = td_list[0]
+                head = t6.find(text=True)
+                t7 = td_list[1]
+
+                text = t7.findAll(text=True)
+                if len(text) == 2 and head == "Debut":
+                    # print(head)
+                    debut = text[1]
+                    debut = debut[1:]
+                    # print(debut)
+                    debuts[character] = debut
+        # print(debuts[character])
+
+    print("FINISHED SCRAPING DEBUTS")
+
+    index = 0
+    for character in names:
+        #Character name standardization
+        if("_" in character):
+            character = character.replace("_", " ")
+            character = character[:len(character)-1]
+        if("." in character):
+            character = character.replace(".", "")
+        if("%26" in character):
+            character = character.replace("%26", "&")
+        # print(character)
+
+        master[index] = (character, universes[character], weights[character], movenames[character], debuts[character], tiers[character])
+        print(master[index])
+        index += 1
 
 
 
@@ -198,8 +277,8 @@ if __name__ == "__main__":
     #     print()
             
     sys.setrecursionlimit(4000)
-    pickle.dump(movetypes, open("movetypes.pickle", "wb"))
-    pickle.dump(movenames, open("movenames.pickle", "wb"))
-    pickle.dump(tiers, open("tiers.pickle", "wb"))
-    pickle.dump(universes, open("universes.pickle", "wb"))
+    # pickle.dump(movetypes, open("movetypes.pickle", "wb"))
+    # pickle.dump(movenames, open("movenames.pickle", "wb"))
+    # pickle.dump(tiers, open("tiers.pickle", "wb"))
+    # pickle.dump(universes, open("universes.pickle", "wb"))
     print("Done.")
