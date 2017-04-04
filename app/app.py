@@ -14,6 +14,7 @@ PARTICIPANT_PATH_PREFIX = "participants/"
 CHARACTER_PATH_PREFIX = "characters/"
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = get_URI()
 print("Using URI: " + get_URI())
 engine = create_engine(get_URI())
 Session = sessionmaker(bind = engine)
@@ -90,7 +91,7 @@ def return_character(name):
 @app.route('/api/runTests', methods=['GET'])
 def run_tests():
     """
-    API route for running unit tests 
+    API route for running unit tests
     """
     script_dir = os.path.dirname(__file__)
     rel_path = "tests.py"
@@ -100,7 +101,7 @@ def run_tests():
     except subprocess.CalledProcessError as e:
         process = e.output
 
-    return process.decode("utf-8") 
+    return process.decode("utf-8")
 
 if __name__ == "__main__":
     print("Creating session...")

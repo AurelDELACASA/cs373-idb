@@ -14,13 +14,13 @@ if __name__ == "__main__":
         name = key[:len(key) - 1].replace("%26", "&").replace(".", "").replace("_", " ")
         universe = universes[key]
         tier = tiers[key]
-        movelist = ", ".join(set([x for x in movenames[key] if x != ' ']))
-        filename = key.lower()[:len(key) - 1].replace(".", "") + ".png"
+        moves = ", ".join(set([x for x in movenames[key] if x != ' ']))
+        image_path = key.lower()[:len(key) - 1].replace(".", "") + ".png"
 
         weight = random.randint(100, 200)
         debut = random.randint(1990, 2000)
 
-        characters.append(tuple([str(name), str(universe), str(tier), str(movelist), str(filename), str(weight), str(debut)]))
+        characters.append(tuple([str(name), str(universe), str(weight), str(moves), str(debut), str(tier), str(image_path)]))
 
     print(characters)
     pickle.dump(characters, open("characters.pickle", "wb"))

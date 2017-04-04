@@ -44,18 +44,11 @@ class Character(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
     universe = Column(String(255), nullable=False)
-    weight = Column(Integer)
-    moves = Column(String(255), nullable=False)
-    debut = Column(Integer)
-
-#    def __init__(self, name, universe, weight, moves, debut, image_path):
-#        self.name = name
-#        self.universe = universe
-#        self.weight = weight
-#        self.moves = moves
-#        self.debut = debut
-#        self.image_path
-
+    weight = Column(String(255), nullable=False)
+    moves = Column(String(511), nullable=False)
+    debut = Column(String(255), nullable=False)
+    tier = Column(String(255), nullable=False)
+    image_path = Column(String(255), nullable=False)
 
 class Participant(Base):
     """
