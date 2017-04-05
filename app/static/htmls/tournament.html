@@ -18,7 +18,7 @@
       <link href="../static/magnific-popup/magnific-popup.css" rel="stylesheet">
 
       <!-- Theme CSS -->
-      <link href="../css/creative.min.css" rel="stylesheet">
+      <link href="../static/css/table2.css" rel="stylesheet">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,20 +28,6 @@
       <![endif]-->
 
   </head>
-
-  <style>
-      table, tr, td {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      table tr:nth-child(odd) {
-        background-color: #f1f1f1;
-      }
-      table tr:nth-child(even) {
-        background-color: #ffffff;
-      }
-  </style>
 
   <body id="page-top">
 
@@ -53,21 +39,25 @@
     <br>
     <br>
 
-    <table align="center">
-      <tr>
-        <td>Name</td>
-        <td>Date</td>
-        <td>Location</td>
-        <td>Entrants</td>
-        <td>Image Path</td>
-      </tr>
-      <tr>
-        <td>{{tournament.tournament_name}}</td>
-        <td>{{tournament.date}}</td>
-        <td>{{tournament.location}}</td>
-        <td>{{tournament.num_entrants}}</td>
-        <td align="center"><img src="{{tournament.imageURL}}" width="100px:"></td>
-      </tr>
+    <table class="table table-hover table-striped table-mc-light-blue" align="center">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Date</td>
+          <td>Location</td>
+          <td>Entrants</td>
+          <td>Image Path</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{tournament.tournament_name}}</td>
+          <td>{{tournament.date}}</td>
+          <td>{{tournament.location}}</td>
+          <td>{{tournament.num_entrants}}</td>
+          <td align="center"><img src="{{tournament.imageURL}}" width="100px:"></td>
+        </tr>
+      </tbody>
     </table>
 
     <!-- Scripts -->
