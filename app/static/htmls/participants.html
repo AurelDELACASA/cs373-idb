@@ -22,7 +22,7 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" ng-controller="participantsCtrl">
 
     <br>
     <br>
@@ -33,25 +33,31 @@
     <br>
 
 
-    <table class="table table-striped table-hover table-mc-light-blue" align="center">
-        <thead>
-      <tr>
+    <table st-table="participants" class="table table-striped table-hover table-mc-light-blue" align="center">
+      <thead>
+        <tr>
           <th><span>Tag</span></th>
           <th><span>Real Name</span></th>
           <th><span>Main</span></th>
           <th><span>Location</span></th>
           <th><span>More Info</span></th>
-      </tr>
-        </thead>
-        <tbody>
-      <tr ng-repeat="participant in participants track by $index">
-        <td >{{participant.gamer_tag}}</td>
-        <td >{{participant.real_name}}</td>
-        <td >{{participant.main}}</td>
-        <td >{{participant.location}}</td>
-        <td ><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
-      </tr>
-        </tbody>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="participant in participants">
+          <td >{{participant.gamer_tag}}</td>
+          <td >{{participant.real_name}}</td>
+          <td >{{participant.main}}</td>
+          <td >{{participant.location}}</td>
+          <td ><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr></tr>
+            <td class="text-center" colspan="7">
+              <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numPages" align="center"></div>
+            </td>
+      </tfoot>
     </table>
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>

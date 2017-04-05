@@ -1,4 +1,4 @@
-var mainApp = angular.module('mainApp', ['ngRoute']);
+var mainApp = angular.module('mainApp', ['ngRoute', 'smart-table']);
 
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
@@ -60,6 +60,9 @@ mainApp.controller('tournamentsCtrl',
 	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
+
+        $scope.itemsByPage = 1;
+        $scope.numPages = $scope.characters.length/$scope.itemByPage;
 	  	});
 
 });
@@ -78,6 +81,9 @@ mainApp.controller('participantsCtrl',
         $http.get('http://localhost:5000/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
+
+                $scope.itemsByPage = 5;
+                $scope.numPages = $scope.participants.length/$scope.itemByPage;
         });
 
 });
@@ -96,8 +102,15 @@ mainApp.controller('charactersCtrl',
         $http.get('http://localhost:5000/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
-        });
 
+                $scope.itemsByPage = 2;
+                $scope.numPages = $scope.characters.length/$scope.itemByPage;
+        });
+        // $scope.characters = [
+        // {character_name: 'Mario', universe: 'Mario', weight: '100', moves:'attack', debut: 1986 },
+        // {character_name: 'Link', universe: 'Zelda', weight: '112', moves:'hook', debut: 1989 },
+        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 1999 },
+        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 2001 }]
 });
 
 mainApp.controller('characterCtrl',
