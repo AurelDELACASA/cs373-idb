@@ -39,19 +39,19 @@
           <th><span>Name</span></th>
           <th><span>Universe</span></th>
           <th><span>Weight</span></th>
-          <th><span>Moves</span></th>
+          <th><span>Debut</span></th>
           <th><span>Year</span></th>
           <th><span>More Info</span></th>
       </tr>
         </thead>
         <tbody>
       <tr ng-repeat="character in characters track by $index">
-        <td>{{character.character_name}}</td>
+        <td>{{character.name}}</td>
         <td>{{character.universe}}</td>
         <td>{{character.weight}}</td>
         <td>{{character.moves}}</td>
-        <td>{{character.debut}}</td>
-        <td><a href="character/{{character.character_name}}">More Info</a></td>
+        <td>{{character.debut}}
+        <td><a href="character/{{character.name}}">More Info</a></td>
       </tr>
         </tbody>
     </table>
