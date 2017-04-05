@@ -19,23 +19,9 @@
       <link href="../static/magnific-popup/magnific-popup.css" rel="stylesheet">
 
       <!-- Theme CSS -->
-      <link href="../css/creative.min.css" rel="stylesheet">
+      <link href="../static/css/table2.css" rel="stylesheet">
 
   </head>
-
-  <style>
-      table, tr, td {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        padding: 5px;
-      }
-      table tr:nth-child(odd) {
-        background-color: #f1f1f1;
-      }
-      table tr:nth-child(even) {
-        background-color: #ffffff;
-      }
-  </style>
 
   <body id="page-top">
 
@@ -47,22 +33,29 @@
     <br>
     <br>
 
-    <table align="center">
-      <tr>
-        <td>Name</td>
-        <td>Universe</td>
-        <td>Weight</td>
-        <td>Moves</td>
-        <td>Year</td>
-      </tr>
-      <tr>
-        <td>{{character.character_name}}</td>
-        <td>{{character.universe}}</td>
-        <td>{{character.weight}}</td>
-        <td>{{character.moves}}</td>
-        <td>{{character.debut}}</td>
-        <td align="center"><img src="/static/images/Mariomeleeclear.png" width="100px"></td>
-      </tr>
+    <table class="table table-striped table-hover table-mc-light-blue" align="center">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Universe</td>
+          <td>Weight</td>
+          <td>Moves</td>
+          <td>Debut Year</td>
+          <td>Tier</td>
+          <td>Image</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{character.name}}</td>
+          <td>{{character.universe}}</td>
+          <td>{{character.weight}}</td>
+          <td>{{character.moves}}</td>
+          <td>{{character.debut}}</td>
+          <td>{{character.tier}}</td>
+          <td align="center"><img src="/static/images/{{character.image_path}}" width="100px"></td>
+        </tr>
+      </tbody>
     </table>
 
      <!-- jQuery -->

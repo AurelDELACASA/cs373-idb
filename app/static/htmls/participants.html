@@ -18,7 +18,7 @@
       <link href="../static/magnific-popup/magnific-popup.css" rel="stylesheet">
 
       <!-- Theme CSS -->
-      <link href="static/css/table2.css" rel="stylesheet">
+      <link href="../static/css/table2.css" rel="stylesheet">
 
   </head>
 
@@ -36,20 +36,22 @@
     <table class="table table-striped table-hover table-mc-light-blue" align="center">
         <thead>
       <tr>
+          <th><span>Sponsor</span></th>
           <th><span>Tag</span></th>
-          <th><span>Real Name</span></th>
           <th><span>Main</span></th>
           <th><span>Location</span></th>
+          <th><span>Tournament</span></th>
           <th><span>More Info</span></th>
       </tr>
         </thead>
         <tbody>
       <tr ng-repeat="participant in participants track by $index">
-        <td >{{participant.gamer_tag}}</td>
-        <td >{{participant.real_name}}</td>
+        <td >{{participant.clantag}}</td>
+        <td >{{participant.tag}}</td>
         <td >{{participant.main}}</td>
         <td >{{participant.location}}</td>
-        <td ><a href="participant/{{participant.gamer_tag}}">More Info</a></td>
+        <td >{{participant.tournament_id}}</td>
+        <td ><a href="participant/{{participant.tag}}">More Info</a></td>
       </tr>
         </tbody>
     </table>
