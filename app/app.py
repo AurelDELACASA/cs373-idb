@@ -34,16 +34,17 @@ def return_tournaments():
     API route for Tournaments
     """
     session = Session()
-    tournaments = [t.__dict__.copy().pop('_sa_instance_state', None) for t in session.query(Tournament).all()]
+    tournaments = clean_multiple(session.query(Tournament).all())
     return jsonify(tournaments = tournaments)
 
-@app.route('/api/tournament/<name>', methods=['GET'])
-def return_tournament(name):
+@app.route('/api/tournament/<int:tid>', methods=['GET'])
+def return_tournament(tid):
     """
     API route for individual Tournament
     """
-    t1 = Tournament("name1", "01/02/03", "California", 195, "/static/images/bracketIcon.png")
-    return jsonify(tournament = t1.__dict__)
+    session = Session()
+    tournament = clean_single(session.query(Tournament).filter(Tournament.id == tid).one())
+    return jsonify(tournament = tournament)
 
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
@@ -51,16 +52,17 @@ def return_participants():
     API route for Participants
     """
     session = Session()
-    participants = [p.__dict__.copy().pop('_sa_instance_state', None) for p in session.query(Participant).all()]
+    participants = clean_multiple(session.query(Participant).all())
     return jsonify(participants = participants)
 
-@app.route('/api/participant/<name>', methods=['GET'])
-def return_participant(name):
+@app.route('/api/participant/<int:pid>', methods=['GET'])
+def return_participant(pid):
     """
     API route for individual Participant
     """
-    p1 = Participant("Mang0", "/static/images/mango.png", "Joseph", "Mario", "Canada")
-    return jsonify(participant = p1.__dict__)
+    session = Session()
+    participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
+    return jsonify(participant = participant)
 
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
@@ -68,16 +70,17 @@ def return_characters():
     API route for Characters
     """
     session = Session()
-    characters = [c.__dict__.copy().pop('_sa_instance_state', None) for c in session.query(Character).all()]
+    characters = clean_multiple(session.query(Character).all())
     return jsonify(characters = characters)
 
-@app.route('/api/character/<name>', methods=['GET'])
-def return_character(name):
+@app.route('/api/character/<int:cid>', methods=['GET'])
+def return_character(cid):
     """
     API route for individual Character
     """
-    c1 = Character("Mario", "Super Mario Brothers", 100, ["Dunk", "Back Throw", "Cape"], 1999)
-    return jsonify(character = c1.__dict__)
+    session = Session()
+    character = clean_single(session.query(Character).filter(Character.id == cid).one())
+    return jsonify(character = character)
 
 @app.route('/api/runTests', methods=['GET'])
 def run_tests():
@@ -94,11 +97,28 @@ def run_tests():
 
     return process.decode("utf-8")
 
+def clean_multiple(result_set):
+    return_set = list()
+    for entity in result_set:
+        return_set.append(clean_single(entity))
+    return return_set
+
+def clean_single(result_set):
+    entity_dict = result_set.__dict__.copy()
+    entity_dict.pop("_sa_instance_state")
+    return entity_dict
+
 if __name__ == "__main__":
-    print("Creating session...")
     session = Session()
-    print("Making query...")
-    result = session.query(Character).all()[0].__dict__
-    print(result)
+
+    characters = session.query(Character).all()
+    participants = session.query(Participant).all()
+    tournaments = session.query(Tournament).all()
+
+    print("\n")
+    print("Count Characters: " + str(len(characters)))
+    print("Count Participants: " + str(len(participants)))
+    print("Count Tournaments: " + str(len(tournaments)))
+    print("\n")
     #app.run(debug=True, host='0.0.0.0')
     app.run()
