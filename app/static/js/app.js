@@ -13,7 +13,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'participantsCtrl'
 	})
     //Go to particpant page
-	.when('/participant/:participantName', {
+	.when('/participant/:id', {
 		templateUrl: '../static/htmls/participant.html',
 		controller: 'participantCtrl'
 	})
@@ -23,7 +23,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'tournamentsCtrl'
 	})
     //Go to tournament page
-   	.when('/tournament/:tournamentName', {
+   	.when('/tournament/:id', {
 		templateUrl: '../static/htmls/tournament.html',
 		controller: 'tournamentCtrl'
 	})
@@ -33,7 +33,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'charactersCtrl'
 	})
 	//Go to character page
-	.when('/character/:characterName', {
+	.when('/character/:id', {
 		templateUrl: '../static/htmls/character.html',
 		controller: 'characterCtrl'
 	})
@@ -68,10 +68,11 @@ mainApp.controller('tournamentsCtrl',
 });
 
 mainApp.controller('tournamentCtrl',
-    function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournament/name1')
+    function ($scope, $routeParams, $http) {
+	  	$http.get('http://localhost:5000/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
-		  		$scope.tournament = response.data["tournament"];
+		  		$scope.tournament = $routeParams;
+                $scope.tournament = response.data["tournament"];
 	  	});
 
 });
@@ -89,8 +90,8 @@ mainApp.controller('participantsCtrl',
 });
 
 mainApp.controller('participantCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participant/name1')
+    function ($scope, $routeParams, $http) {
+        $http.get('http://localhost:5000/api/participant/' + $routeParams['id'])
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -115,7 +116,7 @@ mainApp.controller('charactersCtrl',
 
 mainApp.controller('characterCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/character/name1')
+        $http.get('http://localhost:5000/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
