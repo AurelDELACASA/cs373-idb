@@ -64,6 +64,8 @@ class Participant(Base):
     main_id = Column(Integer, ForeignKey('character.id'))
     main = relationship(Character)
     location = Column(String(255), nullable=False)
+    tournament_id = Column(Integer, ForeignKey('tournament.id'))
+    tournament = relationship(Tournament)
     image_path = Column(String(255), nullable=False)
 
 #    def __init__(self, name, tag, main, location, image_path):
@@ -73,23 +75,23 @@ class Participant(Base):
 #        self.location = location
 #        self.image_path = image_path
 
-class Entry(Base):
-    """
-    Class definition for an Entry
-    This class represents a participant's entry into a tournament
-    This is represented as a many to many relationship
-    which requires an association table with a foriegn key
-    into tournament, and a foriegn key into participant
-    """
-
-    __tablename__ = "entry"
-
-    id = Column(Integer, primary_key=True)
-    tournament_id = Column(Integer, ForeignKey('tournament.id'))
-    participant_id = Column(Integer, ForeignKey('participant.id'))
-
-    tournament = relationship(Tournament)
-    participant = relationship(Participant)
+# class Entry(Base):
+#     """
+#     Class definition for an Entry
+#     This class represents a participant's entry into a tournament
+#     This is represented as a many to many relationship
+#     which requires an association table with a foriegn key
+#     into tournament, and a foriegn key into participant
+#     """
+#
+#     __tablename__ = "entry"
+#
+#     id = Column(Integer, primary_key=True)
+#     tournament_id = Column(Integer, ForeignKey('tournament.id'))
+#     participant_id = Column(Integer, ForeignKey('participant.id'))
+#
+#     tournament = relationship(Tournament)
+#     participant = relationship(Participant)
 
 #    def __init__(self, tournament, participant):
 #        self.tournament = tournament

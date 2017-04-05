@@ -46,3 +46,6 @@ app/include
 *~
 
 app/config.py
+
+data/tournament_images
+data/participant_images
