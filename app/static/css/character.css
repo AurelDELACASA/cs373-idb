@@ -1,0 +1,26 @@
+.alignleft { 
+    float: left; 
+    padding-left:30%;
+}
+.left_td {
+    padding-left:7%;
+}
+.banner div {
+    margin-left: 25%;
+ }
+ .banner img {
+     width: 250px;
+}
+table {
+    margin-left:5em;
+    padding-left: 50%;
+    border: 1px;
+}
+tr.spaceUnder > td
+{
+      padding-bottom: 1em;
+}
+.header {
+    padding-top: 5%;
+
+}
