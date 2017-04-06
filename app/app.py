@@ -53,6 +53,16 @@ def return_participants():
     """
     session = Session()
     participants = clean_multiple(session.query(Participant).all())
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    c_dict = {d['id']:d['name'] for d in characters}
+    t_dict = {d['id']:d['name'] for d in tournaments}
+
+    # Do a manual join on Characters
+    for participant in participants:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+#        participant.pop('main_id', None)
     return jsonify(participants = participants)
 
 @app.route('/api/participant/<int:pid>', methods=['GET'])

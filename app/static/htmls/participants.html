@@ -40,7 +40,8 @@
           <th class="sort-header" st-sort="tag"><span>Tag</span></th>
           <th class="sort-header" st-sort="main"><span>Main</span></th>
           <th class="sort-header" st-sort="location"><span>Location</span></th>
-          <th><span>Tournament</span></th>
+          <th class="sort-header" st-sort="tournament"><span>Tournament Name</span></th>
+          <th><span></span></th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +50,8 @@
           <td >{{participant.tag}}</td>
           <td >{{participant.main}}</td>
           <td >{{participant.location}}</td>
-          <td ><a href="participant/{{participant.tag}}">More Info</a></td>
+          <td >{{participant.tournament_name}}</td>
+          <td ><a href="participant/{{participant.id}}">More Info</a></td>
         </tr>
       </tbody>
       <tfoot>
