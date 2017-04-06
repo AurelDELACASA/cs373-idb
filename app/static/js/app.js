@@ -122,21 +122,29 @@ mainApp.controller('participantCtrl',
 
 });
 
-mainApp.controller('charactersCtrl',
-    function ($scope, $http) {
-        $http.get(prefix + '/api/characters')
-            .then(function(response) {
-                $scope.characters = response.data["characters"];
 
-                $scope.itemsByPage = 2;
-                $scope.numPages = $scope.characters.length/$scope.itemByPage;
-        });
-        // $scope.characters = [
-        // {character_name: 'Mario', universe: 'Mario', weight: '100', moves:'attack', debut: 1986 },
-        // {character_name: 'Link', universe: 'Zelda', weight: '112', moves:'hook', debut: 1989 },
-        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 1999 },
-        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 2001 }]
+mainApp.factory('charactersFactory', function($http) {
+  var charactersFactory = {
+    async: function() {
+      var promise = $http.get(prefix + "/api/characters").then(function (response) {
+        return response.data["characters"];
+      });
+      return promise;
+    }
+  };
+  return charactersFactory;
 });
+
+mainApp.controller('charactersCtrl',
+  function(charactersFactory, $scope) {
+    charactersFactory.async().then(function(data) {
+      $scope.characters = data;
+      $scope.subset = data;
+      $scope.itemsByPage = 5;
+      $scope.numPages = 3;
+      console.log($scope.numPages);
+    });
+  });
 
 mainApp.controller('characterCtrl',
     function ($scope, $routeParams, $http) {
