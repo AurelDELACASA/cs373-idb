@@ -62,6 +62,9 @@ def return_participant(pid):
     """
     session = Session()
     participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
+    main = clean_single(session.query(Character).filter(participant['main_id'] == Character.id).one())
+    participant['main'] = main['name']
+    participant.pop('main_id', None)
     return jsonify(participant = participant)
 
 @app.route('/api/characters', methods=['GET'])

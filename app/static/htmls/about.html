@@ -95,18 +95,25 @@
     <center><a href="https://github.com/lee-benjamin/cs373-idb/issues">GitHub Issue Tracker</a></center><br />
 
     <h2><center>Run Unit Tests</center></h2>
-
-    <center><button ng-click="runTests()" class="btn-info btn-lg" data-toggle="modal" data-target="#test_modal">Run</button></center>
-    <div id="test_modal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <p ng-show="!tests"> Running unit tests...</p>
-            <p> {{tests}}</p>
+    
+    <center><button ng-click="runTests()" class="btn" data-toggle="modal" data-target="#myModal">Run</button></center>
+    <div id="myModal" class="modal fade" role="dialog" style="color:black;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tests</h4>
+            </div>
+            <div class="modal-body">
+              <p ng-show="!tests">Running unit tests...</p>
+              <p>{{tests}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
      <!-- jQuery -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>

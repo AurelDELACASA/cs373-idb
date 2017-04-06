@@ -1,5 +1,12 @@
 var mainApp = angular.module('mainApp', ['ngRoute', 'smart-table']);
 
+var prefix = "";
+if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
+
+  prefix = "http://localhost:5000"
+}
+
+
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 		$routeProvider
@@ -13,7 +20,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'participantsCtrl'
 	})
     //Go to particpant page
-	.when('/participant/:participantName', {
+	.when('/participant/:id', {
 		templateUrl: '../static/htmls/participant.html',
 		controller: 'participantCtrl'
 	})
@@ -23,7 +30,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'tournamentsCtrl'
 	})
     //Go to tournament page
-   	.when('/tournament/:tournamentName', {
+   	.when('/tournament/:id', {
 		templateUrl: '../static/htmls/tournament.html',
 		controller: 'tournamentCtrl'
 	})
@@ -33,7 +40,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'charactersCtrl'
 	})
 	//Go to character page
-	.when('/character/:characterName', {
+	.when('/character/:id', {
 		templateUrl: '../static/htmls/character.html',
 		controller: 'characterCtrl'
 	})
@@ -57,7 +64,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 
 mainApp.controller('tournamentsCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournaments')
+	  	$http.get(prefix + '/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
 
@@ -68,10 +75,10 @@ mainApp.controller('tournamentsCtrl',
 });
 
 mainApp.controller('tournamentCtrl',
-    function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournament/name1')
+    function ($scope, $routeParams, $http) {
+	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
-		  		$scope.tournament = response.data["tournament"];
+                $scope.tournament = response.data["tournament"];
 	  	});
 
 });
@@ -100,15 +107,15 @@ mainApp.controller('participantsCtrl',
       $scope.p = data;
       $scope.itemsByPage = 10;
       $scope.numPages = 10;
-      console.log($scope.numPages)
+      console.log($scope.numPages);
 
     });
   });
 
 
 mainApp.controller('participantCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participant/name1')
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/participant/' + $routeParams['id'])
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -117,7 +124,7 @@ mainApp.controller('participantCtrl',
 
 mainApp.controller('charactersCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/characters')
+        $http.get(prefix + '/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
 
@@ -132,8 +139,8 @@ mainApp.controller('charactersCtrl',
 });
 
 mainApp.controller('characterCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/character/name1')
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
@@ -154,7 +161,7 @@ mainApp.controller('aboutCtrl',
       commits: 0
     },
     {
-      name: 'Maurya Avineni',
+      name: 'Maurya Avirneni',
       username: 'MauryaAvirneni',
       description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
       responsibilities: 'AngularJS, Bootstrap, AWS',
