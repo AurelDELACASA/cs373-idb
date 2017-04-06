@@ -164,7 +164,7 @@ mainApp.controller('aboutCtrl',
       description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
       responsibilities: 'API Documentation, Tests, AngularJS, Knick Knacks',
       tests: 9,
-      issues: 1,
+      issues: 7,
       commits: 0
     },
     {
@@ -173,7 +173,7 @@ mainApp.controller('aboutCtrl',
       description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
       responsibilities: 'AngularJS, Bootstrap, AWS',
       tests: 0,
-      issues: 17,
+      issues: 18,
       commits: 0
     },
     {
@@ -182,7 +182,7 @@ mainApp.controller('aboutCtrl',
       description: "Hey, my name is Rohit and I'm a junior here at UT. I love solving Rubik's cubes, longboarding, dancing and computer science! I love Smash and main Ganondorf in Project M. Feel free to ask me for a game!",
       responsibilities: 'Bootstrap, AngularJS, Data Collection, Media',
       tests: 0,
-      issues: 1,
+      issues: 13,
       commits: 0
     },
     {
@@ -191,7 +191,7 @@ mainApp.controller('aboutCtrl',
       description: "My name is Dallas, and I’m a senior at the University of Texas. My true loves include Computer Science, dogs, and most of all, Melee. I hope this website has helped satisfy your burning desire for Smash stats.",
       responsibilities: 'Bootstrap, AngularJS, Media, AWS',
       tests: 0,
-      issues: 6,
+      issues: 8,
       commits: 0
     },
     {
@@ -200,14 +200,14 @@ mainApp.controller('aboutCtrl',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Models, Flask, AngularJS, Data Collection, AWS',
       tests: 6,
-      issues: 9,
+      issues: 13,
       commits: 0
     }
     ];
 
     $scope.totals = {
         total_commits: 0,
-        total_issues: 34,
+        total_issues: 59,
         total_unittests: 15
     };
 
