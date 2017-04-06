@@ -49,3 +49,5 @@ app/config.py
 
 data/tournament_images
 data/participant_images
+
+app/populate.py
