@@ -467,7 +467,7 @@ class TestModels(TestCase):
         result_json = json.loads(response.read().decode(encoding))
         self.assertEqual(participant_json, result_json)
 
-    def test_query_all_characters(self):
+    def test_query_all_characters_count(self):
         # query for all characters, validate count
         session = self.session()
         num_characters = session.query(Character).count()
