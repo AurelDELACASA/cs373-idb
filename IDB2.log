@@ -1,3 +1,59 @@
+commit 21cfd0d01f52ebdf23397729cefeca8544d1e8bd
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:30:30 2017 -0500
+
+    minor fix on method name
+
+commit 26171328f2d92deeff014ebb51637ec7ba5ea0a9
+Merge: 6a39dd9 b898f93
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:27:58 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 6a39dd9aa930e019e90277ff7511ad7c38afa641
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:27:37 2017 -0500
+
+    added unit tests for API calls
+
+commit 709e82b9bbd57a8deed432143f7a4fc2e49e5f52
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:26:42 2017 -0500
+
+    added unit tests for API calls
+
+commit b898f93bbca539af19ca5e13f0102884ecf6e48c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 12:15:23 2017 -0500
+
+    Data scraping description added
+
+commit 2230ef5a2486060b85cc14602b40c31f79bab48c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:38:46 2017 -0500
+
+    Wrong sort for tourney locations. Fixed
+
+commit 564140e335a9b9a14ce3b23a135f597cc175d24c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:37:48 2017 -0500
+
+    Update About
+
+commit 42818917f676a98b0c070b7e6d5cb48cc0b6bc08
+Merge: 14b3476 9547f5e
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:30:57 2017 -0500
+
+    merge
+
+commit 14b3476102d5f090b6a34b817a74f18c996d41e1
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:29:30 2017 -0500
+
+    Updated about
+
 commit 9547f5ea8c9f51f8082fe808d7cab4960c5c3e53
 Merge: e89c201 c40c55e
 Author: lee-benjamin <leebenjamin@utexas.edu>
@@ -10,6 +66,12 @@ Author: lee-benjamin <leebenjamin@utexas.edu>
 Date:   Thu Apr 6 11:29:08 2017 -0500
 
     added tests for models and changed makefile to account for IDB2.log
+
+commit 292b8a0f6118cdad406faf1dba1acc86a820a582
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:17:55 2017 -0500
+
+    Fixed sort by year
 
 commit c40c55e4857a94d99b2121d203154da34b4d1fcc
 Merge: ddc5646 04ea69e
