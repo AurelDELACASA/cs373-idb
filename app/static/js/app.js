@@ -76,17 +76,35 @@ mainApp.controller('tournamentCtrl',
 
 });
 
-mainApp.controller('participantsCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participants')
-            .then(function(response) {
-                $scope.participants = response.data["participants"];
-
-                $scope.itemsByPage = 5;
-                $scope.numPages = $scope.participants.length/$scope.itemByPage;
-        });
-
+mainApp.factory('myService', function($http) {
+  var myService = {
+    async: function() {
+      // $http returns a promise, which has a then function, which also returns a promise
+      var promise = $http.get('http://localhost:5000/api/participants').then(function (response) {
+        // The then function here is an opportunity to modify the response
+        console.log(response);
+        // The return value gets picked up by the then in the controller.
+        return response.data["participants"];
+      });
+      // Return the promise to the controller
+      return promise;
+    }
+  };
+  return myService;
 });
+
+mainApp.controller('participantsCtrl',
+  function(myService, $scope) {
+    myService.async().then(function(data) {
+      $scope.participants = data;
+      $scope.p = data;
+      $scope.itemsByPage = 10;
+      $scope.numPages = 10;
+      console.log($scope.numPages)
+
+    });
+  });
+
 
 mainApp.controller('participantCtrl',
     function ($scope, $http) {
