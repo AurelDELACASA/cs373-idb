@@ -1,7 +1,7 @@
 FILES :=								\
 	.travis.yml							\
 	apiary.apib							\
-	IDB1.log							\
+	IDB2.log							\
 	models.html							\
 	app/models.py 						\
 	app/tests.py 						\
@@ -36,7 +36,7 @@ html:
 	python3.5 -m pydoc -w app/models.py
 
 log:
-	git log > IDB1.log
+	git log > IDB2.log
 
 unittest:
 	# Make the config file

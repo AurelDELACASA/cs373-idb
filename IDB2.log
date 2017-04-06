@@ -1,3 +1,564 @@
+commit 21cfd0d01f52ebdf23397729cefeca8544d1e8bd
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:30:30 2017 -0500
+
+    minor fix on method name
+
+commit 26171328f2d92deeff014ebb51637ec7ba5ea0a9
+Merge: 6a39dd9 b898f93
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:27:58 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 6a39dd9aa930e019e90277ff7511ad7c38afa641
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:27:37 2017 -0500
+
+    added unit tests for API calls
+
+commit 709e82b9bbd57a8deed432143f7a4fc2e49e5f52
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:26:42 2017 -0500
+
+    added unit tests for API calls
+
+commit b898f93bbca539af19ca5e13f0102884ecf6e48c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 12:15:23 2017 -0500
+
+    Data scraping description added
+
+commit 2230ef5a2486060b85cc14602b40c31f79bab48c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:38:46 2017 -0500
+
+    Wrong sort for tourney locations. Fixed
+
+commit 564140e335a9b9a14ce3b23a135f597cc175d24c
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:37:48 2017 -0500
+
+    Update About
+
+commit 42818917f676a98b0c070b7e6d5cb48cc0b6bc08
+Merge: 14b3476 9547f5e
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:30:57 2017 -0500
+
+    merge
+
+commit 14b3476102d5f090b6a34b817a74f18c996d41e1
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:29:30 2017 -0500
+
+    Updated about
+
+commit 9547f5ea8c9f51f8082fe808d7cab4960c5c3e53
+Merge: e89c201 c40c55e
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 11:29:16 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit e89c2010477915ef0072f402432d1cdcd9da1617
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 11:29:08 2017 -0500
+
+    added tests for models and changed makefile to account for IDB2.log
+
+commit 292b8a0f6118cdad406faf1dba1acc86a820a582
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Thu Apr 6 11:17:55 2017 -0500
+
+    Fixed sort by year
+
+commit c40c55e4857a94d99b2121d203154da34b4d1fcc
+Merge: ddc5646 04ea69e
+Author: Maurya Avirneni <maurya.avirneni@utexas.edu>
+Date:   Thu Apr 6 11:15:22 2017 -0500
+
+    Quick updates
+
+commit ddc564643d7846adc569c8c83ced474f1df70468
+Author: Maurya Avirneni <maurya.avirneni@utexas.edu>
+Date:   Thu Apr 6 11:15:04 2017 -0500
+
+    Updated UML
+
+commit 04ea69ee3144343de2349321a3803c2b57b32ef2
+Merge: f95b3c6 7b8ee26
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 11:09:09 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit f95b3c687a1f4463544aa4e67bd1132a2b8c5fd4
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 11:08:55 2017 -0500
+
+    Cast weight and debut back to ints
+
+commit 7b8ee26854d22b4244346d49be55f4f49cacfeb9
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 09:25:27 2017 -0500
+
+    Changing the layout of the individual character page
+
+commit 70f86c570dd79488c4da8af64f296135137247ff
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:42:22 2017 -0500
+
+    Added pagination, sorting, for characters
+
+commit e48d6f0ae90af1edbc2dd2dcf7d4c54627859d78
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:34:41 2017 -0500
+
+    Added pagination, sorting, for tournaments
+
+commit 71e002e7b3797ee594a2c2cf22da2f55c99803b4
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:15:29 2017 -0500
+
+    Ignore population code
+
+commit 34455265a82afcb015503c8027b7956f8cfec883
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:14:54 2017 -0500
+
+    Updated tournaments table and detail page
+
+commit 688d9243527ac784b35e6a6a14740ec2443ad83f
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:14:10 2017 -0500
+
+    Compute number of participants
+
+commit 82068b65d67e7c858810cafc203ddb4fb7883eb3
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:06:42 2017 -0500
+
+    Updated participant page
+
+commit d7cca99ead60a7ff75940b615f37dd84e9bad080
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 02:03:40 2017 -0500
+
+    Updated participants table
+
+commit f573390ac02c60c3cd421cff7ffd1ae71db62cdf
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 01:43:40 2017 -0500
+
+    Changed clantag to sponsor
+
+commit 7e2b176b097c062df565879389845030470533a8
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 01:03:33 2017 -0500
+
+    Changed variable names
+
+commit 12a2cd0c8216d2089f4f62047df11a7b2560ebda
+Merge: c192866 c33d956
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Wed Apr 5 21:54:34 2017 -0500
+
+    Added factory. Data is being pulled properly.
+
+commit c1928661473ef658540606196723b7fa1b07f823
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Wed Apr 5 21:51:56 2017 -0500
+
+    Added factory. Data is being pulled properly.
+
+commit c33d956b5a0df93f7d7f8f8152e05face8cef902
+Author: mauryaavirneni <maurya.avirneni@utexas.edu>
+Date:   Wed Apr 5 20:33:04 2017 -0500
+
+    fixed my name
+
+commit 4ebe238424eb3a35395802011ca7e0490c20f379
+Author: mauryaavirneni <maurya.avirneni@utexas.edu>
+Date:   Wed Apr 5 20:22:08 2017 -0500
+
+    added check for localhost
+
+commit df14b1ce6d053f2583c9bcd9e1567720d5d7eca5
+Merge: 0948d4c 9cfcb64
+Author: mauryaavirneni <maurya.avirneni@utexas.edu>
+Date:   Wed Apr 5 19:59:32 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 9cfcb648f6377a9800b12db72b44f729dd8c9c79
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 19:34:22 2017 -0500
+
+    Now able to get participant main by joining with character table
+
+commit ea997ff37d197518ad0a6529a1903a89d03e4dab
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 19:05:01 2017 -0500
+
+    Making more progress on individual 'character' page
+
+commit 630566bba794219f9539b2b170e8c7fae2c67ae2
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 18:52:16 2017 -0500
+
+    Making progress on individual 'character', 'tournament', 'participant' pages
+
+commit 0948d4c89d70de0a34eba22e266c8fdba3d77bdf
+Merge: 7b9613b fb73188
+Author: mauryaavirneni <maurya.avirneni@utexas.edu>
+Date:   Wed Apr 5 18:35:23 2017 -0500
+
+    pulling latest
+
+commit 20579413ef1ab079736ed9453d65c4f7405ae61e
+Merge: 1147ed8 fb73188
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Wed Apr 5 18:28:47 2017 -0500
+
+    Pagination working on static data. Tables sortable. Need to work on dynamically loading data
+
+commit 1147ed8698212c440d21fe703c4e6ddc249cd94e
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Wed Apr 5 18:25:12 2017 -0500
+
+    Pagination working on static data. Tables sortable. Need to work on dynamically loading data
+
+commit fb7318884760e6adbc58480b0cdf1f8595948b00
+Author: Benjamin Lee <benlee@cs.utexas.edu>
+Date:   Wed Apr 5 18:20:51 2017 -0500
+
+    added tests for Character, need to finish the rest
+
+commit 204f09e9592a351af9e66c52a8473141eed3451a
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 18:15:00 2017 -0500
+
+    Fixing 'more info' link on character page
+
+commit 0911648227ff6d8326c982bb85cafa607dc2cafa
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 17:47:27 2017 -0500
+
+    fixing column names for characters table
+
+commit 48ddf8ca65e29abcba6af7a5210b13aad293ddba
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 17:45:27 2017 -0500
+
+    Fixing the column names for tournaments table
+
+commit aac858450b099041cd65a4a6a6f540b23847e9db
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Wed Apr 5 17:36:29 2017 -0500
+
+    Fixing column names of participants table
+
+commit 5318f9ff8bea445a06abecfd3e4703d5e48c5689
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Wed Apr 5 16:18:59 2017 -0500
+
+    API fixed and done(?)
+
+commit 3152169ed8eb0113b141694b262679287e70ca5a
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Wed Apr 5 01:20:25 2017 -0500
+
+    Initial database querying
+
+commit 5255690736c93f9c9f51af3fa4e6ecc080dcd451
+Merge: 23ca727 7db899d
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Wed Apr 5 01:07:10 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 23ca7277a5abfe7c59985f946254868b2c2b45f5
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Wed Apr 5 01:04:14 2017 -0500
+
+    Updated models
+
+commit 7db899d3d194f2f0cfc2bfa23eb2163a1e78b5e0
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Wed Apr 5 00:16:39 2017 -0500
+
+    added images for each character
+
+commit 77b7526f32289f3646ae293eb95498833d816169
+Merge: 5c5deaf 42d6408
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 23:25:21 2017 -0500
+
+    fixing merge conflict
+
+commit 5c5deaf9398a2053d487a798088d61c05987189b
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 23:22:47 2017 -0500
+
+    Fixing CSS and column names of tournament.html
+
+commit 04914a24c32d8976b686bee4f9126ca8c553b6c1
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 23:17:24 2017 -0500
+
+    Adding CSS and table column lables to participant.html
+
+commit 18a9a4b8f8ccf6f720cc38d33763372054f46a03
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 23:16:08 2017 -0500
+
+    Fixed the CSS and column labels for character.htm
+
+commit 6f3cd9f3364f6d319dc0118325452e70be59a611
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 23:05:08 2017 -0500
+
+    Fixing the CSS and column headers of participant.html
+
+commit 42d64080ca51ac9537eff817016e2cff281ba537
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 20:33:17 2017 -0500
+
+    Updated scraper for participants
+
+commit 47170cf8aaccc4c5d2404cc7cbd0b8b47f940a3a
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 19:03:22 2017 -0500
+
+    Prevent pushing images
+
+commit 94f28c80e20a6248921859a607b023d445ad851c
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 19:02:11 2017 -0500
+
+    Updated models
+
+commit 712e31b18cb20224606a1fb4f30f5c205186a3eb
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 18:44:37 2017 -0500
+
+    Updated tournament scraper, created tournament image downloader
+
+commit f57095a0769b9993ef39ee44e29ccd20dc7d31bd
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 14:02:44 2017 -0500
+
+    Pickle character data
+
+commit ec3078f793757db6263aeed69f9b65bcb9d7082a
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Tue Apr 4 12:26:42 2017 -0500
+
+    Scraped weights and debuts. Putting into master list. Pikachu returning error
+
+commit f2da541eccffba652d5ae64550ebb630018188d7
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 11:48:17 2017 -0500
+
+    Adding some style to the button
+
+commit 3b8e3dfbd16578de8501cbffc62827ba2a5aaf99
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Tue Apr 4 11:47:04 2017 -0500
+
+    Adding in the modal view of the unit tests
+
+commit 7eae241d5cd9dbf49607da75c399931c992a0d01
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Tue Apr 4 10:56:01 2017 -0500
+
+    Added URI to app, tier to Character
+
+commit 528fdc67e43f806f8e04679b5fae4dc30c1ba2f0
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Mon Apr 3 23:38:58 2017 -0500
+
+    Added debut and weight
+
+commit 3d80797183738dc1529ac70ebb509d66dd7f5ac4
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Mon Apr 3 23:32:19 2017 -0500
+
+    Convert dictionaries to tuples
+
+commit fe9b4c8e51ea49a47ec10d56c8284f20e38e42cc
+Merge: 8f0b228 fed048a
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Mon Apr 3 18:19:51 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 8f0b22830b720b81dacd4ed208b5629e0240979f
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Mon Apr 3 18:19:45 2017 -0500
+
+    Scraped universes and tiers. Working on weights. Added more pickled data as well
+
+commit 7b9613b2305a97f63587f5a1b46b210022650355
+Merge: 207126f fed048a
+Author: MauryaAvirneni <Maurya.Avirneni@utexas.edu>
+Date:   Mon Apr 3 17:20:34 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit 207126f670ed2570d773257385119918ec9442cd
+Author: MauryaAvirneni <Maurya.Avirneni@utexas.edu>
+Date:   Mon Apr 3 17:20:17 2017 -0500
+
+    added modal view for running unit tests
+
+commit fed048ad7adf332d7331af158d3e158617344f6f
+Author: RohitVen <RohitVen@users.noreply.github.com>
+Date:   Mon Apr 3 17:17:59 2017 -0500
+
+    Update README.md
+
+commit 519ed266b55199d90c358be0e5ed4bf46fc184a2
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Mon Apr 3 17:12:28 2017 -0500
+
+    Scraped movetypes and movenames for all characters. Data is pickled up
+
+commit 7e11f792bd20ba99b2284c3b8d9b247381f70ccd
+Merge: f7f0771 8c6c992
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Mon Apr 3 16:51:16 2017 -0500
+
+    Fixed merge conflict
+
+commit f7f0771cc17247812119649adb5e6c3c4c2b0e4f
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Mon Apr 3 16:46:49 2017 -0500
+
+    Changed the about page to be able to run unit tests
+
+commit 8c6c992a3a0ce63e3759cbc64ea5172ae128802f
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Mon Apr 3 13:39:17 2017 -0500
+
+    Make test query to confirm PostgreSQL works remotely
+
+commit d27bcaf50b72d2b0870f98eef912afcb6441098b
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Sun Apr 2 18:52:37 2017 -0500
+
+    Fixed makefile
+
+commit b84a45f42657c96623607930102ac49021d978a5
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Sun Apr 2 18:52:20 2017 -0500
+
+    Table creation done
+
+commit 0ac2f68a7cc18113ae81a5b0d2f6957699b35165
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sun Apr 2 15:57:05 2017 -0500
+
+    General HTML clean up and excess image removal
+
+commit 9d64968a00e49e69be554aceec510e5c9371ca1e
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Sat Apr 1 20:20:15 2017 -0500
+
+    Prevent pushing
+
+commit b50080998be7489fd10d776c89fcd7c25d6212fa
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sat Apr 1 16:04:18 2017 -0500
+
+    Updated Models. (Rearranging code)
+
+commit bdda1cf51ec4f5a08ebc8a04b3a8c1c55917db40
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sat Apr 1 16:02:06 2017 -0500
+
+    Forgot these
+
+commit 1f6b67db2c8628767895c27334c2039c96320879
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sat Apr 1 15:59:24 2017 -0500
+
+    Added carousel images, splash text, details on About, a e s t h e t i c
+
+commit f355c3959f32ac80c2d1bfe0af047d28ace7ee07
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Fri Mar 31 18:08:01 2017 -0500
+
+    Initial database preparation
+
+commit 5e4f9190e05669a9fbbef44a8efedd44f321d821
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 30 11:44:03 2017 -0500
+
+    Added association table
+
+commit ce35675b40a2054fd2296f1ed2ed4d07f902abd3
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 30 11:22:41 2017 -0500
+
+    Updated models, this probably breaks everything
+
+commit 97c59717fa1dc6013b39858ee1482e2750f6d785
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Sat Mar 25 13:33:30 2017 -0500
+
+    Adding new table CSS to the about, characters, and tournaments page
+
+commit 813eca84a5048d6dafbbe3bdfb0ebfb05800985a
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Sat Mar 25 13:17:15 2017 -0500
+
+    Adding a second CSS option to style tables
+
+commit 94c796b45658e06337a02e336cea44bfd1b7f8b3
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Sat Mar 25 13:17:01 2017 -0500
+
+    Adding a new CSS option to style tables
+
+commit ed8d6cc44bf86daf9c48d91f1cfa786c287d699a
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Sat Mar 25 13:16:42 2017 -0500
+
+    Adding the new css updates to participants
+
+commit 7439600e568cda8936f51f4a6fd861c987fda5a1
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Fri Mar 24 13:14:45 2017 -0500
+
+    Can no longer scroll horizontally
+
+commit fd3610bcc3f1b1df1d40d746ae33d627082c0982
+Merge: a7b8a43 eb8bcab
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 19:57:17 2017 -0500
+
+    Fixing merge
+
+commit a7b8a43c3cf18a56ee8c34385f7405f8ce227267
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Mar 23 19:49:23 2017 -0500
+
+    Adding a link to the smashdb apiary on the about page
+
+commit eb8bcab5bae06e0688e5fd932ffe2094fc966a20
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:29:09 2017 -0500
+
+    Removed two. dots.
+
+commit b538a0062b743bfb9a98e4ef868a5d857f876a43
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:03:53 2017 -0500
+
+    Added log
+
 commit e407797efb41bd4faf7b83e592889f1100dee816
 Author: Caelan Evans <evans.caelan@gmail.com>
 Date:   Thu Mar 23 19:03:14 2017 -0500
