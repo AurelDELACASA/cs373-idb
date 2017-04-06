@@ -39,6 +39,8 @@ log:
 	git log > IDB1.log
 
 unittest:
+	# Make the config file
+	python3.5 ./app/make_config.py
 	coverage-3.5 run    --branch app/tests.py >  tests.tmp 2>&1
 	coverage-3.5 report -m                      >> tests.tmp
 	cat tests.tmp
