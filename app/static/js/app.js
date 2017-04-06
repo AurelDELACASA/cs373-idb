@@ -1,11 +1,8 @@
 var mainApp = angular.module('mainApp', ['ngRoute', 'smart-table']);
 
 var prefix = "";
-if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
-
-  prefix = "http://localhost:5000"
-}
-
+if (location.hostname == 'localhost' || location.hostname == '127.0.0.1')
+    prefix = "http://localhost:5000"
 
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
@@ -61,6 +58,34 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	}
 }]);
 
+// Factories
+
+mainApp.factory('participantsFactory', function($http) {
+  var participantsFactory = {
+    async: function() {
+      var promise = $http.get(prefix + "/api/participants").then(function (response) {
+        return response.data["participants"];
+      });
+      return promise;
+    }
+  };
+  return participantsFactory;
+});
+
+mainApp.controller('participantsCtrl',
+  function(participantsFactory, $scope) {
+    participantsFactory.async().then(function(data) {
+      $scope.participants = data;
+      $scope.p = data;
+      $scope.itemsByPage = 10;
+      $scope.numPages = 10;
+      console.log($scope.numPages);
+
+    });
+  });
+
+
+// Controllers
 
 mainApp.controller('tournamentsCtrl',
     function ($scope, $http) {
@@ -82,36 +107,6 @@ mainApp.controller('tournamentCtrl',
 	  	});
 
 });
-
-mainApp.factory('myService', function($http) {
-  var myService = {
-    async: function() {
-      // $http returns a promise, which has a then function, which also returns a promise
-      var promise = $http.get('http://localhost:5000/api/participants').then(function (response) {
-        // The then function here is an opportunity to modify the response
-        console.log(response);
-        // The return value gets picked up by the then in the controller.
-        return response.data["participants"];
-      });
-      // Return the promise to the controller
-      return promise;
-    }
-  };
-  return myService;
-});
-
-mainApp.controller('participantsCtrl',
-  function(myService, $scope) {
-    myService.async().then(function(data) {
-      $scope.participants = data;
-      $scope.p = data;
-      $scope.itemsByPage = 10;
-      $scope.numPages = 10;
-      console.log($scope.numPages);
-
-    });
-  });
-
 
 mainApp.controller('participantCtrl',
     function ($scope, $routeParams, $http) {
@@ -146,7 +141,6 @@ mainApp.controller('characterCtrl',
         });
 
 });
-
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
@@ -206,11 +200,9 @@ mainApp.controller('aboutCtrl',
 
     $scope.runTests = function () {
         $http.get('/api/runTests').then(function(data) {
-            $scope.tests = data.data 
+            $scope.tests = data.data
         });
     }
-
-           
         $http.get('https://api.github.com/repos/lee-benjamin/cs373-idb/stats/contributors')
             .then(function(response) {
                 response = response.data
