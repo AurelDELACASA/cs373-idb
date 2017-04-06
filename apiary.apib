@@ -12,99 +12,114 @@ Smash Database is a simple API allowing users to view information about Super Sm
 + Response 200 (application/json)
 
         {
-            "tournaments": [
+            "tournaments":[
                 {
-                    "date": "01/02/03",
-                    "imageURL": "/some/tpath1",
-                    "location": "California",
-                    "num_entrants": 195,
-                    "tournament_name": "name1"
+                    "date":" April 11th-12th 2015",
+                    "id":2,
+                    "image_path":"https://images.smash.gg/images/tournament/1016/image-93df90a298eedf734fe42ac562e9c130.jpg",
+                    "location":" CA (NorCal)",
+                    "name":"I'm Not Yelling! feat. ARMADA",
+                    "sanitized":"i-m-not-yelling-feat-armada"
                 },
                 {
-                    "date": "04/05/06",
-                    "imageURL": "/some/tpath2",
-                    "location": "Texas",
-                    "num_entrants": 30,
-                    "tournament_name": "name2"
+                    "date":" April 11th, 2015",
+                    "id":3,
+                    "image_path":"https://images.smash.gg/images/tournament/1037/image-5b136245e78f2d0b22fdef47609f5c34.png",
+                    "location":" MA",
+                    "name":"BUST2",
+                    "sanitized":"bust2"
                 },
                 {
-                    "date": "07/08/09",
-                    "imageURL": "/some/tpath3",
-                    "location": "New York",
-                    "num_entrants": 195,
-                    "tournament_name": "name3"
+                    "date":" April 4th-5th 2015",
+                    "id":4,
+                    "image_path":"https://images.smash.gg/images/tournament/1058/image-dc243efbde07b784c0cb91f822e9c342.jpg",
+                    "location":" NE",
+                    "name":"HUSH: Harvard University Smash House",
+                    "sanitized":"hush-harvard-university-smash-house"
                 }
             ]
         }
 
-## Tournament Information Collection [/api/tournament/{tournament_name}]
+## Tournament Information Collection [/api/tournament/{tournament_id}]
 
 ### Get information for specific tournament [GET]
 
 + Parameters 
-    + tournament_name (required, string)
+    + tournament_id (required, int)
 
 + Response 200 (application/json)
 
         {
-              "tournament": {
-                "date": "01/02/03",
-                "imageURL": "/some/tpath1",
-                "location": "California",
-                "num_entrants": 195,
-                "tournament_name": "name1"
-              }
+          "tournament": {
+            "date": " April 11th-12th 2015", 
+            "id": 2, 
+            "image_path": "https://images.smash.gg/images/tournament/1016/image-93df90a298eedf734fe42ac562e9c130.jpg", 
+            "location": " CA (NorCal)", 
+            "name": "I'm Not Yelling! feat. ARMADA", 
+            "num_participants": 371, 
+            "sanitized": "i-m-not-yelling-feat-armada"
+          }
         }
 
 ## Participants Collection [/api/participants]
 
 ### List All Participants [GET]
 
-+ Response 200 (application/json)
++ Response 200 (application/json)  
 
         {
             "participants": [
                 {
-                  "gamer_tag": "Mang0",
-                  "location": "Canada",
-                  "main": "Mario",
-                  "profile_picture": "/some/ppath1",
-                  "real_name": "Joseph"
-                },
+                    "id": 1, 
+                    "location": "Sweden", 
+                    "main": "Ice Climbers", 
+                    "main_id": 23, 
+                    "sponsor": "[A]", 
+                    "tag": "Armada", 
+                    "tournament_id": 2, 
+                    "tournament_name": "I'm Not Yelling! feat. ARMADA"
+                }, 
                 {
-                  "gamer_tag": "Friberg",
-                  "location": "Ohio",
-                  "main": "Samus",
-                  "profile_picture": "/some/ppath2",
-                  "real_name": "Dave"
-                },
+                    "id": 3, 
+                    "location": "Sweden", 
+                    "main": "Falco", 
+                    "main_id": 20, 
+                    "sponsor": "TSM", 
+                    "tag": "Leffen", 
+                    "tournament_id": 2, 
+                    "tournament_name": "I'm Not Yelling! feat. ARMADA"
+                }, 
                 {
-                  "gamer_tag": "summit1g",
-                  "location": "Florida",
-                  "main": "Link",
-                  "profile_picture": "/some/ppath3",
-                  "real_name": "Steve"
+                    "id": 4, 
+                    "location": "California", 
+                    "main": "Pichu", 
+                    "main_id": 22, 
+                    "sponsor": "MIOM", 
+                    "tag": "SFAT", 
+                    "tournament_id": 2, 
+                    "tournament_name": "I'm Not Yelling! feat. ARMADA"
                 }
             ]
         }
-
-## Participant Information Collection [/api/participant/{gamer_tag}]
+        
+## Participant Information Collection [/api/participant/{participant_id}]
 
 ### Get information for specific participant [GET]
 
 + Parameters 
-    + gamer_tag (required, string)
+    + participant_id (required, int)
 
 + Response 200 (application/json)
 
         {
-            "participant": {
-            "gamer_tag": "Mang0",
-            "location": "Canada",
-            "main": "Mario",
-            "profile_picture": "/some/ppath1",
-            "real_name": "Joseph"
-            }
+          "participant": {
+            "id": 1, 
+            "location": "Sweden", 
+            "main": "Ice Climbers", 
+            "sponsor": "[A]", 
+            "tag": "Armada", 
+            "tournament_id": 2
+          }
         }
 
 ## Characters Collection [/api/characters]
@@ -116,60 +131,56 @@ Smash Database is a simple API allowing users to view information about Super Sm
         {
             "characters": [
                 {
-                    "character_name": "Mario",
-                    "debut": 1999,
-                    "moves": [
-                        "Dunk",
-                        "Back Throw",
-                        "Cape"
-                    ],
-                    "universe": "Super Mario Brothers",
+                    "debut": 1981, 
+                    "id": 2, 
+                    "image_path": "mario.png", 
+                    "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape", 
+                    "name": "Mario", 
+                    "tier": "E", 
+                    "universe": "Mario", 
                     "weight": 100
-                },
+                }, 
                 {
-                    "character_name": "Link",
-                    "debut": 1986,
-                    "moves": [
-                        "Hook Shot",
-                        "Boomerang",
-                        "Bombs"
-                    ],
-                    "universe": "The Legend of Zelda",
-                    "weight": 104
-                },
+                    "debut": 1983, 
+                    "id": 3, 
+                    "image_path": "luigi.png", 
+                    "moves": "Super Jump Punch,Fireball,Luigi Cyclone,Throat Thrust,Green Missile", 
+                    "name": "Luigi", 
+                    "tier": "D", 
+                    "universe": "Mario", 
+                    "weight": 100
+                }, 
                 {
-                    "character_name": "Samus",
-                    "debut": 1986,
-                    "moves": [
-                        "Energy Ball",
-                        "Missiles",
-                        "Screw Attack"
-                    ],
-                    "universe": "Metroid",
-                    "weight": 110
+                    "debut": 1990, 
+                    "id": 4, 
+                    "image_path": "yoshi.png", 
+                    "moves": "Egg Lay,Egg Throw,Egg Roll,Yoshi Bomb", 
+                    "name": "Yoshi", 
+                    "tier": "D", 
+                    "universe": "Yoshi", 
+                    "weight": 108
                 }
             ]
         }
 
-## Character Information Collection [/api/character/{character_name}]
+## Character Information Collection [/api/character/{character_id}]
 
 ### Get information for specific character [GET]
 
 + Parameters
-    + character_name (required, string)
+    + character_id (required, int)
 
 + Response 200 (application/json)
 
         {
             "character": {
-                "character_name": "Mario",
-                "debut": 1999,
-                "moves": [
-                    "Dunk",
-                    "Back Throw",
-                    "Cape"
-                ],
-                "universe": "Super Mario Brothers",
-                "weight": 100
+                "debut": "1981", 
+                "id": 2, 
+                "image_path": "mario.png", 
+                "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape", 
+                "name": "Mario", 
+                "tier": "E", 
+                "universe": "Mario", 
+                "weight": "100"
             }
         }

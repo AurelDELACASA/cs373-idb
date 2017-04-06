@@ -1,7 +1,7 @@
 FILES :=								\
 	.travis.yml							\
 	apiary.apib							\
-	IDB1.log							\
+	IDB2.log							\
 	models.html							\
 	app/models.py 						\
 	app/tests.py 						\
@@ -30,19 +30,22 @@ clean-venv:
 	rm -rf app/venv/
 
 start-server:
+#	python3.5 ./app/make_config.py
 	bash start_server.sh
 
 html:
 	python3.5 -m pydoc -w app/models.py
 
 log:
-	git log > IDB1.log
+	git log > IDB2.log
 
 unittest:
+	# Make the config file
+	python3.5 app/make_config.py && mv config.py app/
 	coverage-3.5 run    --branch app/tests.py >  tests.tmp 2>&1
 	coverage-3.5 report -m                      >> tests.tmp
 	cat tests.tmp
-	python3.5 ./app/tests.py
+	python3.5 app/tests.py
 #
 # test: html check
 test: unittest html log check
