@@ -1,5 +1,12 @@
 var mainApp = angular.module('mainApp', ['ngRoute', 'smart-table']);
 
+var prefix = "";
+if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
+
+  prefix = "http://localhost:5000"
+}
+
+
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 		$routeProvider
@@ -57,7 +64,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 
 mainApp.controller('tournamentsCtrl',
     function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournaments')
+	  	$http.get(prefix + '/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
 
@@ -69,7 +76,7 @@ mainApp.controller('tournamentsCtrl',
 
 mainApp.controller('tournamentCtrl',
     function ($scope, $routeParams, $http) {
-	  	$http.get('http://localhost:5000/api/tournament/' + $routeParams['id'])
+	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
                 $scope.tournament = response.data["tournament"];
 	  	});
@@ -78,7 +85,7 @@ mainApp.controller('tournamentCtrl',
 
 mainApp.controller('participantsCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participants')
+        $http.get(prefix + '/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
 
@@ -90,7 +97,7 @@ mainApp.controller('participantsCtrl',
 
 mainApp.controller('participantCtrl',
     function ($scope, $routeParams, $http) {
-        $http.get('http://localhost:5000/api/participant/' + $routeParams['id'])
+        $http.get(prefix + '/api/participant/' + $routeParams['id'])
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -99,7 +106,7 @@ mainApp.controller('participantCtrl',
 
 mainApp.controller('charactersCtrl',
     function ($scope, $http) {
-        $http.get('http://localhost:5000/api/characters')
+        $http.get(prefix + '/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
 
@@ -115,7 +122,7 @@ mainApp.controller('charactersCtrl',
 
 mainApp.controller('characterCtrl',
     function ($scope, $routeParams, $http) {
-        $http.get('http://localhost:5000/api/character/' + $routeParams['id'])
+        $http.get(prefix + '/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
