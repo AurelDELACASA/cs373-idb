@@ -59,7 +59,7 @@ class Participant(Base):
     __tablename__ = "participant"
 
     id = Column(Integer, primary_key=True)
-    clantag = Column(String(255), nullable=True)
+    sponsor = Column(String(255), nullable=True)
     tag = Column(String(255), nullable=False)
     main_id = Column(Integer, ForeignKey('character.id'), nullable=True)
     main = relationship(Character)

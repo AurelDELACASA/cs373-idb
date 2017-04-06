@@ -76,11 +76,10 @@ mainApp.controller('participantsCtrl',
   function(participantsFactory, $scope) {
     participantsFactory.async().then(function(data) {
       $scope.participants = data;
-      $scope.p = data;
+      $scope.subset = data;
       $scope.itemsByPage = 10;
       $scope.numPages = 10;
       console.log($scope.numPages);
-
     });
   });
 

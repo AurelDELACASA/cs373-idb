@@ -33,7 +33,7 @@
     <br>
 
 
-    <table st-table="p" st-safe-src="participants" class="table table-striped table-hover table-mc-light-blue" align="center">
+    <table st-table="subset" st-safe-src="participants" class="table table-striped table-hover table-mc-light-blue" align="center">
       <thead>
         <tr>
           <th class="sort-header" st-sort="sponsor"><span>Sponsor</span></th>
@@ -44,8 +44,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="participant in p">
-          <td >{{participant.clantag}}</td>
+        <tr ng-repeat="participant in subset">
+          <td >{{participant.sponsor}}</td>
           <td >{{participant.tag}}</td>
           <td >{{participant.main}}</td>
           <td >{{participant.location}}</td>
