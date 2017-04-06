@@ -17,76 +17,295 @@ class TestModels(TestCase):
 
     def test_tournaments_add_one(self):
         # add tournament, assert it is first Tournament
-        #session = self.session()
+        session = self.session()
 
-        #tournament = Tournament()
+        tournament = Tournament(name='Smash Broski',
+                                sanitized='smash-broski',
+                                date='April 1, 2017',
+                                location='MA',
+                                image_path='path_to_image')
 
-        self.assertTrue(True)
+        session.add(tournament)
+        session.commit()
 
-    def test_tournaments_add_two(self):
+        result = session.query(Tournament).order_by(
+            Tournament.id.desc()).first()
+        self.assertEqual(result.name, tournament.name)
+        self.assertEqual(result.sanitized, tournament.sanitized)
+        self.assertEqual(result.date, tournament.date)
+        self.assertEqual(result.location, tournament.location)
+        self.assertEqual(result.image_path, tournament.image_path)
+
+        session.delete(tournament)
+        session.commit()
+
+    def test_tournaments_add_two_count(self):
         # add two tournaments, assert there are two tournaments
-        self.assertTrue(True)
+        session = self.session()
+        num_tournaments = session.query(Tournament).count()
 
-    def test_tournaments_validate_data(self):
-        # add a tournament, assertEqual for name, date, location, entrants, picture
-        self.assertTrue(True)
+        tournament_one = Tournament(name='bust2',
+                                    sanitized='bust2',
+                                    date='April 11th, 2015',
+                                    location='CA',
+                                    image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
+
+        tournament_two = Tournament(name='Smash Broski',
+                                    sanitized='smash-broski',
+                                    date='April 1, 2017',
+                                    location='MA',
+                                    image_path='path_to_image')
+
+        session.add(tournament_one)
+        session.add(tournament_two)
+        session.commit()
+
+        self.assertEqual(session.query(
+            Tournament).count(), num_tournaments + 2)
+
+        session.delete(tournament_one)
+        session.delete(tournament_two)
+        session.commit()
+
+    def test_tournaments_add_two_validate_data(self):
+        # add two tournaments, assertEqual for name, date, location, entrants,
+        # picture
+        session = self.session()
+        num_tournaments = session.query(Tournament).count()
+
+        tournament_one = Tournament(name='bust2',
+                                    sanitized='bust2',
+                                    date='April 11th, 2015',
+                                    location='CA',
+                                    image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
+
+        tournament_two = Tournament(name='Smash Broski',
+                                    sanitized='smash-broski',
+                                    date='April 1, 2017',
+                                    location='MA',
+                                    image_path='path_to_image')
+
+        tournaments = []
+        tournaments.append(tournament_one)
+        tournaments.append(tournament_two)
+
+        session.add(tournament_two)
+        session.add(tournament_one)
+        session.commit()
+
+        for i in range(0, 2):
+            result = session.query(Tournament).order_by(
+                Tournament.id.desc()).first()
+            self.assertEqual(result.name, tournaments[i].name)
+            self.assertEqual(result.sanitized, tournaments[i].sanitized)
+            self.assertEqual(result.date, tournaments[i].date)
+            self.assertEqual(result.location, tournaments[i].location)
+            self.assertEqual(result.image_path, tournaments[i].image_path)
+            session.delete(result)
+            session.commit()
 
     #---------------------------
     # Testing Participants Model
     #---------------------------
 
     def test_participants_add_one(self):
-        # add a participant, assert it is where it belongs (if perhaps in alpha order)
-        # session = self.session()
+        # add a participant
+        session = self.session()
 
-        # participant = Participant(clantag='C9',
-        #     tag='Mang0',
-        #     main_id='21',
-        #     #main=session.query(Character).get(21).name,
-        #     main='Pichu',
-        #     location='California',
-        #     tournament_id='2',
-        #     tournament=session.query(Tournament).get(2).sanitized)
-        #     tournament='bust2')
+        character = Character(name='Snorlax',
+                              universe='Pokemon',
+                              weight='180',
+                              moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                              debut='2004',
+                              tier='E',
+                              image_path='Snorlax.png')
 
-        # session.add(participant)
-        # session.commit()
+        tournament = Tournament(name='bust2',
+                                sanitized='bust2',
+                                date='April 11th, 2015',
+                                location='CA',
+                                image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
 
-        # result = session.query(Participant).order_by(Participant.id.desc()).first()
-        # self.assertEqual(result.clangtag, participant.clantag)
-        # self.assertEqual(result.tag, participant.tag)
-        # self.assertEqual(result.main_id, participantr.main_id)
-        # self.assertEqual(result.location, participant.location)
-        # self.assertEqual(result.tournament_id, participant.tournament_id)
-        # self.assertEqual(result.tournament, participant.tournament)
+        participant = Participant(sponsor='C9',
+                                  tag='mang0',
+                                  main=character,
+                                  location='California',
+                                  tournament=tournament)
 
-        # session.remove(result)
-        # session.commit()
-        self.assertTrue(True)
+        session.add(character)
+        session.add(tournament)
+        session.add(participant)
+        session.commit()
 
-    def test_participants_add_two(self):
+        result = session.query(Participant).order_by(
+            Participant.id.desc()).first()
+        self.assertEqual(result.sponsor, participant.sponsor)
+        self.assertEqual(result.tag, participant.tag)
+        self.assertEqual(result.location, participant.location)
+        self.assertEqual(result.tournament, participant.tournament)
+
+        session.delete(result)
+        session.delete(tournament)
+        session.delete(character)
+        session.commit()
+
+    def test_participants_add_two_count(self):
         # add two/more participants, assert the number of participants
-        self.assertTrue(True)
+        session = self.session()
 
-    def test_participants_validate_data(self):
-        # add a participant, assertEqual for Gamertag, Profile Pic, Real Name, Main, Location
-        self.assertTrue(True)
+        num_participants = session.query(Participant).count()
+        character_one = Character(name='Snorlax',
+                                  universe='Pokemon',
+                                  weight='180',
+                                  moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                                  debut='2004',
+                                  tier='E',
+                                  image_path='Snorlax.png')
+
+        character_two = Character(name='Sonic',
+                                  universe='Sonic',
+                                  weight='95',
+                                  moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
+                                  debut='2013',
+                                  tier='A',
+                                  image_path='Sonic.png')
+
+        tournament_one = Tournament(name='bust2',
+                                    sanitized='bust2',
+                                    date='April 11th, 2015',
+                                    location='CA',
+                                    image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
+
+        tournament_two = Tournament(name='Smash Broski',
+                                    sanitized='smash-broski',
+                                    date='April 1, 2017',
+                                    location='MA',
+                                    image_path='path_to_image')
+
+        participant_one = Participant(sponsor='C9',
+                                      tag='mang0',
+                                      main=character_one,
+                                      location='California',
+                                      tournament=tournament_one)
+
+        participant_two = Participant(sponsor='Selfless',
+                                      tag='Broseidon',
+                                      main=character_two,
+                                      location='Russia',
+                                      tournament=tournament_two)
+
+        session.add(character_one)
+        session.add(character_two)
+        session.add(tournament_one)
+        session.add(tournament_two)
+        session.add(participant_one)
+        session.add(participant_two)
+        session.commit()
+
+        self.assertEqual(session.query(Participant).count(),
+                         num_participants + 2)
+
+        session.delete(character_one)
+        session.delete(character_two)
+        session.delete(tournament_one)
+        session.delete(tournament_two)
+        session.delete(participant_one)
+        session.delete(participant_two)
+        session.commit()
+
+    def test_participants_add_two_validate_data(self):
+        # add a participant, assertEqual for Gamertag, Profile Pic, Real Name,
+        # Main, Location
+        session = self.session()
+
+        num_participants = session.query(Participant).count()
+        character_one = Character(name='Snorlax',
+                                  universe='Pokemon',
+                                  weight='180',
+                                  moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                                  debut='2004',
+                                  tier='E',
+                                  image_path='Snorlax.png')
+
+        character_two = Character(name='Sonic',
+                                  universe='Sonic',
+                                  weight='95',
+                                  moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
+                                  debut='2013',
+                                  tier='A',
+                                  image_path='Sonic.png')
+
+        tournament_one = Tournament(name='bust2',
+                                    sanitized='bust2',
+                                    date='April 11th, 2015',
+                                    location='CA',
+                                    image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
+
+        tournament_two = Tournament(name='Smash Broski',
+                                    sanitized='smash-broski',
+                                    date='April 1, 2017',
+                                    location='MA',
+                                    image_path='path_to_image')
+
+        participant_one = Participant(sponsor='C9',
+                                      tag='mang0',
+                                      main=character_one,
+                                      location='California',
+                                      tournament=tournament_one)
+
+        participant_two = Participant(sponsor='Selfless',
+                                      tag='Broseidon',
+                                      main=character_two,
+                                      location='Russia',
+                                      tournament=tournament_two)
+
+        participants = []
+
+        participants.append(participant_one)
+        participants.append(participant_two)
+
+        session.add(character_one)
+        session.add(character_two)
+        session.add(tournament_one)
+        session.add(tournament_two)
+        session.add(participant_two)
+        session.add(participant_one)
+        session.commit()
+
+        for i in range(0, 2):
+            result = session.query(Participant).order_by(
+                Participant.id.desc()).first()
+            self.assertEqual(result.tag, participants[i].tag)
+            self.assertEqual(result.sponsor, participants[i].sponsor)
+            self.assertEqual(result.tag, participants[i].tag)
+            self.assertEqual(result.main, participants[i].main)
+            self.assertEqual(result.location, participants[i].location)
+            self.assertEqual(result.tournament, participants[i].tournament)
+            session.delete(result)
+            session.commit()
+
+        session.delete(character_one)
+        session.delete(character_two)
+        session.delete(tournament_one)
+        session.delete(tournament_two)
+        # participants deleted in the loop
+        session.commit()
 
     #-------------------------
-    # Testing Characters Model
+    #Testing Characters Model
     #-------------------------
 
     def test_character_add_one(self):
         # add one character and validate data
         session = self.session()
 
-        character = Character(name='Snorlax', 
-            universe='Pokemon',
-            weight='180',
-            moves='Rollout, Belly Drum, Heavy Slam, Yawn',
-            debut='2004',
-            tier='E',
-            image_path='Snorlax.png')
+        character = Character(name='Snorlax',
+                              universe='Pokemon',
+                              weight='180',
+                              moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                              debut='2004',
+                              tier='E',
+                              image_path='Snorlax.png')
         session.add(character)
         session.commit()
 
@@ -102,67 +321,68 @@ class TestModels(TestCase):
         session.delete(result)
         session.commit()
 
-    def test_character_add_two(self):
+    def test_character_add_two_count(self):
         # add two characters, validate count
         session = self.session()
         num_characters = session.query(Character).count()
 
-        character_one = Character(name='Snorlax', 
-            universe='Pokemon',
-            weight='180',
-            moves='Rollout, Belly Drum, Heavy Slam, Yawn',
-            debut='2004',
-            tier='E',
-            image_path='Snorlax.png')
+        character_one = Character(name='Snorlax',
+                                  universe='Pokemon',
+                                  weight='180',
+                                  moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                                  debut='2004',
+                                  tier='E',
+                                  image_path='Snorlax.png')
 
         character_two = Character(name='Sonic',
-            universe='Sonic',
-            weight='95',
-            moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
-            debut='2013',
-            tier='A',
-            image_path='Sonic.png')
+                                  universe='Sonic',
+                                  weight='95',
+                                  moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
+                                  debut='2013',
+                                  tier='A',
+                                  image_path='Sonic.png')
 
         session.add(character_one)
         session.add(character_two)
-        session.commit()  
+        session.commit()
 
-        self.assertEqual(session.query(Character).count(), num_characters+2)
+        self.assertEqual(session.query(Character).count(), num_characters + 2)
         session.delete(character_one)
-        session.delete(character_two)      
+        session.delete(character_two)
         session.commit()
 
     def test_character_add_two_validate_data(self):
         # add two characters, validate data
         session = self.session()
 
-        character_one = Character(name='Snorlax', 
-            universe='Pokemon',
-            weight='180',
-            moves='Rollout, Belly Drum, Heavy Slam, Yawn',
-            debut='2004',
-            tier='E',
-            image_path='Snorlax.png')
+        character_one = Character(name='Snorlax',
+                                  universe='Pokemon',
+                                  weight='180',
+                                  moves='Rollout, Belly Drum, Heavy Slam, Yawn',
+                                  debut='2004',
+                                  tier='E',
+                                  image_path='Snorlax.png')
 
         character_two = Character(name='Sonic',
-            universe='Sonic',
-            weight='95',
-            moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
-            debut='2013',
-            tier='A',
-            image_path='Sonic.png')
+                                  universe='Sonic',
+                                  weight='95',
+                                  moves='Hammer Spin Dash, Burning Spin Dash, Spring Jump, Springing Headbutt',
+                                  debut='2013',
+                                  tier='A',
+                                  image_path='Sonic.png')
 
         characters = []
         characters.append(character_one)
         characters.append(character_two)
-        
+
         session.add(character_two)
         session.add(character_one)
-        session.commit()  
+        session.commit()
 
-        for i in range(0,2):
+        for i in range(0, 2):
             # get the last row in the Character table
-            result = session.query(Character).order_by(Character.id.desc()).first()
+            result = session.query(Character).order_by(
+                Character.id.desc()).first()
             self.assertEqual(result.name, characters[i].name)
             self.assertEqual(result.universe, characters[i].universe)
             self.assertEqual(result.moves, characters[i].moves)
