@@ -86,6 +86,9 @@ def return_characters():
     """
     session = Session()
     characters = clean_multiple(session.query(Character).all())
+    for character in characters:
+        character['weight'] = int(character['weight'])
+        character['debut'] = int(character['debut'])
     return jsonify(characters = characters)
 
 @app.route('/api/character/<int:cid>', methods=['GET'])
