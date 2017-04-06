@@ -408,8 +408,8 @@ class TestModels(TestCase):
         encoding = response.info().get_content_charset('utf8')
         result_json = json.loads(response.read().decode(encoding))
         num_results = len(list(list(result_json.items())[0])[1])
-        
-        self.assertEqual(num_tournaments,num_results)
+
+        self.assertEqual(num_tournaments, num_results)
 
     def test_query_one_tournament(self):
         # query for one tournaments
@@ -443,8 +443,8 @@ class TestModels(TestCase):
         encoding = response.info().get_content_charset('utf8')
         result_json = json.loads(response.read().decode(encoding))
         num_results = len(list(list(result_json.items())[0])[1])
-        
-        self.assertEqual(num_participants,num_results)
+
+        self.assertEqual(num_participants, num_results)
 
     def test_query_one_participant(self):
         # query for one participants
@@ -477,8 +477,8 @@ class TestModels(TestCase):
         encoding = response.info().get_content_charset('utf8')
         result_json = json.loads(response.read().decode(encoding))
         num_results = len(list(list(result_json.items())[0])[1])
-        
-        self.assertEqual(num_characters,num_results)
+
+        self.assertEqual(num_characters, num_results)
 
     def test_query_one_character(self):
         # query for one character
