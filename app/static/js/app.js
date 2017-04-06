@@ -71,7 +71,6 @@ mainApp.controller('tournamentCtrl',
     function ($scope, $routeParams, $http) {
 	  	$http.get('http://localhost:5000/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
-		  		$scope.tournament = $routeParams;
                 $scope.tournament = response.data["tournament"];
 	  	});
 
@@ -115,7 +114,7 @@ mainApp.controller('charactersCtrl',
 });
 
 mainApp.controller('characterCtrl',
-    function ($scope, $http) {
+    function ($scope, $routeParams, $http) {
         $http.get('http://localhost:5000/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
