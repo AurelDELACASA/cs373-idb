@@ -19,6 +19,8 @@
 
       <!-- Theme CSS -->
       <link href="../static/css/table2.css" rel="stylesheet">
+      <link href="../static/css/tournament.css" rel="stylesheet">
+      <link href="../static/css/creative.css" rel="stylesheet">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,31 +41,68 @@
     <br>
     <br>
 
-    <center><img src="{{tournament.image_path}}" width="500px"></center>
 
     <br>
     <br>
     <br>
 
-    <table class="table table-hover table-striped table-mc-light-blue" align="center">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Date</td>
-          <td>Location</td>
-          <td>Number of Participants</td>
-        </tr>
-      </thead>
+    <div class="header">
+      <div class="alignleft banner">
+        <img src="{{tournament.image_path}}" width="500px">
+      </div>
+
+    <table class="table_small">
       <tbody>
+            <tr class="spaceUnder">
+              <td align='right'>
+                <br>
+                  <b>NAME</b>
+                </br>
+              </td>
+              <td class="left_td">
+                <br>
+                  {{tournament.name}}
+                <br>
+              </td>
+            </tr>
+            <tr class="spaceUnder">
+              <td align='right'>
+                <br>
+                  <b>DATE</b>
+                </br>
+              </td>
+              <td class="left_td">
+                <br>
+                  {{tournament.date}}
+                <br>
+              </td>
+            </tr>
+            <tr class="spaceUnder">
+              <td align='right'>
+                <br>
+                  <b>LCOATION</b>
+                </br>
+              </td>
+              <td class="left_td">
+                <br>
+                  {{tournament.location}}
+                <br>
+              </td>
+            </tr>
+            <tr class="spaceUnder">
+              <td align='right'>
+                <br>
+                  <b>ENTRANTS</b>
+                </br>
+              </td>
+              <td class="left_td">
+                <br>
+                  {{tournament.num_participants}}
+                <br>
+              </td>
+            </tr>
         <tr>
-          <td>{{tournament.name}}</td>
-          <td>{{tournament.date}}</td>
-          <td>{{tournament.location}}</td>
-          <td>{{tournament.num_participants}}</td>
-        </tr>
-      </tbody>
-    </table>
-
+</div>
     <!-- Scripts -->
 
     <!-- jQuery -->

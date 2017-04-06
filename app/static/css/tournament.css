@@ -1,6 +1,6 @@
 .alignleft { 
     float: left; 
-    padding-left:30%;
+    padding-left:10%;
 }
 .left_td {
     padding-left:7%;
@@ -9,7 +9,7 @@
     margin-left: 25%;
  }
  .banner img {
-     width: 250px;
+     width: 700px;
 }
 table {
     margin-left:5em;
@@ -29,8 +29,8 @@ tr.spaceUnder > td
   overflow-x: hidden;
   font-size:20px;
   background:rgba(0,0,0,0);
-  margin-left:50%;
-  padding-left:50%;
+  margin-left:60%;
+  padding-left:60%;
 }
 .table_small > tbody {
     padding-left:20%;

@@ -13,18 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-.table_small {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-  overflow-x: hidden;
-  font-size:20px;
-  background:rgba(0,0,0,0);
-  margin-left:50%;
-  padding-left:50%;
-}
-.table_small > tbody {
-    padding-left:20%;
-}
-
 hr {
   border-color: #F05F40;
   border-width: 3px;
