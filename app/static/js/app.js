@@ -1,4 +1,4 @@
-var mainApp = angular.module('mainApp', ['ngRoute']);
+var mainApp = angular.module('mainApp', ['ngRoute', 'smart-table']);
 
 mainApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
@@ -13,7 +13,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'participantsCtrl'
 	})
     //Go to particpant page
-	.when('/participant/:participantName', {
+	.when('/participant/:id', {
 		templateUrl: '../static/htmls/participant.html',
 		controller: 'participantCtrl'
 	})
@@ -23,7 +23,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'tournamentsCtrl'
 	})
     //Go to tournament page
-   	.when('/tournament/:tournamentName', {
+   	.when('/tournament/:id', {
 		templateUrl: '../static/htmls/tournament.html',
 		controller: 'tournamentCtrl'
 	})
@@ -33,7 +33,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		controller: 'charactersCtrl'
 	})
 	//Go to character page
-	.when('/character/:characterName', {
+	.when('/character/:id', {
 		templateUrl: '../static/htmls/character.html',
 		controller: 'characterCtrl'
 	})
@@ -60,15 +60,18 @@ mainApp.controller('tournamentsCtrl',
 	  	$http.get('http://localhost:5000/api/tournaments')
 		  	.then(function(response) {
 		  		$scope.tournaments = response.data["tournaments"];
+
+        $scope.itemsByPage = 1;
+        $scope.numPages = $scope.characters.length/$scope.itemByPage;
 	  	});
 
 });
 
 mainApp.controller('tournamentCtrl',
-    function ($scope, $http) {
-	  	$http.get('http://localhost:5000/api/tournament/name1')
+    function ($scope, $routeParams, $http) {
+	  	$http.get('http://localhost:5000/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
-		  		$scope.tournament = response.data["tournament"];
+                $scope.tournament = response.data["tournament"];
 	  	});
 
 });
@@ -78,13 +81,16 @@ mainApp.controller('participantsCtrl',
         $http.get('http://localhost:5000/api/participants')
             .then(function(response) {
                 $scope.participants = response.data["participants"];
+
+                $scope.itemsByPage = 5;
+                $scope.numPages = $scope.participants.length/$scope.itemByPage;
         });
 
 });
 
 mainApp.controller('participantCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/participant/name1')
+    function ($scope, $routeParams, $http) {
+        $http.get('http://localhost:5000/api/participant/' + $routeParams['id'])
             .then(function(response) {
                 $scope.participant = response.data["participant"];
         });
@@ -96,13 +102,20 @@ mainApp.controller('charactersCtrl',
         $http.get('http://localhost:5000/api/characters')
             .then(function(response) {
                 $scope.characters = response.data["characters"];
-        });
 
+                $scope.itemsByPage = 2;
+                $scope.numPages = $scope.characters.length/$scope.itemByPage;
+        });
+        // $scope.characters = [
+        // {character_name: 'Mario', universe: 'Mario', weight: '100', moves:'attack', debut: 1986 },
+        // {character_name: 'Link', universe: 'Zelda', weight: '112', moves:'hook', debut: 1989 },
+        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 1999 },
+        // {character_name: 'Samus', universe: 'Metriod', weight: '98', moves:'spin', debut: 2001 }]
 });
 
 mainApp.controller('characterCtrl',
-    function ($scope, $http) {
-        $http.get('http://localhost:5000/api/character/name1')
+    function ($scope, $routeParams, $http) {
+        $http.get('http://localhost:5000/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
         });
