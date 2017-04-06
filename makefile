@@ -34,7 +34,7 @@ start-server:
 	bash start_server.sh
 
 html:
-	python3.5 -m pydoc -w app/models.py
+	cd app && python3.5 -m pydoc -w models && mv models.html ../
 
 log:
 	git log > IDB2.log
