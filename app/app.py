@@ -44,6 +44,8 @@ def return_tournament(tid):
     """
     session = Session()
     tournament = clean_single(session.query(Tournament).filter(Tournament.id == tid).one())
+    participants = clean_multiple(session.query(Participant).filter(Participant.tournament_id == tid).all())
+    tournament['num_participants'] = len(participants)
     return jsonify(tournament = tournament)
 
 @app.route('/api/participants', methods=['GET'])
