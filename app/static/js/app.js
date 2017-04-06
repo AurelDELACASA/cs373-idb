@@ -143,7 +143,7 @@ mainApp.controller('aboutCtrl',
       commits: 0
     },
     {
-      name: 'Maurya Avineni',
+      name: 'Maurya Avirneni',
       username: 'MauryaAvirneni',
       description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
       responsibilities: 'AngularJS, Bootstrap, AWS',
