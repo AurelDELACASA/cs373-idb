@@ -25,10 +25,10 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 2rem;
   letter-spacing: 0.01rem;
   color: #212121;
@@ -113,7 +113,7 @@ body {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   text-align: center;
   padding: 1.6rem;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 0;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
