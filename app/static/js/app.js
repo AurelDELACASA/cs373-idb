@@ -58,8 +58,6 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	}
 }]);
 
-// Factories
-
 mainApp.factory('participantsFactory', function($http) {
   var participantsFactory = {
     async: function() {
@@ -83,20 +81,28 @@ mainApp.controller('participantsCtrl',
     });
   });
 
-
-// Controllers
+mainApp.factory('tournamentsFactory', function($http) {
+  var tournamentsFactory = {
+    async: function() {
+      var promise = $http.get(prefix + "/api/tournaments").then(function (response) {
+        return response.data["tournaments"];
+      });
+      return promise;
+    }
+  };
+  return tournamentsFactory;
+});
 
 mainApp.controller('tournamentsCtrl',
-    function ($scope, $http) {
-	  	$http.get(prefix + '/api/tournaments')
-		  	.then(function(response) {
-		  		$scope.tournaments = response.data["tournaments"];
-
-        $scope.itemsByPage = 1;
-        $scope.numPages = $scope.characters.length/$scope.itemByPage;
-	  	});
-
-});
+  function(tournamentsFactory, $scope) {
+    tournamentsFactory.async().then(function(data) {
+      $scope.tournaments = data;
+      $scope.subset = data;
+      $scope.itemsByPage = 5;
+      $scope.numPages = 10;
+      console.log($scope.numPages);
+    });
+  });
 
 mainApp.controller('tournamentCtrl',
     function ($scope, $routeParams, $http) {
