@@ -88,6 +88,16 @@ def return_participant(pid):
     participant.pop('main_id', None)
     return jsonify(participant = participant)
 
+@app.route('/api/participant/<int:pid>/other', methods=['GET'])
+def get_similar_participants(pid):
+    """
+    API route for getting all participants with the same name
+    """
+    session = Session()
+    participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
+    participants = clean_multiple(session.query(Participant).filter(Participant.tag == participant['tag']).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
     """
