@@ -80,6 +80,19 @@ mainApp.controller('participantsCtrl',
     });
   });
 
+mainApp.controller('participantCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/participant/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.participant = response.data["participant"];
+        })
+        $http.get(prefix + '/api/participant/' + $routeParams['id'] + '/similar')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
+
 mainApp.factory('tournamentsFactory', function($http) {
   var tournamentsFactory = {
     async: function() {
@@ -117,15 +130,6 @@ mainApp.controller('tournamentCtrl',
 
 
 
-
-});
-
-mainApp.controller('participantCtrl',
-    function ($scope, $routeParams, $http) {
-        $http.get(prefix + '/api/participant/' + $routeParams['id'])
-            .then(function(response) {
-                $scope.participant = response.data["participant"];
-        });
 
 });
 
