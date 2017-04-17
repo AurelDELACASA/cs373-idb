@@ -34,7 +34,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	//Go to characters page
 	.when('/characters', {
 		templateUrl: '../static/htmls/characters.html',
-		controller: 'charactersCtrl'
+		controller: 'searchCtrl'
 	})
 	//Go to character page
 	.when('/character/:id', {
@@ -77,7 +77,6 @@ mainApp.controller('participantsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 10;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
 
@@ -100,7 +99,6 @@ mainApp.controller('tournamentsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 5;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
 
@@ -123,28 +121,27 @@ mainApp.controller('participantCtrl',
 });
 
 
-mainApp.factory('charactersFactory', function($http) {
-  var charactersFactory = {
-    async: function() {
-      var promise = $http.get(prefix + "/api/characters").then(function (response) {
-        return response.data["characters"];
-      });
-      return promise;
-    }
-  };
-  return charactersFactory;
-});
+// mainApp.factory('charactersFactory', function($http) {
+//   var charactersFactory = {
+//     async: function() {
+//       var promise = $http.get(prefix + "/api/characters").then(function (response) {
+//         return response.data["characters"];
+//       });
+//       return promise;
+//     }
+//   };
+//   return charactersFactory;
+// });
 
-mainApp.controller('charactersCtrl',
-  function(charactersFactory, $scope) {
-    charactersFactory.async().then(function(data) {
-      $scope.characters = data;
-      $scope.subset = data;
-      $scope.itemsByPage = 5;
-      $scope.numPages = 3;
-      console.log($scope.numPages);
-    });
-  });
+// mainApp.controller('charactersCtrl',
+//   function(charactersFactory, $scope) {
+//     charactersFactory.async().then(function(data) {
+//       $scope.characters = data;
+//       $scope.subset = data;
+//       $scope.itemsByPage = 5;
+//       $scope.numPages = 3;
+//     });
+//   });
 
 mainApp.controller('characterCtrl',
     function ($scope, $routeParams, $http) {
@@ -154,6 +151,32 @@ mainApp.controller('characterCtrl',
         });
 
 });
+
+mainApp.factory('searchFactory', function($http) {
+  var searchFactory = {
+    async: function() {
+      var promise = $http.get(prefix + "/api/lake").then(function (response) {
+        return response.data["results"];
+      });
+      return promise;
+    }
+  };
+  return searchFactory;
+});
+
+mainApp.controller('searchCtrl',
+  function(searchFactory, $scope) {
+    searchFactory.async().then(function(data) {
+      $scope.characters = data;
+      console.log($scope.characters.length)
+      console.log(data[3336])
+
+      $scope.subset = data;
+      $scope.itemsByPage = 100;
+      $scope.numPages = 20;
+    });
+  });
+
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {

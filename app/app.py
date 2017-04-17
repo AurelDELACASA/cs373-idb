@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, render_template, make_response, jsonify, request
 import subprocess
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
@@ -115,6 +115,28 @@ def run_tests():
 
     return process.decode("utf-8")
 
+@app.route('/api/lake', methods=['GET'])
+def search_db():
+    """
+    API route of all database data. Used for searching in the database
+    """
+
+    session = Session()
+    participants = clean_multiple(session.query(Participant).all())
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    for t in tournaments:
+        participants.append(t)
+    for c in characters:
+        participants.append(c)
+
+    finalResults = participants
+
+    return jsonify(results = finalResults)
+
+
+
+
 def clean_multiple(result_set):
     return_set = list()
     for entity in result_set:
@@ -125,6 +147,72 @@ def clean_single(result_set):
     entity_dict = result_set.__dict__.copy()
     entity_dict.pop("_sa_instance_state")
     return entity_dict
+
+
+
+
+
+
+# search = str(request.args.get('query'))
+#     count = int(request.args.get('limit'))
+
+#     andSearch = search.lower().replace(" ","+") + ':*'
+#     orSearch = search.lower().replace(" ","|") + ':*'
+    
+#     andResults = get_results(andSearch, count, "and")
+#     orResults = get_results(orSearch, count, "or")
+
+#     finalResults = andResults
+#     l = [result["link"] for result in finalResults]
+#     for r in orResults:
+#         if r["link"] not in links:
+#             finalResults.append(r)
+
+#     return jsonify(results = finalResults)
+
+
+
+
+
+
+def get_search_results(sQuery, count, sType):
+    results = []
+
+    session = Session()
+    particpantQuery = clean_multiple(session.query(Participants).filter(func.to_tsvector(func.lower(Participants.title)).match(sQuery)).limit(count).all())
+    tournamentQuery = clean_multiple(session.query(Tournaments).filter(func.to_tsvector(func.lower(Tournaments.title)).match(sQuery)).limit(count).all())
+    characterQuery = clean_multiple(session.query(Characters).filter(func.to_tsvector(func.lower(Characters.title)).match(sQuery)).limit(count).all())
+
+    for participant in participantQuery:
+        result = {}
+        result["title"] = cuisine.title
+        result["image"] = cuisine.imageUrl
+        result["link"] = "/cuisines/" + str(cuisine.id)
+        result["type"] = "Cuisine"
+        result["searchType"] = sType
+        results.append(result)
+
+    for tournament in tournamentQuery:
+        result = {}
+        result["title"] = recipe.title
+        result["image"] = recipe.imageURL
+        result["link"] = "/recipes/" + str(recipe.id)
+        result["type"] = "Recipe"
+        result["searchType"] = sType
+        results.append(result)
+
+    for character in characterQuery:
+        result = {}
+        result["title"] = ingredient.title
+        result["image"] = ingredient.imageURL
+        result["link"] = "/ingredients/" + str(ingredient.id)
+        result["type"] = "Ingredient"
+        result["searchType"] = sType
+        results.append(result)
+
+    results = sorted(results, key=lambda k : len(k["title"]))[:count]
+
+    return results
 
 if __name__ == "__main__":
     session = Session()
