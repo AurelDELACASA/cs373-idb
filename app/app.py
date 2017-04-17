@@ -88,7 +88,7 @@ def return_participant(pid):
     participant.pop('main_id', None)
     return jsonify(participant = participant)
 
-@app.route('/api/participant/<int:pid>/other', methods=['GET'])
+@app.route('/api/participant/<int:pid>/similar', methods=['GET'])
 def get_similar_participants(pid):
     """
     API route for getting all participants with the same name
