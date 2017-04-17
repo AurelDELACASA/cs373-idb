@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, render_template, make_response, jsonify, request
 import subprocess
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
@@ -96,6 +96,18 @@ def get_similar_participants(pid):
     session = Session()
     participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
     participants = clean_multiple(session.query(Participant).filter(Participant.tag == participant['tag']).all())
+
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    c_dict = {d['id']:d['name'] for d in characters}
+    t_dict = {d['id']:d['name'] for d in tournaments}
+
+    # Do a manual join on Characters
+    for participant in participants:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+#        participant.pop('main_id', None)
+
     return jsonify(participants = participants)
 
 @app.route('/api/characters', methods=['GET'])
