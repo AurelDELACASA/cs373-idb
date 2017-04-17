@@ -119,6 +119,15 @@ def return_character(cid):
     character = clean_single(session.query(Character).filter(Character.id == cid).one())
     return jsonify(character = character)
 
+@app.route('/api/character/<int:cid>/participants', methods=['GET'])
+def return_participants_for_character(cid):
+    """
+    API route to get participants that use a character
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.main_id == cid).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/runTests', methods=['GET'])
 def run_tests():
     """
