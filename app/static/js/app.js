@@ -34,7 +34,7 @@ mainApp.config(['$routeProvider', '$locationProvider',
 	//Go to characters page
 	.when('/characters', {
 		templateUrl: '../static/htmls/characters.html',
-		controller: 'searchCtrl'
+		controller: 'charactersCtrl'
 	})
 	//Go to character page
 	.when('/character/:id', {
@@ -134,33 +134,37 @@ mainApp.controller('tournamentCtrl',
 });
 
 
-// mainApp.factory('charactersFactory', function($http) {
-//   var charactersFactory = {
-//     async: function() {
-//       var promise = $http.get(prefix + "/api/characters").then(function (response) {
-//         return response.data["characters"];
-//       });
-//       return promise;
-//     }
-//   };
-//   return charactersFactory;
-// });
+mainApp.factory('charactersFactory', function($http) {
+  var charactersFactory = {
+    async: function() {
+      var promise = $http.get(prefix + "/api/characters").then(function (response) {
+        return response.data["characters"];
+      });
+      return promise;
+    }
+  };
+  return charactersFactory;
+});
 
-// mainApp.controller('charactersCtrl',
-//   function(charactersFactory, $scope) {
-//     charactersFactory.async().then(function(data) {
-//       $scope.characters = data;
-//       $scope.subset = data;
-//       $scope.itemsByPage = 5;
-//       $scope.numPages = 3;
-//     });
-//   });
+mainApp.controller('charactersCtrl',
+  function(charactersFactory, $scope) {
+    charactersFactory.async().then(function(data) {
+      $scope.characters = data;
+      $scope.subset = data;
+      $scope.itemsByPage = 5;
+      $scope.numPages = 3;
+    });
+  });
 
 mainApp.controller('characterCtrl',
     function ($scope, $routeParams, $http) {
         $http.get(prefix + '/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
         });
 
 });
