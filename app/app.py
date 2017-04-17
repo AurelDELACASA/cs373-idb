@@ -48,6 +48,15 @@ def return_tournament(tid):
     tournament['num_participants'] = len(participants)
     return jsonify(tournament = tournament)
 
+@app.route('/api/tournament/<int:tid>/participants', methods=['GET'])
+def get_participant_list(tid):
+    """
+    API route for getting participants for a specific tournament
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.tournament_id == tid).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
     """
@@ -79,6 +88,16 @@ def return_participant(pid):
     participant.pop('main_id', None)
     return jsonify(participant = participant)
 
+@app.route('/api/participant/<int:pid>/similar', methods=['GET'])
+def get_similar_participants(pid):
+    """
+    API route for getting all participants with the same name
+    """
+    session = Session()
+    participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
+    participants = clean_multiple(session.query(Participant).filter(Participant.tag == participant['tag']).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
     """
@@ -99,6 +118,15 @@ def return_character(cid):
     session = Session()
     character = clean_single(session.query(Character).filter(Character.id == cid).one())
     return jsonify(character = character)
+
+@app.route('/api/character/<int:cid>/participants', methods=['GET'])
+def return_participants_for_character(cid):
+    """
+    API route to get participants that use a character
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.main_id == cid).all())
+    return jsonify(participants = participants)
 
 @app.route('/api/runTests', methods=['GET'])
 def run_tests():

@@ -4,6 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Tournament, Participant, Character
 from config import get_URI
+import urllib.request
+import json
 
 
 class TestModels(TestCase):
@@ -292,7 +294,7 @@ class TestModels(TestCase):
         session.commit()
 
     #-------------------------
-    #Testing Characters Model
+    # Testing Characters Model
     #-------------------------
 
     def test_character_add_one(self):
@@ -396,29 +398,110 @@ class TestModels(TestCase):
     # Testing API calls
     #------------------
 
-    def test_query_all_tournaments(self):
-        # query for all tournaments
-        self.assertTrue(True)
+    def test_query_all_tournaments_count(self):
+        # query for all tournaments, validate count
+        session = self.session()
+        num_tournaments = session.query(Tournament).count()
+
+        url = 'http://smashdb.me/api/tournaments'
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        num_results = len(list(list(result_json.items())[0])[1])
+
+        self.assertEqual(num_tournaments, num_results)
 
     def test_query_one_tournament(self):
         # query for one tournaments
-        self.assertTrue(True)
+        tournament_id = '3'  # Hardcoded BUST2's tournament_id
+        tournament_json = json.loads("""
+            {
+                "tournament": {
+                    "date": " April 11th, 2015", 
+                    "id": 3, 
+                    "image_path": "https://images.smash.gg/images/tournament/1037/image-5b136245e78f2d0b22fdef47609f5c34.png", 
+                    "location": " MA", 
+                    "name": "BUST2", 
+                    "num_participants": 222, 
+                    "sanitized": "bust2"
+                }
+            }""")
 
-    def test_query_all_participants(self):
-        # query for all participants
-        self.assertTrue(True)
+        url = 'http://smashdb.me/api/tournament/' + tournament_id
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        self.assertEqual(tournament_json, result_json)
+
+    def test_query_all_participants_count(self):
+        # query for all participants, validate count
+        session = self.session()
+        num_participants = session.query(Participant).count()
+
+        url = 'http://smashdb.me/api/participants'
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        num_results = len(list(list(result_json.items())[0])[1])
+
+        self.assertEqual(num_participants, num_results)
 
     def test_query_one_participant(self):
         # query for one participants
-        self.assertTrue(True)
+        participant_id = '3'  # Hardcoded Leffen's participant_id
+        participant_json = json.loads("""
+            {
+                "participant": {
+                    "id": 3, 
+                    "location": "Sweden", 
+                    "main": "Falco", 
+                    "sponsor": "TSM", 
+                    "tag": "Leffen", 
+                    "tournament_id": 2
+                }
+            }""")
 
-    def test_query_all_characters(self):
-        # query for all characters
-        self.assertTrue(True)
+        url = 'http://smashdb.me/api/participant/' + participant_id
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        self.assertEqual(participant_json, result_json)
+
+    def test_query_all_characters_count(self):
+        # query for all characters, validate count
+        session = self.session()
+        num_characters = session.query(Character).count()
+
+        url = 'http://smashdb.me/api/characters'
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        num_results = len(list(list(result_json.items())[0])[1])
+
+        self.assertEqual(num_characters, num_results)
 
     def test_query_one_character(self):
-        # query for one characters
-        self.assertTrue(True)
+        # query for one character
+        character_id = '2'  # Hardcoded Mario's character_id
+        character_json = json.loads("""
+            {
+                "character": {
+                        "debut": "1981",
+                        "name": "Mario", 
+                        "universe": "Mario", 
+                        "id": 2, 
+                        "weight": "100", 
+                        "tier": "E", 
+                        "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
+                        "image_path": "mario.png"
+                }
+            }""")
+
+        url = 'http://smashdb.me/api/character/' + character_id
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        self.assertEqual(character_json, result_json)
 
 
 if __name__ == "__main__":
