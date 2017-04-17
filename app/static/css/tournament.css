@@ -11,8 +11,7 @@
  .banner img {
      width: 700px;
 }
-table {
-    margin-left:5em;
+.table {
     padding-left: 50%;
     border: 1px;
 }

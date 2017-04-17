@@ -31,21 +31,13 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" ng-controller="tournamentCtrl">
 
     <br>
     <br>
     <br>
     <br>
     <h2><center>Tournament Info</center></h2>
-    <br>
-    <br>
-
-
-    <br>
-    <br>
-    <br>
-
     <div class="header">
       <div class="alignleft banner">
         <img src="{{tournament.image_path}}" width="500px">
@@ -101,8 +93,40 @@
                 <br>
               </td>
             </tr>
-        <tr>
-</div>
+          </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2><center>Participants</center></h2>
+    <br>
+    <center>
+      <table st-table="subset" st-safe-src="parts" class="table table-striped table-hover table-mc-light-blue" align="center">
+        <thead>
+          <tr>
+            <th class="sort-header" st-sort="sponsor"><span>Sponsor</span></th>
+            <th class="sort-header" st-sort="tag"><span>Tag</span></th>
+            <th class="sort-header" st-sort="location"><span>Location</span></th>
+            <th><span></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="participant in subset">
+            <td >{{participant.sponsor}}</td>
+            <td >{{participant.tag}}</td>
+            <td >{{participant.location}}</td>
+            <td ><a href="/participant/{{participant.id}}">More Info</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+            <tr></tr>
+              <td class="text-center" colspan="7">
+                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numPages" align="center"></div>
+              </td>
+        </tfoot>
+      </table>
+    </center>
     <!-- Scripts -->
 
     <!-- jQuery -->

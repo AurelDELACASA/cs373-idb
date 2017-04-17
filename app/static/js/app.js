@@ -107,7 +107,16 @@ mainApp.controller('tournamentCtrl',
 	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
                 $scope.tournament = response.data["tournament"];
-	  	});
+	  	})
+      $http.get(prefix + '/api/tournament/' + $routeParams['id'] + '/participants')
+        .then(function(response) {
+                console.log("IN HERE!!")
+                $scope.parts = response.data["participants"];
+                console.log(response.data)
+      });
+
+
+
 
 });
 
