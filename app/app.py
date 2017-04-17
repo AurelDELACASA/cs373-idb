@@ -48,6 +48,15 @@ def return_tournament(tid):
     tournament['num_participants'] = len(participants)
     return jsonify(tournament = tournament)
 
+@app.route('/api/tournament/<int:tid>/participants', methods=['GET'])
+def get_participant_list(tid):
+    """
+    API route for getting participants for a specific tournament
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.tournament_id == tid).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
     """
