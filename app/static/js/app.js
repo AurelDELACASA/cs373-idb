@@ -46,6 +46,12 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		templateUrl: '../static/htmls/about.html',
 		controller: 'aboutCtrl'
 	})
+	//Go to search page
+	.when('/search', {
+		templateUrl: '../static/htmls/search.html',
+		controller: 'searchCtrl'
+	})
+
 	.otherwise({redirectTo: '/'});
 
 	//Get rid of # in URL
@@ -172,7 +178,9 @@ mainApp.controller('characterCtrl',
 mainApp.factory('searchFactory', function($http) {
   var searchFactory = {
     async: function() {
-      var promise = $http.get(prefix + "/api/lake").then(function (response) {
+      var query_string = window.location.search.replace("?query=", "");
+      var promise = $http.get(prefix + "/api/search?query=" + query_string).then(function (response) {
+          console.log(query_string);
         return response.data["results"];
       });
       return promise;
@@ -184,16 +192,45 @@ mainApp.factory('searchFactory', function($http) {
 mainApp.controller('searchCtrl',
   function(searchFactory, $scope) {
     searchFactory.async().then(function(data) {
-      $scope.characters = data;
-      console.log($scope.characters.length)
-      console.log(data[3336])
 
-      $scope.subset = data;
-      $scope.itemsByPage = 100;
-      $scope.numPages = 20;
+      // Full (AND) matches
+
+      $scope.tfull = data["tournamentsANDQuery"];
+      $scope.tfullsubset = data["tournamentsANDQuery"];
+
+      $scope.pfull = data["participantsANDQuery"];
+      $scope.pfullsubset = data["participantsANDQuery"];
+
+      $scope.cfull = data["charactersANDQuery"];
+      $scope.cfullsubset = data["characterssANDQuery"];
+
+      // Partial (OR) matches
+      $scope.tpart = data["tournamentsORQuery"];
+      $scope.tpartsubset = data["tournamentsORQuery"];
+
+      $scope.ppart = data["participantsORQuery"];
+      $scope.ppartsubset = data["participantsORQuery"];
+
+      $scope.cpart = data["charactersORQuery"];
+      $scope.cpartsubset = data["characterssORQuery"];
+
+      $scope.itemsByPage = 5;
+      $scope.numPages = 3;
     });
   });
 
+mainApp.controller('characterCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/character/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
