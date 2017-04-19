@@ -39,7 +39,6 @@
           <td>Tag</td>
           <td>Main</td>
           <td>Location</td>
-          <td>Tournament</td>
         </tr>
       </thead>
       <tbody>
@@ -48,9 +47,40 @@
           <td>{{participant.tag}}</td>
           <td>{{participant.main}}</td>
           <td>{{participant.location}}</td>
-          <td>{{participant.tournament_name}} (<a href="/tournament/{{participant.tournament_id}}">View Tournament</a>)</td>
         </tr>
       </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <h2><center>Tournaments</center></h2>
+    <br>
+    <table st-table="subset" st-safe-src="parts" class="table table-striped table-hover table-mc-light-blue" align="center">
+      <thead>
+        <tr>
+          <th class="sort-header" st-sort="sponsor"><span>Sponsor</span></th>
+          <th class="sort-header" st-sort="tag"><span>Tag</span></th>
+          <th class="sort-header" st-sort="main"><span>Main</span></th>
+          <th class="sort-header" st-sort="tournament"><span>Tournament Name</span></th>
+          <th><span></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="participant in subset">
+          <td >{{participant.sponsor}}</td>
+          <td >{{participant.tag}}</td>
+          <td >{{participant.main}}</td>
+          <td >{{participant.tournament_name}}</td>
+          <td ><a href="/tournament/{{participant.tournament_id}}">More Info</a></td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr></tr>
+            <td class="text-center" colspan="7">
+              <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numPages" align="center"></div>
+            </td>
+      </tfoot>
     </table>
 
      <!-- jQuery -->

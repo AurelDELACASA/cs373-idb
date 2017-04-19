@@ -46,6 +46,12 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		templateUrl: '../static/htmls/about.html',
 		controller: 'aboutCtrl'
 	})
+	//Go to search page
+	.when('/search', {
+		templateUrl: '../static/htmls/search.html',
+		controller: 'searchCtrl'
+	})
+
 	.otherwise({redirectTo: '/'});
 
 	//Get rid of # in URL
@@ -77,9 +83,21 @@ mainApp.controller('participantsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 10;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
+
+mainApp.controller('participantCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/participant/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.participant = response.data["participant"];
+        })
+        $http.get(prefix + '/api/participant/' + $routeParams['id'] + '/similar')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
 
 mainApp.factory('tournamentsFactory', function($http) {
   var tournamentsFactory = {
@@ -100,7 +118,6 @@ mainApp.controller('tournamentsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 5;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
 
@@ -109,16 +126,16 @@ mainApp.controller('tournamentCtrl',
 	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
                 $scope.tournament = response.data["tournament"];
-	  	});
+	  	})
+      $http.get(prefix + '/api/tournament/' + $routeParams['id'] + '/participants')
+        .then(function(response) {
+                console.log("IN HERE!!")
+                $scope.parts = response.data["participants"];
+                console.log(response.data)
+      });
 
-});
 
-mainApp.controller('participantCtrl',
-    function ($scope, $routeParams, $http) {
-        $http.get(prefix + '/api/participant/' + $routeParams['id'])
-            .then(function(response) {
-                $scope.participant = response.data["participant"];
-        });
+
 
 });
 
@@ -142,7 +159,6 @@ mainApp.controller('charactersCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 5;
       $scope.numPages = 3;
-      console.log($scope.numPages);
     });
   });
 
@@ -151,6 +167,67 @@ mainApp.controller('characterCtrl',
         $http.get(prefix + '/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
+
+mainApp.factory('searchFactory', function($http) {
+  var searchFactory = {
+    async: function() {
+      var query_string = window.location.search.replace("?query=", "");
+      var promise = $http.get(prefix + "/api/search?query=" + query_string).then(function (response) {
+          console.log(query_string);
+        return response.data["results"];
+      });
+      return promise;
+    }
+  };
+  return searchFactory;
+});
+
+mainApp.controller('searchCtrl',
+  function(searchFactory, $scope) {
+    searchFactory.async().then(function(data) {
+
+      // Full (AND) matches
+
+      $scope.tfull = data["tournamentsANDQuery"];
+      $scope.tfullsubset = data["tournamentsANDQuery"];
+
+      $scope.pfull = data["participantsANDQuery"];
+      $scope.pfullsubset = data["participantsANDQuery"];
+
+      $scope.cfull = data["charactersANDQuery"];
+      $scope.cfullsubset = data["characterssANDQuery"];
+
+      // Partial (OR) matches
+      $scope.tpart = data["tournamentsORQuery"];
+      $scope.tpartsubset = data["tournamentsORQuery"];
+
+      $scope.ppart = data["participantsORQuery"];
+      $scope.ppartsubset = data["participantsORQuery"];
+
+      $scope.cpart = data["charactersORQuery"];
+      $scope.cpartsubset = data["characterssORQuery"];
+
+      $scope.itemsByPage = 5;
+      $scope.numPages = 3;
+    });
+  });
+
+mainApp.controller('characterCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/character/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
         });
 
 });
@@ -164,7 +241,7 @@ mainApp.controller('aboutCtrl',
       description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
       responsibilities: 'API Documentation, Tests, AngularJS, Knick Knacks',
       tests: 9,
-      issues: 1,
+      issues: 7,
       commits: 0
     },
     {
@@ -173,7 +250,7 @@ mainApp.controller('aboutCtrl',
       description: "What's up! I'm Maurya, a junior UTCS student. I'm a fan of full-stack application development, networking and security, and finance. I also enjoy sports and shredding the guitar.",
       responsibilities: 'AngularJS, Bootstrap, AWS',
       tests: 0,
-      issues: 17,
+      issues: 18,
       commits: 0
     },
     {
@@ -182,7 +259,7 @@ mainApp.controller('aboutCtrl',
       description: "Hey, my name is Rohit and I'm a junior here at UT. I love solving Rubik's cubes, longboarding, dancing and computer science! I love Smash and main Ganondorf in Project M. Feel free to ask me for a game!",
       responsibilities: 'Bootstrap, AngularJS, Data Collection, Media',
       tests: 0,
-      issues: 1,
+      issues: 13,
       commits: 0
     },
     {
@@ -191,7 +268,7 @@ mainApp.controller('aboutCtrl',
       description: "My name is Dallas, and I’m a senior at the University of Texas. My true loves include Computer Science, dogs, and most of all, Melee. I hope this website has helped satisfy your burning desire for Smash stats.",
       responsibilities: 'Bootstrap, AngularJS, Media, AWS',
       tests: 0,
-      issues: 6,
+      issues: 8,
       commits: 0
     },
     {
@@ -200,14 +277,14 @@ mainApp.controller('aboutCtrl',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Models, Flask, AngularJS, Data Collection, AWS',
       tests: 6,
-      issues: 9,
+      issues: 13,
       commits: 0
     }
     ];
 
     $scope.totals = {
         total_commits: 0,
-        total_issues: 34,
+        total_issues: 59,
         total_unittests: 15
     };
 

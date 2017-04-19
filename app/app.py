@@ -1,8 +1,8 @@
-from flask import Flask, render_template, make_response, jsonify
+from flask import Flask, render_template, make_response, jsonify, request
 import subprocess
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from models import Tournament, Participant, Character
 from config import get_URI
 import os
@@ -48,6 +48,15 @@ def return_tournament(tid):
     tournament['num_participants'] = len(participants)
     return jsonify(tournament = tournament)
 
+@app.route('/api/tournament/<int:tid>/participants', methods=['GET'])
+def get_participant_list(tid):
+    """
+    API route for getting participants for a specific tournament
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.tournament_id == tid).all())
+    return jsonify(participants = participants)
+
 @app.route('/api/participants', methods=['GET'])
 def return_participants():
     """
@@ -79,6 +88,28 @@ def return_participant(pid):
     participant.pop('main_id', None)
     return jsonify(participant = participant)
 
+@app.route('/api/participant/<int:pid>/similar', methods=['GET'])
+def get_similar_participants(pid):
+    """
+    API route for getting all participants with the same name
+    """
+    session = Session()
+    participant = clean_single(session.query(Participant).filter(Participant.id == pid).one())
+    participants = clean_multiple(session.query(Participant).filter(Participant.tag == participant['tag']).all())
+
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    c_dict = {d['id']:d['name'] for d in characters}
+    t_dict = {d['id']:d['name'] for d in tournaments}
+
+    # Do a manual join on Characters
+    for participant in participants:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+#        participant.pop('main_id', None)
+
+    return jsonify(participants = participants)
+
 @app.route('/api/characters', methods=['GET'])
 def return_characters():
     """
@@ -106,6 +137,24 @@ def return_character(cid):
     character['up_b'] = move_list[3]
     return jsonify(character = character)
 
+@app.route('/api/character/<int:cid>/participants', methods=['GET'])
+def return_participants_for_character(cid):
+    """
+    API route to get participants that use a character
+    """
+    session = Session()
+    participants = clean_multiple(session.query(Participant).filter(Participant.main_id == cid).all())
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    c_dict = {d['id']:d['name'] for d in characters}
+    t_dict = {d['id']:d['name'] for d in tournaments}
+
+    # Do a manual join on Characters
+    for participant in participants:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+    return jsonify(participants = participants)
+
 @app.route('/api/runTests', methods=['GET'])
 def run_tests():
     """
@@ -120,6 +169,74 @@ def run_tests():
         process = e.output
 
     return process.decode("utf-8")
+
+@app.route('/api/search', methods=['GET'])
+def search():
+    query = str(request.args.get('query'))
+    AND_query = query.lower().replace(" ", "+") + ":*"
+    OR_query = query.lower().replace(" ", "|") + ":*"
+
+    session = Session()
+
+    participantANDQuery = clean_multiple(session.query(Participant).filter(func.to_tsvector(func.lower(Participant.tag)).match(AND_query)).all())
+    tournamentANDQuery = clean_multiple(session.query(Tournament).filter(func.to_tsvector(func.lower(Tournament.name)).match(AND_query)).all())
+    characterANDQuery = clean_multiple(session.query(Character).filter(func.to_tsvector(func.lower(Character.name)).match(AND_query)).all())
+
+    participantORQuery = clean_multiple(session.query(Participant).filter(func.to_tsvector(func.lower(Participant.tag)).match(OR_query)).all())
+    tournamentORQuery = clean_multiple(session.query(Tournament).filter(func.to_tsvector(func.lower(Tournament.name)).match(OR_query)).all())
+    characterORQuery = clean_multiple(session.query(Character).filter(func.to_tsvector(func.lower(Character.name)).match(OR_query)).all())
+
+    pIDs = [x['id'] for x in participantANDQuery]
+    tIDs = [x['id'] for x in tournamentANDQuery]
+    cIDs = [x['id'] for x in characterANDQuery]
+
+#    print(pIDs)
+#    print(tIDs)
+#    print(cIDs)
+
+    pFiltered = list()
+    tFiltered = list()
+    cFiltered = list()
+
+    for participant in participantORQuery:
+        if participant['id'] not in pIDs:
+            pFiltered.append(participant)
+
+    for tournament in tournamentORQuery:
+        if tournament['id'] not in tIDs:
+            tFiltered.append(tournament)
+
+    for character in characterORQuery:
+        if character['id'] not in cIDs:
+            cFiltered.append(character)
+
+    characters = clean_multiple(session.query(Character).all())
+    tournaments = clean_multiple(session.query(Tournament).all())
+    c_dict = {d['id']:d['name'] for d in characters}
+    t_dict = {d['id']:d['name'] for d in tournaments}
+
+    # Do a manual join on Characters
+    for participant in participantANDQuery:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+
+    for participant in pFiltered:
+        participant['main'] = c_dict[participant['main_id']]
+        participant['tournament_name'] = t_dict[participant['tournament_id']]
+
+    full_results = dict()
+    full_results['participantsANDQuery'] = participantANDQuery
+    full_results['tournamentsANDQuery'] = tournamentANDQuery
+    full_results['charactersANDQuery'] = characterANDQuery
+
+    full_results['participantsORQuery'] = pFiltered
+    full_results['tournamentsORQuery'] = tFiltered
+    full_results['charactersORQuery'] = cFiltered
+
+#    print(full_results)
+
+    return jsonify(results = full_results)
+
 
 def clean_multiple(result_set):
     return_set = list()

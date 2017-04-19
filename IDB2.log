@@ -1,3 +1,129 @@
+commit bf649934e5c33c16ba312ba34f2b07eaa4a0b9a5
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 18:39:13 2017 -0500
+
+    Added models.html
+
+commit 863143c8a9101f90803b3a877e3cb0271cc0440c
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 18:25:03 2017 -0500
+
+    Updated about page
+
+commit eb2579e870a69cb37f7a383a0b409f97c33cf888
+Merge: 9ad43b8 e89487e
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 17:52:16 2017 -0500
+
+    Merge branch 'master' into dev
+
+commit 9ad43b8772281d84dc95a3d587b4f6d44a19fca3
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 16:17:02 2017 -0500
+
+    fix a spelling
+
+commit 5583424160b2947f870b60219a859c9ed9673bf4
+Merge: 0f90276 4120a0a
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 16:10:40 2017 -0500
+
+    merge conficts
+
+commit 0f90276beb6be64da277199d57efd400459e739a
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 16:10:28 2017 -0500
+
+    Continuing CSS work for individual characters, and now also individual tournaments
+
+commit 4120a0aee02411ebc87e9e919951dc422b57d843
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 15:51:03 2017 -0500
+
+    Add back coverage
+
+commit 129334324163bad50b6f6276110aa118d1f8be74
+Merge: 357d963 0c3c7c7
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 15:44:28 2017 -0500
+
+    fixing merge
+
+commit 357d963d50efe0d94d75c8ff0809e03cb2f0e7ff
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 15:44:14 2017 -0500
+
+    Now include tier in 'characters' page
+
+commit 1c18b71808869bfc49e42f5b24e2995f91fbfb55
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 15:43:46 2017 -0500
+
+    Moving table text to center of td instead of top
+
+commit 0c3c7c7fae4e9bc932a967173d635a22e0ce3cb4
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:55:35 2017 -0500
+
+    Supress coverage for now
+
+commit 827935ccfe37637d71a6d15cb468f83b215883a7
+Merge: 8916625 eb29b3c
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:53:19 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit eb29b3c1b1d76fbe1915562eb810ec927ca88d68
+Merge: 8ab86ed cee81aa
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 14:52:38 2017 -0500
+
+    fixing merge conflict
+
+commit 8ab86ed48ebf1f20f4e47f315c30e9f59fed0f9f
+Author: Dallas Kelle <dallas.kelle@gmail.com>
+Date:   Thu Apr 6 14:52:20 2017 -0500
+
+    working on CSS improvements for the individual character page
+
+commit 8916625a7f7f8246a714bcad9153c8179f68e36d
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:52:19 2017 -0500
+
+    Update pip packages
+
+commit cee81aa29d3793936c49b32b64ad90d5cc668059
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:49:20 2017 -0500
+
+    Move config into app/
+
+commit 4028ba349048d0d37dfc6b5603cd7b9748f46b52
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:37:59 2017 -0500
+
+    jk maybe don't print our password
+
+commit 8cc3862f99be1f9741c1df385c5b32b4552f1107
+Merge: cc14a8f 26b617c
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:32:32 2017 -0500
+
+    Merge branch 'dev' of https://github.com/lee-benjamin/cs373-idb into dev
+
+commit cc14a8fa03fecc2930e1be7beab980007dbc63c5
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 6 14:32:08 2017 -0500
+
+    Test make_config on travis
+
+commit 26b617c6f391b1180b0b2bf8b4e36f947905f1f1
+Author: lee-benjamin <leebenjamin@utexas.edu>
+Date:   Thu Apr 6 13:39:00 2017 -0500
+
+    updated the Apiary docs
+
 commit 21cfd0d01f52ebdf23397729cefeca8544d1e8bd
 Author: lee-benjamin <leebenjamin@utexas.edu>
 Date:   Thu Apr 6 13:30:30 2017 -0500
@@ -425,6 +551,12 @@ Date:   Mon Apr 3 17:12:28 2017 -0500
 
     Scraped movetypes and movenames for all characters. Data is pickled up
 
+commit e89487e106b178fa94c1765081705a5d3c84ffe0
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Mon Apr 3 17:07:59 2017 -0500
+
+    Scraped movetypes and movenames for all characters. Data is pickled up
+
 commit 7e11f792bd20ba99b2284c3b8d9b247381f70ccd
 Merge: f7f0771 8c6c992
 Author: Dallas Kelle <dallas.kelle@gmail.com>
@@ -455,6 +587,19 @@ Author: Caelan Evans <evans.caelan@gmail.com>
 Date:   Sun Apr 2 18:52:20 2017 -0500
 
     Table creation done
+
+commit c3e78cd38c133656f3ace1c0aee393cfef103931
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sun Apr 2 17:59:38 2017 -0500
+
+    Building moveset scraper
+
+commit 597cc046413a579241e8cdb2a51d1b5c883c460e
+Merge: e76cc3f 0ac2f68
+Author: Rohit Venugopal <rohitven@cs.utexas.edu>
+Date:   Sun Apr 2 16:18:06 2017 -0500
+
+    Merge branch 'dev'
 
 commit 0ac2f68a7cc18113ae81a5b0d2f6957699b35165
 Author: Rohit Venugopal <rohitven@cs.utexas.edu>
@@ -534,6 +679,19 @@ Date:   Fri Mar 24 13:14:45 2017 -0500
 
     Can no longer scroll horizontally
 
+commit e76cc3f9828b8c59d2046c184b8875927f6e88d1
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 20:24:47 2017 -0500
+
+    Added log
+
+commit aae6e0381c04187c4c03b4bbd81587c75ec2dc88
+Merge: 1576021 fd3610b
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 20:23:35 2017 -0500
+
+    Merge branch 'dev'
+
 commit fd3610bcc3f1b1df1d40d746ae33d627082c0982
 Merge: a7b8a43 eb8bcab
 Author: Dallas Kelle <dallas.kelle@gmail.com>
@@ -546,6 +704,12 @@ Author: Dallas Kelle <dallas.kelle@gmail.com>
 Date:   Thu Mar 23 19:49:23 2017 -0500
 
     Adding a link to the smashdb apiary on the about page
+
+commit 15760211f5f6e68f68d1288a951c5ccec0bc96be
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Mar 23 19:30:38 2017 -0500
+
+    Added log
 
 commit eb8bcab5bae06e0688e5fd932ffe2094fc966a20
 Author: Caelan Evans <evans.caelan@gmail.com>
