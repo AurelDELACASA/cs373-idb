@@ -12,25 +12,36 @@ class TestModels(TestCase):
 
     def setUp(self):
         self.engine = create_engine(get_URI())
-        self.session = sessionmaker(bind=self.engine)
+        self.session = sessionmaker(bind=self.engine)()
+        self.object_list = []
+
+    def commit_objects(self):
+        for obj in self.object_list:
+            self.session.add(obj)
+        self.session.commit()
+
+    def tearDown(self):
+        for obj in self.object_list:
+            self.session.delete(obj)
+        self.session.commit()
+
     #--------------------------
     # Testing Tournaments Model
     #--------------------------
 
     def test_tournaments_add_one(self):
         # add tournament, assert it is first Tournament
-        session = self.session()
-
         tournament = Tournament(name='Smash Broski',
                                 sanitized='smash-broski',
                                 date='April 1, 2017',
                                 location='MA',
                                 image_path='path_to_image')
 
-        session.add(tournament)
-        session.commit()
+        self.object_list.append(tournament)
 
-        result = session.query(Tournament).order_by(
+        self.commit_objects()
+
+        result = self.session.query(Tournament).order_by(
             Tournament.id.desc()).first()
         self.assertEqual(result.name, tournament.name)
         self.assertEqual(result.sanitized, tournament.sanitized)
@@ -38,43 +49,33 @@ class TestModels(TestCase):
         self.assertEqual(result.location, tournament.location)
         self.assertEqual(result.image_path, tournament.image_path)
 
-        session.delete(tournament)
-        session.commit()
-
     def test_tournaments_add_two_count(self):
         # add two tournaments, assert there are two tournaments
-        session = self.session()
-        num_tournaments = session.query(Tournament).count()
+        num_tournaments = self.session.query(Tournament).count()
 
-        tournament_one = Tournament(name='bust2',
-                                    sanitized='bust2',
-                                    date='April 11th, 2015',
-                                    location='CA',
-                                    image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png')
+        self.object_list.append(Tournament(name='bust2',
+                                           sanitized='bust2',
+                                           date='April 11th, 2015',
+                                           location='CA',
+                                           image_path='https://images.smash.gg/images/tournament/1035/image-10e39229043ff962dd367a516b0bc090.png'))
 
-        tournament_two = Tournament(name='Smash Broski',
-                                    sanitized='smash-broski',
-                                    date='April 1, 2017',
-                                    location='MA',
-                                    image_path='path_to_image')
+        self.object_list.append(Tournament(name='Smash Broski',
+                                           sanitized='smash-broski',
+                                           date='April 1, 2017',
+                                           location='MA',
+                                           image_path='path_to_image'))
 
-        session.add(tournament_one)
-        session.add(tournament_two)
-        session.commit()
+        self.commit_objects()
 
-        self.assertEqual(session.query(
+        self.assertEqual(self.session.query(
             Tournament).count(), num_tournaments + 2)
-
-        session.delete(tournament_one)
-        session.delete(tournament_two)
-        session.commit()
 
     def test_tournaments_add_two_validate_data(self):
         # add two tournaments, assertEqual for name, date, location, entrants,
         # picture
-        session = self.session()
-        num_tournaments = session.query(Tournament).count()
+        num_tournaments = self.session.query(Tournament).count()
 
+        tournaments = []
         tournament_one = Tournament(name='bust2',
                                     sanitized='bust2',
                                     date='April 11th, 2015',
@@ -87,24 +88,27 @@ class TestModels(TestCase):
                                     location='MA',
                                     image_path='path_to_image')
 
-        tournaments = []
-        tournaments.append(tournament_one)
+        self.object_list.append(tournament_one)
+        self.object_list.append(tournament_two)
+
         tournaments.append(tournament_two)
+        tournaments.append(tournament_one)
 
-        session.add(tournament_two)
-        session.add(tournament_one)
-        session.commit()
+        self.commit_objects()
 
-        for i in range(0, 2):
-            result = session.query(Tournament).order_by(
+        for i in range(0, len(tournaments)):
+            result = self.session.query(Tournament).order_by(
                 Tournament.id.desc()).first()
             self.assertEqual(result.name, tournaments[i].name)
             self.assertEqual(result.sanitized, tournaments[i].sanitized)
             self.assertEqual(result.date, tournaments[i].date)
             self.assertEqual(result.location, tournaments[i].location)
             self.assertEqual(result.image_path, tournaments[i].image_path)
-            session.delete(result)
-            session.commit()
+
+            # Removing the element from the table
+            self.session.delete(result)
+            self.session.commit()
+            self.object_list.remove(result)
 
     #---------------------------
     # Testing Participants Model
@@ -112,8 +116,6 @@ class TestModels(TestCase):
 
     def test_participants_add_one(self):
         # add a participant
-        session = self.session()
-
         character = Character(name='Snorlax',
                               universe='Pokemon',
                               weight='180',
@@ -134,28 +136,22 @@ class TestModels(TestCase):
                                   location='California',
                                   tournament=tournament)
 
-        session.add(character)
-        session.add(tournament)
-        session.add(participant)
-        session.commit()
+        self.object_list.append(character)
+        self.object_list.append(tournament)
+        self.object_list.append(participant)
 
-        result = session.query(Participant).order_by(
+        self.commit_objects()
+
+        result = self.session.query(Participant).order_by(
             Participant.id.desc()).first()
         self.assertEqual(result.sponsor, participant.sponsor)
         self.assertEqual(result.tag, participant.tag)
         self.assertEqual(result.location, participant.location)
         self.assertEqual(result.tournament, participant.tournament)
 
-        session.delete(result)
-        session.delete(tournament)
-        session.delete(character)
-        session.commit()
-
     def test_participants_add_two_count(self):
         # add two/more participants, assert the number of participants
-        session = self.session()
-
-        num_participants = session.query(Participant).count()
+        num_participants = self.session.query(Participant).count()
         character_one = Character(name='Snorlax',
                                   universe='Pokemon',
                                   weight='180',
@@ -196,31 +192,22 @@ class TestModels(TestCase):
                                       location='Russia',
                                       tournament=tournament_two)
 
-        session.add(character_one)
-        session.add(character_two)
-        session.add(tournament_one)
-        session.add(tournament_two)
-        session.add(participant_one)
-        session.add(participant_two)
-        session.commit()
+        self.object_list.append(character_one)
+        self.object_list.append(character_two)
+        self.object_list.append(tournament_one)
+        self.object_list.append(tournament_two)
+        self.object_list.append(participant_one)
+        self.object_list.append(participant_two)
 
-        self.assertEqual(session.query(Participant).count(),
+        self.commit_objects()
+
+        self.assertEqual(self.session.query(Participant).count(),
                          num_participants + 2)
-
-        session.delete(character_one)
-        session.delete(character_two)
-        session.delete(tournament_one)
-        session.delete(tournament_two)
-        session.delete(participant_one)
-        session.delete(participant_two)
-        session.commit()
 
     def test_participants_add_two_validate_data(self):
         # add a participant, assertEqual for Gamertag, Profile Pic, Real Name,
         # Main, Location
-        session = self.session()
-
-        num_participants = session.query(Participant).count()
+        num_participants = self.session.query(Participant).count()
         character_one = Character(name='Snorlax',
                                   universe='Pokemon',
                                   weight='180',
@@ -266,16 +253,17 @@ class TestModels(TestCase):
         participants.append(participant_one)
         participants.append(participant_two)
 
-        session.add(character_one)
-        session.add(character_two)
-        session.add(tournament_one)
-        session.add(tournament_two)
-        session.add(participant_two)
-        session.add(participant_one)
-        session.commit()
+        self.object_list.append(character_one)
+        self.object_list.append(character_two)
+        self.object_list.append(tournament_one)
+        self.object_list.append(tournament_two)
+        self.object_list.append(participant_two)
+        self.object_list.append(participant_one)
+
+        self.commit_objects()
 
         for i in range(0, 2):
-            result = session.query(Participant).order_by(
+            result = self.session.query(Participant).order_by(
                 Participant.id.desc()).first()
             self.assertEqual(result.tag, participants[i].tag)
             self.assertEqual(result.sponsor, participants[i].sponsor)
@@ -283,15 +271,11 @@ class TestModels(TestCase):
             self.assertEqual(result.main, participants[i].main)
             self.assertEqual(result.location, participants[i].location)
             self.assertEqual(result.tournament, participants[i].tournament)
-            session.delete(result)
-            session.commit()
 
-        session.delete(character_one)
-        session.delete(character_two)
-        session.delete(tournament_one)
-        session.delete(tournament_two)
-        # participants deleted in the loop
-        session.commit()
+            # Removing current element from the table
+            self.session.delete(result)
+            self.session.commit()
+            self.object_list.remove(result)
 
     #-------------------------
     # Testing Characters Model
@@ -299,8 +283,6 @@ class TestModels(TestCase):
 
     def test_character_add_one(self):
         # add one character and validate data
-        session = self.session()
-
         character = Character(name='Snorlax',
                               universe='Pokemon',
                               weight='180',
@@ -308,11 +290,13 @@ class TestModels(TestCase):
                               debut='2004',
                               tier='E',
                               image_path='Snorlax.png')
-        session.add(character)
-        session.commit()
+
+        self.object_list.append(character)
+        self.commit_objects()
 
         # get the last row in the Character table
-        result = session.query(Character).order_by(Character.id.desc()).first()
+        result = self.session.query(Character).order_by(
+            Character.id.desc()).first()
         self.assertEqual(result.name, character.name)
         self.assertEqual(result.universe, character.universe)
         self.assertEqual(result.moves, character.moves)
@@ -320,13 +304,9 @@ class TestModels(TestCase):
         self.assertEqual(result.tier, character.tier)
         self.assertEqual(result.image_path, character.image_path)
 
-        session.delete(result)
-        session.commit()
-
     def test_character_add_two_count(self):
         # add two characters, validate count
-        session = self.session()
-        num_characters = session.query(Character).count()
+        num_characters = self.session.query(Character).count()
 
         character_one = Character(name='Snorlax',
                                   universe='Pokemon',
@@ -344,19 +324,16 @@ class TestModels(TestCase):
                                   tier='A',
                                   image_path='Sonic.png')
 
-        session.add(character_one)
-        session.add(character_two)
-        session.commit()
+        self.object_list.append(character_one)
+        self.object_list.append(character_two)
 
-        self.assertEqual(session.query(Character).count(), num_characters + 2)
-        session.delete(character_one)
-        session.delete(character_two)
-        session.commit()
+        self.commit_objects()
+
+        self.assertEqual(
+            self.session.query(Character).count(), num_characters + 2)
 
     def test_character_add_two_validate_data(self):
         # add two characters, validate data
-        session = self.session()
-
         character_one = Character(name='Snorlax',
                                   universe='Pokemon',
                                   weight='180',
@@ -377,13 +354,13 @@ class TestModels(TestCase):
         characters.append(character_one)
         characters.append(character_two)
 
-        session.add(character_two)
-        session.add(character_one)
-        session.commit()
+        self.object_list.append(character_two)
+        self.object_list.append(character_one)
+        self.commit_objects()
 
         for i in range(0, 2):
             # get the last row in the Character table
-            result = session.query(Character).order_by(
+            result = self.session.query(Character).order_by(
                 Character.id.desc()).first()
             self.assertEqual(result.name, characters[i].name)
             self.assertEqual(result.universe, characters[i].universe)
@@ -391,8 +368,11 @@ class TestModels(TestCase):
             self.assertEqual(result.debut, characters[i].debut)
             self.assertEqual(result.tier, characters[i].tier)
             self.assertEqual(result.image_path, characters[i].image_path)
-            session.delete(result)
-            session.commit()
+
+            # deleting element from table
+            self.session.delete(result)
+            self.session.commit()
+            self.object_list.remove(result)
 
     #------------------
     # Testing API calls
@@ -400,8 +380,7 @@ class TestModels(TestCase):
 
     def test_query_all_tournaments_count(self):
         # query for all tournaments, validate count
-        session = self.session()
-        num_tournaments = session.query(Tournament).count()
+        num_tournaments = self.session.query(Tournament).count()
 
         url = 'http://smashdb.me/api/tournaments'
         response = urllib.request.urlopen(url)
@@ -417,12 +396,12 @@ class TestModels(TestCase):
         tournament_json = json.loads("""
             {
                 "tournament": {
-                    "date": " April 11th, 2015", 
-                    "id": 3, 
-                    "image_path": "https://images.smash.gg/images/tournament/1037/image-5b136245e78f2d0b22fdef47609f5c34.png", 
-                    "location": " MA", 
-                    "name": "BUST2", 
-                    "num_participants": 222, 
+                    "date": " April 11th, 2015",
+                    "id": 3,
+                    "image_path": "https://images.smash.gg/images/tournament/1037/image-5b136245e78f2d0b22fdef47609f5c34.png",
+                    "location": " MA",
+                    "name": "BUST2",
+                    "num_participants": 222,
                     "sanitized": "bust2"
                 }
             }""")
@@ -435,8 +414,7 @@ class TestModels(TestCase):
 
     def test_query_all_participants_count(self):
         # query for all participants, validate count
-        session = self.session()
-        num_participants = session.query(Participant).count()
+        num_participants = self.session.query(Participant).count()
 
         url = 'http://smashdb.me/api/participants'
         response = urllib.request.urlopen(url)
@@ -452,11 +430,11 @@ class TestModels(TestCase):
         participant_json = json.loads("""
             {
                 "participant": {
-                    "id": 3, 
-                    "location": "Sweden", 
-                    "main": "Falco", 
-                    "sponsor": "TSM", 
-                    "tag": "Leffen", 
+                    "id": 3,
+                    "location": "Sweden",
+                    "main": "Falco",
+                    "sponsor": "TSM",
+                    "tag": "Leffen",
                     "tournament_id": 2
                 }
             }""")
@@ -469,8 +447,7 @@ class TestModels(TestCase):
 
     def test_query_all_characters_count(self):
         # query for all characters, validate count
-        session = self.session()
-        num_characters = session.query(Character).count()
+        num_characters = self.session.query(Character).count()
 
         url = 'http://smashdb.me/api/characters'
         response = urllib.request.urlopen(url)
@@ -487,12 +464,12 @@ class TestModels(TestCase):
             {
                 "character": {
                         "debut": "1981",
-                        "name": "Mario", 
-                        "universe": "Mario", 
-                        "id": 2, 
-                        "weight": "100", 
-                        "tier": "E", 
-                        "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
+                        "name": "Mario",
+                        "universe": "Mario",
+                        "id": 2,
+                        "weight": "100",
+                        "tier": "E",
+                        "moves": "Cape, Fireball, Mario Tornado, Super Jump Punch",
                         "image_path": "mario.png"
                 }
             }""")

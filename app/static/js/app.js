@@ -46,6 +46,12 @@ mainApp.config(['$routeProvider', '$locationProvider',
 		templateUrl: '../static/htmls/about.html',
 		controller: 'aboutCtrl'
 	})
+	//Go to search page
+	.when('/search', {
+		templateUrl: '../static/htmls/search.html',
+		controller: 'searchCtrl'
+	})
+
 	.otherwise({redirectTo: '/'});
 
 	//Get rid of # in URL
@@ -77,9 +83,21 @@ mainApp.controller('participantsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 10;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
+
+mainApp.controller('participantCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/participant/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.participant = response.data["participant"];
+        })
+        $http.get(prefix + '/api/participant/' + $routeParams['id'] + '/similar')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
 
 mainApp.factory('tournamentsFactory', function($http) {
   var tournamentsFactory = {
@@ -100,7 +118,6 @@ mainApp.controller('tournamentsCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 5;
       $scope.numPages = 10;
-      console.log($scope.numPages);
     });
   });
 
@@ -109,16 +126,16 @@ mainApp.controller('tournamentCtrl',
 	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
 		  	.then(function(response) {
                 $scope.tournament = response.data["tournament"];
-	  	});
+	  	})
+      $http.get(prefix + '/api/tournament/' + $routeParams['id'] + '/participants')
+        .then(function(response) {
+                console.log("IN HERE!!")
+                $scope.parts = response.data["participants"];
+                console.log(response.data)
+      });
 
-});
 
-mainApp.controller('participantCtrl',
-    function ($scope, $routeParams, $http) {
-        $http.get(prefix + '/api/participant/' + $routeParams['id'])
-            .then(function(response) {
-                $scope.participant = response.data["participant"];
-        });
+
 
 });
 
@@ -142,7 +159,6 @@ mainApp.controller('charactersCtrl',
       $scope.subset = data;
       $scope.itemsByPage = 5;
       $scope.numPages = 3;
-      console.log($scope.numPages);
     });
   });
 
@@ -151,6 +167,67 @@ mainApp.controller('characterCtrl',
         $http.get(prefix + '/api/character/' + $routeParams['id'])
             .then(function(response) {
                 $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
+        });
+
+});
+
+mainApp.factory('searchFactory', function($http) {
+  var searchFactory = {
+    async: function() {
+      var query_string = window.location.search.replace("?query=", "");
+      var promise = $http.get(prefix + "/api/search?query=" + query_string).then(function (response) {
+          console.log(query_string);
+        return response.data["results"];
+      });
+      return promise;
+    }
+  };
+  return searchFactory;
+});
+
+mainApp.controller('searchCtrl',
+  function(searchFactory, $scope) {
+    searchFactory.async().then(function(data) {
+
+      // Full (AND) matches
+
+      $scope.tfull = data["tournamentsANDQuery"];
+      $scope.tfullsubset = data["tournamentsANDQuery"];
+
+      $scope.pfull = data["participantsANDQuery"];
+      $scope.pfullsubset = data["participantsANDQuery"];
+
+      $scope.cfull = data["charactersANDQuery"];
+      $scope.cfullsubset = data["characterssANDQuery"];
+
+      // Partial (OR) matches
+      $scope.tpart = data["tournamentsORQuery"];
+      $scope.tpartsubset = data["tournamentsORQuery"];
+
+      $scope.ppart = data["participantsORQuery"];
+      $scope.ppartsubset = data["participantsORQuery"];
+
+      $scope.cpart = data["charactersORQuery"];
+      $scope.cpartsubset = data["characterssORQuery"];
+
+      $scope.itemsByPage = 5;
+      $scope.numPages = 3;
+    });
+  });
+
+mainApp.controller('characterCtrl',
+    function ($scope, $routeParams, $http) {
+        $http.get(prefix + '/api/character/' + $routeParams['id'])
+            .then(function(response) {
+                $scope.character = response.data["character"];
+        })
+        $http.get(prefix + '/api/character/' + $routeParams['id'] + '/participants')
+            .then(function(response) {
+                $scope.parts = response.data["participants"];
         });
 
 });
