@@ -19,6 +19,7 @@ table {
 tr.spaceUnder > td
 {
       padding-bottom: 1em;
+      vertical-align: baseline;
 }
 .header {
     padding-top: 5%;
