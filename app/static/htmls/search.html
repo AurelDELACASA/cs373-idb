@@ -32,7 +32,12 @@
     <br>
     <br>
 
-    <center>Full matches</center><br /><br />
+<div ng-show="showFull">
+    <center>Full matches</center>
+
+<div ng-show="showft">
+    <br>
+    <center>Tournaments</center>
 
     <table st-table="tfullsubset" st-safe-src="tfull" class="table table-striped table-hover table-mc-light-blue" align="center">
       <thead>
@@ -60,6 +65,11 @@
             </td>
       </tfoot>
     </table>
+  </div>
+
+<div ng-show="showfp">
+    <br>
+    <center>Participants</center>
 
     <table st-table="pfullsubset" st-safe-src="pfull" class="table table-striped table-hover table-mc-light-blue" align="center">
       <thead>
@@ -89,6 +99,11 @@
             </td>
       </tfoot>
     </table>
+  </div>
+
+  <div ng-show="showfc">
+    <br>
+    <center>Characters</center>
 
     <table st-table="cfullsubset" st-safe-src="cfull" class="table table-striped table-hover table-mc-light-blue" align="center">
         <thead>
@@ -120,8 +135,17 @@
             </td>
       </tfoot>
     </table>
+  </div>
+</div>
 
+<div ng-show="showPartial">
+    <br>
+    <br>
     <center>Partial matches</center><br /><br />
+
+  <div ng-show="showpt">
+    <br>
+    <center>Tournaments</center>
 
     <table st-table="tpartsubset" st-safe-src="tpart" class="table table-striped table-hover table-mc-light-blue" align="center">
       <thead>
@@ -149,6 +173,11 @@
             </td>
       </tfoot>
     </table>
+  </div>
+
+  <div ng-show="showpp">
+    <br>
+    <center>Participants</center>
 
     <table st-table="ppartsubset" st-safe-src="ppart" class="table table-striped table-hover table-mc-light-blue" align="center">
       <thead>
@@ -178,6 +207,11 @@
             </td>
       </tfoot>
     </table>
+  </div>
+
+  <div ng-show="showpc">
+    <br>
+    <center>Characters</center>
 
     <table st-table="cpartsubset" st-safe-src="cpart" class="table table-striped table-hover table-mc-light-blue" align="center">
         <thead>
@@ -209,6 +243,15 @@
             </td>
       </tfoot>
     </table>
+  </div>
+</div>
+
+<div ng-show="showNone">
+  <br>
+  <br>
+  <br>
+  <center><h1> NO RESULTS FOUND</h1></center>
+</div>
 
     <br /><br /><br /><br />
 
