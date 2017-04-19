@@ -5,63 +5,63 @@ if (location.hostname == 'localhost' || location.hostname == '127.0.0.1')
     prefix = "http://localhost:5000"
 
 mainApp.config(['$routeProvider', '$locationProvider',
-	function($routeProvider, $locationProvider) {
-		$routeProvider
-	//Go to splash page
-	.when('/', {
-		templateUrl: '../static/htmls/splash.html',
-	})
-	//Go to participants page
-	.when('/participants', {
-		templateUrl: '../static/htmls/participants.html',
-		controller: 'participantsCtrl'
-	})
+  function($routeProvider, $locationProvider) {
+    $routeProvider
+  //Go to splash page
+  .when('/', {
+    templateUrl: '../static/htmls/splash.html',
+  })
+  //Go to participants page
+  .when('/participants', {
+    templateUrl: '../static/htmls/participants.html',
+    controller: 'participantsCtrl'
+  })
     //Go to particpant page
-	.when('/participant/:id', {
-		templateUrl: '../static/htmls/participant.html',
-		controller: 'participantCtrl'
-	})
-	//Go to tournaments page
-	.when('/tournaments', {
-		templateUrl: '../static/htmls/tournaments.html',
-		controller: 'tournamentsCtrl'
-	})
+  .when('/participant/:id', {
+    templateUrl: '../static/htmls/participant.html',
+    controller: 'participantCtrl'
+  })
+  //Go to tournaments page
+  .when('/tournaments', {
+    templateUrl: '../static/htmls/tournaments.html',
+    controller: 'tournamentsCtrl'
+  })
     //Go to tournament page
-   	.when('/tournament/:id', {
-		templateUrl: '../static/htmls/tournament.html',
-		controller: 'tournamentCtrl'
-	})
-	//Go to characters page
-	.when('/characters', {
-		templateUrl: '../static/htmls/characters.html',
-		controller: 'charactersCtrl'
-	})
-	//Go to character page
-	.when('/character/:id', {
-		templateUrl: '../static/htmls/character.html',
-		controller: 'characterCtrl'
-	})
-	//Go to about page
-	.when('/about', {
-		templateUrl: '../static/htmls/about.html',
-		controller: 'aboutCtrl'
-	})
-	//Go to search page
-	.when('/search', {
-		templateUrl: '../static/htmls/search.html',
-		controller: 'searchCtrl'
-	})
+    .when('/tournament/:id', {
+    templateUrl: '../static/htmls/tournament.html',
+    controller: 'tournamentCtrl'
+  })
+  //Go to characters page
+  .when('/characters', {
+    templateUrl: '../static/htmls/characters.html',
+    controller: 'charactersCtrl'
+  })
+  //Go to character page
+  .when('/character/:id', {
+    templateUrl: '../static/htmls/character.html',
+    controller: 'characterCtrl'
+  })
+  //Go to about page
+  .when('/about', {
+    templateUrl: '../static/htmls/about.html',
+    controller: 'aboutCtrl'
+  })
+  //Go to search page
+  .when('/search', {
+    templateUrl: '../static/htmls/search.html',
+    controller: 'searchCtrl'
+  })
 
-	.otherwise({redirectTo: '/'});
+  .otherwise({redirectTo: '/'});
 
-	//Get rid of # in URL
-	if(window.history && window.history.pushState){
-		$locationProvider.
-		html5Mode({
-			enabled: true,
-			requireBase: false
-		});
-	}
+  //Get rid of # in URL
+  if(window.history && window.history.pushState){
+    $locationProvider.
+    html5Mode({
+      enabled: true,
+      requireBase: false
+    });
+  }
 }]);
 
 mainApp.factory('participantsFactory', function($http) {
@@ -123,10 +123,10 @@ mainApp.controller('tournamentsCtrl',
 
 mainApp.controller('tournamentCtrl',
     function ($scope, $routeParams, $http) {
-	  	$http.get(prefix + '/api/tournament/' + $routeParams['id'])
-		  	.then(function(response) {
+      $http.get(prefix + '/api/tournament/' + $routeParams['id'])
+        .then(function(response) {
                 $scope.tournament = response.data["tournament"];
-	  	})
+      })
       $http.get(prefix + '/api/tournament/' + $routeParams['id'] + '/participants')
         .then(function(response) {
                 console.log("IN HERE!!")
@@ -197,22 +197,49 @@ mainApp.controller('searchCtrl',
 
       $scope.tfull = data["tournamentsANDQuery"];
       $scope.tfullsubset = data["tournamentsANDQuery"];
+      $scope.showft = $scope.tfull.length
+      console.log($scope.showft)
 
       $scope.pfull = data["participantsANDQuery"];
       $scope.pfullsubset = data["participantsANDQuery"];
+      $scope.showfp = $scope.pfull.length
+      console.log($scope.showfp)
 
       $scope.cfull = data["charactersANDQuery"];
       $scope.cfullsubset = data["characterssANDQuery"];
+      $scope.showfc = $scope.cfull.length
+      console.log($scope.showfc)
+
+      $scope.showFull = $scope.showft + $scope.showfp + $scope.showfc;
 
       // Partial (OR) matches
       $scope.tpart = data["tournamentsORQuery"];
       $scope.tpartsubset = data["tournamentsORQuery"];
+      $scope.showpt = $scope.tpart.length
+      console.log($scope.showpt)
 
       $scope.ppart = data["participantsORQuery"];
       $scope.ppartsubset = data["participantsORQuery"];
+      $scope.showpp = $scope.ppart.length
+      console.log($scope.showpp)
 
       $scope.cpart = data["charactersORQuery"];
       $scope.cpartsubset = data["characterssORQuery"];
+      $scope.showpc = $scope.cpart.length
+      console.log($scope.showpc)
+
+      $scope.showPartial = $scope.showpt + $scope.showpp + $scope.showpc;
+      $scope.showNone = $scope.showFull + $scope.showPartial;
+      if($scope.showNone > 0)
+      {
+        $scope.showNone = 0;
+      }
+      else
+      {
+        $scope.showNone = 1;
+      }
+
+      console.log($scope.showNone)
 
       $scope.itemsByPage = 5;
       $scope.numPages = 3;

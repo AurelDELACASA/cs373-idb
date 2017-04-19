@@ -461,17 +461,22 @@ class TestModels(TestCase):
         # query for one character
         character_id = '2'  # Hardcoded Mario's character_id
         character_json = json.loads("""
-            {
-                "character": {
-                        "debut": "1981",
-                        "name": "Mario",
-                        "universe": "Mario",
-                        "id": 2,
-                        "weight": "100",
-                        "tier": "E",
-                        "moves": "Cape, Fireball, Mario Tornado, Super Jump Punch",
-                        "image_path": "mario.png"
-                }
+		{
+		      "character": {
+			"b": "Cape",
+			"debut": "1981",
+			"down_b": " Mario Tornado",
+			"id": 2,
+			"image_path": "mario.png",
+			"moves": "Cape, Fireball, Mario Tornado, Super Jump Punch",
+			"name": "Mario",
+			"side_b": " Fireball",
+			"tier": "E",
+			"universe": "Mario",
+			"up_b": " Super Jump Punch",
+			"weight": "100"
+		      }
+
             }""")
 
         url = 'http://smashdb.me/api/character/' + character_id
