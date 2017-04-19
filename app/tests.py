@@ -378,14 +378,18 @@ class TestModels(TestCase):
     # Testing API calls
     #------------------
 
+    def get_json_from_response(self, url):
+        response = urllib.request.urlopen(url)
+        encoding = response.info().get_content_charset('utf8')
+        result_json = json.loads(response.read().decode(encoding))
+        return result_json
+
     def test_query_all_tournaments_count(self):
         # query for all tournaments, validate count
         num_tournaments = self.session.query(Tournament).count()
 
         url = 'http://smashdb.me/api/tournaments'
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
         num_results = len(list(list(result_json.items())[0])[1])
 
         self.assertEqual(num_tournaments, num_results)
@@ -407,9 +411,7 @@ class TestModels(TestCase):
             }""")
 
         url = 'http://smashdb.me/api/tournament/' + tournament_id
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
         self.assertEqual(tournament_json, result_json)
 
     def test_query_all_participants_count(self):
@@ -417,9 +419,7 @@ class TestModels(TestCase):
         num_participants = self.session.query(Participant).count()
 
         url = 'http://smashdb.me/api/participants'
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
         num_results = len(list(list(result_json.items())[0])[1])
 
         self.assertEqual(num_participants, num_results)
@@ -440,9 +440,40 @@ class TestModels(TestCase):
             }""")
 
         url = 'http://smashdb.me/api/participant/' + participant_id
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
+        self.assertEqual(participant_json, result_json)
+
+    def test_query_participant_similar(self):
+      # query for participants using /similar
+        participant_id = '3'  # Hardcoded Leffen's participant_id
+        participant_json = json.loads("""
+          {
+            "participants": [
+              {
+                "id": 3,
+                "location": "Sweden",
+                "main": "Falco",
+                "main_id": 20,
+                "sponsor": "TSM",
+                "tag": "Leffen",
+                "tournament_id": 2,
+                "tournament_name": "I'm Not Yelling! feat. ARMADA"
+              },
+              {
+                "id": 2709,
+                "location": "Sweden",
+                "main": "Falco",
+                "main_id": 20,
+                "sponsor": "TSM",
+                "tag": "Leffen",
+                "tournament_id": 24,
+                "tournament_name": "FC Smash 15XR: Return"
+              }
+            ]
+          }""")
+
+        url = 'http://smashdb.me/api/participant/' + participant_id + '/similar'
+        result_json = self.get_json_from_response(url)
         self.assertEqual(participant_json, result_json)
 
     def test_query_all_characters_count(self):
@@ -450,9 +481,7 @@ class TestModels(TestCase):
         num_characters = self.session.query(Character).count()
 
         url = 'http://smashdb.me/api/characters'
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
         num_results = len(list(list(result_json.items())[0])[1])
 
         self.assertEqual(num_characters, num_results)
@@ -461,25 +490,40 @@ class TestModels(TestCase):
         # query for one character
         character_id = '2'  # Hardcoded Mario's character_id
         character_json = json.loads("""
-            {
-                "character": {
-                        "debut": "1981",
-                        "name": "Mario",
-                        "universe": "Mario",
-                        "id": 2,
-                        "weight": "100",
-                        "tier": "E",
-                        "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
-                        "image_path": "mario.png"
-                }
-            }""")
+          {
+            "character": {
+              "b": "Cape",
+              "debut": "1981",
+              "down_b": " Mario Tornado",
+              "id": 2,
+              "image_path": "mario.png",
+              "moves": "Cape, Fireball, Mario Tornado, Super Jump Punch",
+              "name": "Mario",
+              "side_b": " Fireball",
+              "tier": "E",
+              "universe": "Mario",
+              "up_b": " Super Jump Punch",
+              "weight": "100"
+            }
+          }""")
 
         url = 'http://smashdb.me/api/character/' + character_id
-        response = urllib.request.urlopen(url)
-        encoding = response.info().get_content_charset('utf8')
-        result_json = json.loads(response.read().decode(encoding))
+        result_json = self.get_json_from_response(url)
         self.assertEqual(character_json, result_json)
 
+    def test_query_character_then_participants(self):
+        # query for a character's participants, then assert we receive one or
+        # more participants
+        character_id = '2'  # Hardcoded Mario's character_id
+        num_participants = self.session.query(Participant,Character)\
+            .filter(Character.id == character_id)\
+            .filter(Participant.main_id == character_id)\
+            .count()
+
+        url = 'http://smashdb.me/api/character/' + character_id + '/participants'
+        result_json = self.get_json_from_response(url)
+        num_results = len(result_json.get('participants'))
+        self.assertEqual(num_participants, num_results)
 
 if __name__ == "__main__":
     main()
