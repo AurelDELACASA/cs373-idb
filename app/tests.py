@@ -469,7 +469,7 @@ class TestModels(TestCase):
                         "id": 2,
                         "weight": "100",
                         "tier": "E",
-                        "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
+                        "moves": "Cape, Fireball, Mario Tornado, Super Jump Punch",
                         "image_path": "mario.png"
                 }
             }""")
