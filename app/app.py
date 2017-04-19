@@ -129,6 +129,12 @@ def return_character(cid):
     """
     session = Session()
     character = clean_single(session.query(Character).filter(Character.id == cid).one())
+    moves = character['moves']
+    move_list = moves.split(',')
+    character['b'] = move_list[0]
+    character['side_b'] = move_list[1]
+    character['down_b'] = move_list[2]
+    character['up_b'] = move_list[3]
     return jsonify(character = character)
 
 @app.route('/api/character/<int:cid>/participants', methods=['GET'])
