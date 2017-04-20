@@ -301,8 +301,8 @@ mainApp.controller('aboutCtrl',
       username: 'lee-benjamin',
       description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
       responsibilities: 'API Documentation, Tests, AngularJS, Knick Knacks',
-      tests: 9,
-      issues: 7,
+      tests: 17,
+      issues: 11,
       commits: 0
     },
     {
@@ -338,7 +338,7 @@ mainApp.controller('aboutCtrl',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Models, Flask, AngularJS, Data Collection, AWS',
       tests: 6,
-      issues: 13,
+      issues: 19,
       commits: 0
     }
     ];
