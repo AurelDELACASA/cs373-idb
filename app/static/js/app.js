@@ -138,10 +138,6 @@ mainApp.controller('tournamentCtrl',
                 $scope.parts = response.data["participants"];
                 console.log(response.data)
       });
-
-
-
-
 });
 
 
@@ -267,7 +263,7 @@ mainApp.controller('characterCtrl',
 mainApp.factory('newsFactory', function($http) {
   var newsFactory = {
     async: function() {
-      var promise = $http.get(prefix + "/api/news/").then(function (response) {
+      var promise = $http.get(prefix + "/api/news").then(function (response) {
         return response.data["news"];
       });
       return promise;
