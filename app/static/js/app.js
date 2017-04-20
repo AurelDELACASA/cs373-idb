@@ -314,7 +314,7 @@ mainApp.controller('aboutCtrl',
       description: "Hey, my name is Rohit and I'm a junior here at UT. I love solving Rubik's cubes, longboarding, dancing and computer science! I love Smash and main Ganondorf in Project M. Feel free to ask me for a game!",
       responsibilities: 'Bootstrap, AngularJS, Data Collection, Media',
       tests: 0,
-      issues: 13,
+      issues: 12,
       commits: 0
     },
     {
@@ -331,16 +331,16 @@ mainApp.controller('aboutCtrl',
       username: 'caelanevans',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Models, Flask, AngularJS, Data Collection, AWS',
-      tests: 6,
-      issues: 19,
+      tests: 0,
+      issues: 28,
       commits: 0
     }
     ];
 
     $scope.totals = {
         total_commits: 0,
-        total_issues: 59,
-        total_unittests: 15
+        total_issues: 72,
+        total_unittests: 17
     };
 
     $scope.runTests = function () {

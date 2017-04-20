@@ -37,7 +37,7 @@ html:
 	cd app && python3.5 -m pydoc -w models && mv models.html ../
 
 log:
-	git log > IDB2.log
+	git log > IDB3.log
 
 unittest:
 	# Make the config file
