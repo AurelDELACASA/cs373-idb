@@ -1,3 +1,15 @@
+commit 579327180137424c612c794f12cac88944109de7
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 20 18:27:00 2017 -0500
+
+    Updated makefile
+
+commit 17fbde110364027a7e8ba0436b4dbcf8978a9bea
+Author: Caelan Evans <evans.caelan@gmail.com>
+Date:   Thu Apr 20 18:21:55 2017 -0500
+
+    Added log
+
 commit fced4e03686e01218bcee08406c258001ea21118
 Merge: 92730c9 bdfa1fc
 Author: Caelan Evans <evans.caelan@gmail.com>
