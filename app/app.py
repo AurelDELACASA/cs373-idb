@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, func
 from models import Tournament, Participant, Character
 from config import get_URI
 import os
+import kmeans
 
 IMAGE_ROOT_PATH = "/static/images/"
 
@@ -236,6 +237,17 @@ def search():
 #    print(full_results)
 
     return jsonify(results = full_results)
+
+@app.route('/api/news', methods=['GET'])
+def get_news():
+    clusters = int(request.args.get('clusters'))
+    return_dict = dict()
+    for t in kmeans.cluster(clusters):
+        if str(t[0]) in return_dict:
+            return_dict[str(t[0])] += [t[1]]
+        else:
+            return_dict[str(t[0])] = [t[1]]
+    return jsonify(news = return_dict)
 
 
 def clean_multiple(result_set):
