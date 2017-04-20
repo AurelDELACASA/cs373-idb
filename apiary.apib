@@ -44,19 +44,19 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 ### Get information for specific tournament [GET]
 
-+ Parameters 
++ Parameters
     + tournament_id (required, int)
 
 + Response 200 (application/json)
 
         {
           "tournament": {
-            "date": " April 11th-12th 2015", 
-            "id": 2, 
-            "image_path": "https://images.smash.gg/images/tournament/1016/image-93df90a298eedf734fe42ac562e9c130.jpg", 
-            "location": " CA (NorCal)", 
-            "name": "I'm Not Yelling! feat. ARMADA", 
-            "num_participants": 371, 
+            "date": " April 11th-12th 2015",
+            "id": 2,
+            "image_path": "https://images.smash.gg/images/tournament/1016/image-93df90a298eedf734fe42ac562e9c130.jpg",
+            "location": " CA (NorCal)",
+            "name": "I'm Not Yelling! feat. ARMADA",
+            "num_participants": 371,
             "sanitized": "i-m-not-yelling-feat-armada"
           }
         }
@@ -65,59 +65,59 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 ### List All Participants [GET]
 
-+ Response 200 (application/json)  
++ Response 200 (application/json)
 
         {
             "participants": [
                 {
-                    "id": 1, 
-                    "location": "Sweden", 
-                    "main": "Ice Climbers", 
-                    "main_id": 23, 
-                    "sponsor": "[A]", 
-                    "tag": "Armada", 
-                    "tournament_id": 2, 
+                    "id": 1,
+                    "location": "Sweden",
+                    "main": "Ice Climbers",
+                    "main_id": 23,
+                    "sponsor": "[A]",
+                    "tag": "Armada",
+                    "tournament_id": 2,
                     "tournament_name": "I'm Not Yelling! feat. ARMADA"
-                }, 
+                },
                 {
-                    "id": 3, 
-                    "location": "Sweden", 
-                    "main": "Falco", 
-                    "main_id": 20, 
-                    "sponsor": "TSM", 
-                    "tag": "Leffen", 
-                    "tournament_id": 2, 
+                    "id": 3,
+                    "location": "Sweden",
+                    "main": "Falco",
+                    "main_id": 20,
+                    "sponsor": "TSM",
+                    "tag": "Leffen",
+                    "tournament_id": 2,
                     "tournament_name": "I'm Not Yelling! feat. ARMADA"
-                }, 
+                },
                 {
-                    "id": 4, 
-                    "location": "California", 
-                    "main": "Pichu", 
-                    "main_id": 22, 
-                    "sponsor": "MIOM", 
-                    "tag": "SFAT", 
-                    "tournament_id": 2, 
+                    "id": 4,
+                    "location": "California",
+                    "main": "Pichu",
+                    "main_id": 22,
+                    "sponsor": "MIOM",
+                    "tag": "SFAT",
+                    "tournament_id": 2,
                     "tournament_name": "I'm Not Yelling! feat. ARMADA"
                 }
             ]
         }
-        
+
 ## Single Participant Information Collection [/api/participant/{participant_id}]
 
 ### Get information for specific participant [GET]
 
-+ Parameters 
++ Parameters
     + participant_id (required, int)
 
 + Response 200 (application/json)
 
         {
           "participant": {
-            "id": 1, 
-            "location": "Sweden", 
-            "main": "Ice Climbers", 
-            "sponsor": "[A]", 
-            "tag": "Armada", 
+            "id": 1,
+            "location": "Sweden",
+            "main": "Ice Climbers",
+            "sponsor": "[A]",
+            "tag": "Armada",
             "tournament_id": 2
           }
         }
@@ -125,7 +125,7 @@ Smash Database is a simple API allowing users to view information about Super Sm
 ## Similar Participants Information Collection [/api/participant/{participant_id}/similar]
 ### Get information for similar participants [GET]
 
-+ Parameters 
++ Parameters
     + participant_id (required, int)
 
 + Response 200 (application/json)
@@ -133,23 +133,23 @@ Smash Database is a simple API allowing users to view information about Super Sm
         {
           "participants": [
             {
-              "id": 3, 
-              "location": "Sweden", 
-              "main": "Falco", 
-              "main_id": 20, 
-              "sponsor": "TSM", 
-              "tag": "Leffen", 
-              "tournament_id": 2, 
+              "id": 3,
+              "location": "Sweden",
+              "main": "Falco",
+              "main_id": 20,
+              "sponsor": "TSM",
+              "tag": "Leffen",
+              "tournament_id": 2,
               "tournament_name": "I'm Not Yelling! feat. ARMADA"
-            }, 
+            },
             {
-              "id": 2709, 
-              "location": "Sweden", 
-              "main": "Falco", 
-              "main_id": 20, 
-              "sponsor": "TSM", 
-              "tag": "Leffen", 
-              "tournament_id": 24, 
+              "id": 2709,
+              "location": "Sweden",
+              "main": "Falco",
+              "main_id": 20,
+              "sponsor": "TSM",
+              "tag": "Leffen",
+              "tournament_id": 24,
               "tournament_name": "FC Smash 15XR: Return"
             }
           ]
@@ -165,33 +165,33 @@ Smash Database is a simple API allowing users to view information about Super Sm
         {
             "characters": [
                 {
-                    "debut": 1981, 
-                    "id": 2, 
-                    "image_path": "mario.png", 
-                    "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape", 
-                    "name": "Mario", 
-                    "tier": "E", 
-                    "universe": "Mario", 
+                    "debut": 1981,
+                    "id": 2,
+                    "image_path": "mario.png",
+                    "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
+                    "name": "Mario",
+                    "tier": "E",
+                    "universe": "Mario",
                     "weight": 100
-                }, 
+                },
                 {
-                    "debut": 1983, 
-                    "id": 3, 
-                    "image_path": "luigi.png", 
-                    "moves": "Super Jump Punch,Fireball,Luigi Cyclone,Throat Thrust,Green Missile", 
-                    "name": "Luigi", 
-                    "tier": "D", 
-                    "universe": "Mario", 
+                    "debut": 1983,
+                    "id": 3,
+                    "image_path": "luigi.png",
+                    "moves": "Super Jump Punch,Fireball,Luigi Cyclone,Throat Thrust,Green Missile",
+                    "name": "Luigi",
+                    "tier": "D",
+                    "universe": "Mario",
                     "weight": 100
-                }, 
+                },
                 {
-                    "debut": 1990, 
-                    "id": 4, 
-                    "image_path": "yoshi.png", 
-                    "moves": "Egg Lay,Egg Throw,Egg Roll,Yoshi Bomb", 
-                    "name": "Yoshi", 
-                    "tier": "D", 
-                    "universe": "Yoshi", 
+                    "debut": 1990,
+                    "id": 4,
+                    "image_path": "yoshi.png",
+                    "moves": "Egg Lay,Egg Throw,Egg Roll,Yoshi Bomb",
+                    "name": "Yoshi",
+                    "tier": "D",
+                    "universe": "Yoshi",
                     "weight": 108
                 }
             ]
@@ -208,13 +208,13 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
         {
             "character": {
-                "debut": "1981", 
-                "id": 2, 
-                "image_path": "mario.png", 
-                "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape", 
-                "name": "Mario", 
-                "tier": "E", 
-                "universe": "Mario", 
+                "debut": "1981",
+                "id": 2,
+                "image_path": "mario.png",
+                "moves": "Super Jump Punch,Fireball,Mario Tornado,Cape",
+                "name": "Mario",
+                "tier": "E",
+                "universe": "Mario",
                 "weight": "100"
             }
         }
@@ -224,32 +224,32 @@ Smash Database is a simple API allowing users to view information about Super Sm
 
 + Parameters
     + character_id (required, int)
-    
+
 + Response 200 (application/json)
 
         {
             "participants": [
                 {
-                  "id": 14, 
-                  "location": "California", 
-                  "main": "Mario", 
-                  "main_id": 2, 
-                  "sponsor": "FRQ", 
-                  "tag": "HugS", 
-                  "tournament_id": 2, 
+                  "id": 14,
+                  "location": "California",
+                  "main": "Mario",
+                  "main_id": 2,
+                  "sponsor": "FRQ",
+                  "tag": "HugS",
+                  "tournament_id": 2,
                   "tournament_name": "I'm Not Yelling! feat. ARMADA"
-                }, 
+                },
                 {
-                  "id": 35, 
-                  "location": "California", 
-                  "main": "Mario", 
-                  "main_id": 2, 
-                  "sponsor": "", 
-                  "tag": "Jace", 
-                  "tournament_id": 2, 
+                  "id": 35,
+                  "location": "California",
+                  "main": "Mario",
+                  "main_id": 2,
+                  "sponsor": "",
+                  "tag": "Jace",
+                  "tournament_id": 2,
                   "tournament_name": "I'm Not Yelling! feat. ARMADA"
-                }, 
-            ]     
+                },
+            ]
         }
 
 ## Search [/api/search?query={query}]
@@ -265,73 +265,51 @@ Smash Database is a simple API allowing users to view information about Super Sm
           "results": {
             "charactersANDQuery": [
               {
-                "debut": "1986", 
-                "id": 6, 
-                "image_path": "link.png", 
-                "moves": "Bomb, Boomerang, Hero's Bow, Hookshot, Spin Attack", 
-                "name": "Link", 
-                "tier": "E", 
-                "universe": "The Legend of Zelda", 
+                "debut": "1986",
+                "id": 6,
+                "image_path": "link.png",
+                "moves": "Bomb, Boomerang, Hero's Bow, Hookshot, Spin Attack",
+                "name": "Link",
+                "tier": "E",
+                "universe": "The Legend of Zelda",
                 "weight": "104"
-              }, 
+              },
               {
-                "debut": "1998", 
-                "id": 19, 
-                "image_path": "young_link.png", 
-                "moves": "Bomb, Boomerang, Fire Bow, Hookshot, Spin Attack", 
-                "name": "Young Link", 
-                "tier": "E", 
-                "universe": "The Legend of Zelda", 
+                "debut": "1998",
+                "id": 19,
+                "image_path": "young_link.png",
+                "moves": "Bomb, Boomerang, Fire Bow, Hookshot, Spin Attack",
+                "name": "Young Link",
+                "tier": "E",
+                "universe": "The Legend of Zelda",
                 "weight": "85"
               }
-            ], 
-            "charactersORQuery": [], 
+            ],
+            "charactersORQuery": [],
             "participantsANDQuery": [
               {
-                "id": 685, 
-                "location": "Ontario", 
-                "main": "Sheik", 
-                "main_id": 17, 
-                "sponsor": "", 
-                "tag": "a Link named SlykBacc", 
-                "tournament_id": 5, 
+                "id": 685,
+                "location": "Ontario",
+                "main": "Sheik",
+                "main_id": 17,
+                "sponsor": "",
+                "tag": "a Link named SlykBacc",
+                "tournament_id": 5,
                 "tournament_name": "SWEET XX"
-              }, 
+              },
               {
-                "id": 3106, 
-                "location": "Ontario", 
-                "main": "Roy", 
-                "main_id": 25, 
-                "sponsor": "", 
-                "tag": "a Link named SlykBacc", 
-                "tournament_id": 26, 
+                "id": 3106,
+                "location": "Ontario",
+                "main": "Roy",
+                "main_id": 25,
+                "sponsor": "",
+                "tag": "a Link named SlykBacc",
+                "tournament_id": 26,
                 "tournament_name": "EXP 2015"
               }
-            ], 
-            "participantsORQuery": [], 
-            "tournamentsANDQuery": [], 
+            ],
+            "participantsORQuery": [],
+            "tournamentsANDQuery": [],
             "tournamentsORQuery": []
           }
-        }
-
-## News with Newsr.me API [/api/news?clusters={num_clusters}]
-
-### Cluster articles into similar groups [GET]
-
-+ Parameters
-    + num_clusters (required, string)
-
-+ Response 200 (application/json)
-
-        {
-            "news": [
-                {
-                  "category": "0", 
-                  "titles": "At least 11 dead after blast rips through Russian metro train\nThree family members feared dead in NSW flood tragedy\nQ&A: Australia 'not taking its place in the world', former Danish PM says\nOne Nation co-founder accuses party of abandoning him\nWhat does bathroom anxiety feel like?\n'There is no budget': China's multi-billion-dollar bid to dominate world football\nSt Petersburg metro bomb blast kills 10, wounds dozens\nDonald Trump says US is 'very much behind' Egypt's Sisi\nWhy are human rights workers barred from Gaza?\nAnalysis: What's next for Turkey in Syria?\nIndia's sugarcane farmers: A cycle of debt and suicide\nBirmingham's Muslims challenge 'jihadi capital' label\nThe media should resist far-right populist tendencies\nThis is what emulated Breath of the Wild looks like at 4K resolution\nHieronymus Bosch action figures are the greatest thing from any dimension\nTesla: No algorithm prevents sudden acceleration into fixed objects\niOS 10.3.1 includes bug fixes and improves the security of your iPhone or iPad\nDOJ warns companies seeking H-1B visas: Don\u2019t discriminate against US citizens\nTesla delivers 25,418 vehicles in 2017\u2019s first quarter as EV market grows\nHTC Vive\u2019s first-ever price drop lasts just one day this week\nBlast on Russian subway kills 11; 2nd bomb is defused\nAP EXPLAINS: What is the Senate's 'nuclear option'?\nFewer missing but more dead as rivers recede in Colombia\nBrady's jersey stolen again, this time in fun at Fenway Park\nSt Petersburg metro explosion suspect 'from Central Asia'\nBrexit and Gibraltar: May laughs off Spain 'war' talk\nDisabled people 'left behind in society' - report\nSeven charged over asylum teen attack in Croydon\nOrdnance Survey's 3D digital map of UK offers stunning views\nFirefighters have higher heart attack risk 'because of heat'\nKian Dale: Parents guilty over baby's bath death in Tenbury Wells\nLexi Thompson penalty: Tournament referee not TV viewers should have final say\nWorld Anti-Doping Agency figures show 14% rise in doping sanctions\nLions in New Zealand: Brian O'Driscoll tips Sam Warburton for captaincy\nChinese Grand Prix: Antonio Giovinazzi replaces Pascal Wehrlein for second race\nLuke Shaw: Manchester United defender has 'no excuse' for lacking commitment\nEniola Aluko: England women's boss Sampson sending dangerous message on selection\nAlan Shearer - no more twists in Premier League title race\nNew H-1B Visa Guidelines Crack Down on Computer Programmer Jobs\nDemocrats Choose Path on Gorsuch That Could Change Washington\nBloomberg Brackets for a Cause\nBuffett's Newspaper Group Slashes 289 Jobs\nEx-Google Self-Driving Car Engineer Made More Than $120 Million\nHedge Fund Bulls Breathe New Life Into World's Hottest Currency\nStudent-Debt Overhang Is Pushing Down U.S. Rates, Dudley Says\nPanera Is Exploring Possible Sale After Receiving Interest\nThe Media Is Ignoring the 500-Pound Surveillance Elephant in the Room\nCan We Guess Your Age Based On Your Favourite MuchMusic VJs?\nThe battle over Obamacare's most popular program just hit a wall in a key state\nJoe Biden is giving a major speech in a key presidential primary state\nMercedes-Benz reportedly pulls ads following allegations of sexual harassment against Bill O'Reilly\nOnly A True Pop Culture Nerd Will Recognize 75% Of These Costumes\nThe maker of the EpiPen is being sued under a law that\u2019s typically used to take on organized crime\nRussian media: St. Petersburg explosion was carried out by a suicide bomber\nAndrew Lilico: 72% of economists were wrong about Brexit's short-term impact on the UK economy\nBritain is going on a 3-pronged attack to seal important post-Brexit trade talks this week\nA 'grammar vigilante' is secretly correcting street signs in Bristol in the middle of the night\nThis robotic surgery is so intricate it can stitch a peeled grape back together"
-                }, 
-                {
-                  "category": "1", 
-                  "titles": "'I am sorry': George Calombaris's restaurant empire underpays staff up to $2.6m\nRockhampton locals tie tinnies to houses for flood getaway\nTrump welcomes Egypt's Sisi despite human rights concerns\nAustralian medical innovations being held back by red tape: CSIRO\nSyria's  'moderate rebels' to form a new alliance\nThe Gambia's journalists find new freedom of expression\nWhy are African men and women still fleeing to Yemen?\nPushing apps to the edge, Fly.io puts middleware in the cloud\nRussia\u2019s hack of State Department was \u201chand-to-hand\u201d combat\nCharter won\u2019t have to compete against other ISPs thanks to FCC decision\nFire chief: 3 dead, 4 hurt when boiler explodes in St. Louis\nDems claim votes to block Gorsuch; GOP will override them\nNews of Iraq trip with Kushner mid-air poses security risks\nJohanna Konta: Injured and ill British number one to miss Charleston tournament\nAP Analysis: Can tough-talking Trump solve North Korea?\nBill O'Reilly, ex-Fox chief hit with more sexual allegations\nDavid Moyes: FA to ask Sunderland boss to explain himself over 'slap' remark\nCourt orders woman to pay \u00a324,500 to private parking company\nTheresa May defends UK ties with Saudi Arabia\nDavid Moyes: FA to ask Sunderland boss to explain himself over 'slap' remark\nLexi Thompson: Rickie Fowler wants a stop to TV viewers affecting game\nWells Fargo Told to Rehire Whistle-Blower, Pay $5.4 Million\nFox News, Roger Ailes Hit With Another Sexual-Harassment Suit\nBit by Bit, Trump Methodically Undoing Obama Policies - Breitbart\nExclusive-Kelly Ayotte: Reports that Neil Gorsuch Dodged Meeting Senate Dems False - Breitbart\nEgyptian President Sisi Thanks Trump for Alliance Against \u2018Satanic Ideology\u2019 of Terrorism - Breitbart\nPresident Donald Trump Donates Part of Salary to Park Service - Breitbart\nReport: Guest Speaker Disinvitations Most Common at Wealthiest Schools - Breitbart\nGOP Rep Gohmert to Trump: Work with Freedom Caucus, We Stood By When Priebus, Ryan 'Abandoned' You - Breitbart\nKushner arrives in Iraq with Joint Chiefs chairman for visit - Breitbart\nTrump to Nominate Former Jeb Bush Counsel Carlos Mu\u00f1iz to U.S. Education Department\nTrump: \u2018If China Is Not Going to Solve North Korea, We Will\u2019\nWe now have a better idea who's behind 'unmasking' Trump officials' contact with foreign agents \u2014 and why\nAOL and Yahoo plan to call themselves by a new name after the Verizon deal closes: Oath\nA Trump associate reportedly set up a secret meeting to establish a back-channel between Trump and Moscow\nThe Senate just cleared the first hurdle in confirming Neil Gorsuch to the Supreme Court\nFor Trump to force China's hand against North Korea, he may need to convince them he's a madman\nUber secretly took legal action in arbitration to declare Google's claims against it 'meritless'\nA Trump associate reportedly set up a secret meeting to establish a back-channel between Trump and Moscow\nSir Vince Cable on post-Brexit trade: 'We are not going to revive the empire'\nThere's a huge problem with China's plans to spend billions conquering football, according to a former FA chief\nPolling expert: Brits want May to get a Brexit deal that the EU has already shot down several times"
-                }
-            ]
         }
