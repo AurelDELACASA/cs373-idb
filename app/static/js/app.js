@@ -51,6 +51,11 @@ mainApp.config(['$routeProvider', '$locationProvider',
     templateUrl: '../static/htmls/search.html',
     controller: 'searchCtrl'
   })
+  //Go to news page
+  .when('/news', {
+    templateUrl: '../static/htmls/news.html',
+    controller: 'newsCtrl'
+  })
 
   .otherwise({redirectTo: '/'});
 
@@ -259,6 +264,35 @@ mainApp.controller('characterCtrl',
 
 });
 
+mainApp.factory('newsFactory', function($http) {
+  var newsFactory = {
+    async: function() {
+      var query_string = window.location.search.replace("?clusters=", "");
+      var promise = $http.get(prefix + "/api/news?clusters=" + query_string).then(function (response) {
+          console.log(query_string);
+        return response.data["news"];
+      });
+      return promise;
+    }
+  };
+  return newsFactory;
+});
+
+
+
+mainApp.controller('newsCtrl',
+  function(newsFactory, $scope) {
+    newsFactory.async().then(function(data) {
+      $scope.news = data;
+      $scope.newssubset = data;
+      console.log($scope.news)
+
+      $scope.itemsByPage = 50;
+      $scope.numPages = 3;
+    });
+  });
+
+
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
     var members = [
@@ -267,8 +301,8 @@ mainApp.controller('aboutCtrl',
       username: 'lee-benjamin',
       description: "I'm a 3rd year CS major who enjoys coffee, plants, looking at my denim, and long walks on the beach.",
       responsibilities: 'API Documentation, Tests, AngularJS, Knick Knacks',
-      tests: 9,
-      issues: 7,
+      tests: 17,
+      issues: 11,
       commits: 0
     },
     {
@@ -304,7 +338,7 @@ mainApp.controller('aboutCtrl',
       description: "Hi! My name is Caelan and I'm a senior Computer Science student here at UT. I mostly enjoy doing back-end work but I'm excited to get some more experience with front-end tools like AngularJS.",
       responsibilities: 'Models, Flask, AngularJS, Data Collection, AWS',
       tests: 6,
-      issues: 13,
+      issues: 19,
       commits: 0
     }
     ];
