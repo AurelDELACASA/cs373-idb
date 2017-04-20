@@ -241,13 +241,23 @@ def search():
 @app.route('/api/news', methods=['GET'])
 def get_news():
     clusters = int(request.args.get('clusters'))
-    return_dict = dict()
-    for t in kmeans.cluster(clusters):
-        if str(t[0]) in return_dict:
-            return_dict[str(t[0])] += [t[1]]
-        else:
-            return_dict[str(t[0])] = [t[1]]
-    return jsonify(news = return_dict)
+    results = kmeans.cluster(clusters)
+
+    return_set = list()
+
+    for c in range(0, clusters):
+        curr_dict = dict()
+        curr_dict['category'] = str(c)
+        all_titles = list()
+        for t in results:
+            if t[0] == c:
+                all_titles.append(t[1])
+        curr_dict['titles'] = "\n".join(all_titles)
+        return_set.append(curr_dict)
+
+#    print(return_set)
+
+    return jsonify(news = return_set)
 
 
 def clean_multiple(result_set):

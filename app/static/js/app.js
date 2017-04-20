@@ -51,6 +51,11 @@ mainApp.config(['$routeProvider', '$locationProvider',
     templateUrl: '../static/htmls/search.html',
     controller: 'searchCtrl'
   })
+  //Go to news page
+  .when('/news', {
+    templateUrl: '../static/htmls/news.html',
+    controller: 'newsCtrl'
+  })
 
   .otherwise({redirectTo: '/'});
 
@@ -258,6 +263,35 @@ mainApp.controller('characterCtrl',
         });
 
 });
+
+mainApp.factory('newsFactory', function($http) {
+  var newsFactory = {
+    async: function() {
+      var query_string = window.location.search.replace("?clusters=", "");
+      var promise = $http.get(prefix + "/api/news?clusters=" + query_string).then(function (response) {
+          console.log(query_string);
+        return response.data["news"];
+      });
+      return promise;
+    }
+  };
+  return newsFactory;
+});
+
+
+
+mainApp.controller('newsCtrl',
+  function(newsFactory, $scope) {
+    newsFactory.async().then(function(data) {
+      $scope.news = data;
+      $scope.newssubset = data;
+      console.log($scope.news)
+
+      $scope.itemsByPage = 50;
+      $scope.numPages = 3;
+    });
+  });
+
 
 mainApp.controller('aboutCtrl',
     function ($scope, $http) {
