@@ -15,9 +15,8 @@ pip packages:
 
 * virtualenv
 * flask
-
-### Deployment
-
-Install necessary dependencies, then run `make start-server` from the root directory of the repo.
-
-When using an apache-less environment, bind `app.py` to port 80 and change `app.js` to make API calls with `/api/path` instead of `http://localhost/api/path`
+* requests
+* sqlalchemy
+* numpy
+* scipy
+* scikit-learn
