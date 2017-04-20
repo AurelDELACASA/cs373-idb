@@ -267,9 +267,7 @@ mainApp.controller('characterCtrl',
 mainApp.factory('newsFactory', function($http) {
   var newsFactory = {
     async: function() {
-      var query_string = window.location.search.replace("?clusters=", "");
-      var promise = $http.get(prefix + "/api/news?clusters=" + query_string).then(function (response) {
-          console.log(query_string);
+      var promise = $http.get(prefix + "/api/news/").then(function (response) {
         return response.data["news"];
       });
       return promise;
